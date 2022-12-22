@@ -11,7 +11,7 @@ CREATE TABLE "user" (
 
 CREATE TABLE "recipes" (
     "id" SERIAL PRIMARY KEY,
-    "user_id" SERIAL FOREIGN KEY,
+    "user_id" INT REFERENCES "user",
     "coffee" VARCHAR(255) NOT NULL,
     "roast_level" VARCHAR(255) NOT NULL,
     "brew_method" VARCHAR(255) NOT NULL,
