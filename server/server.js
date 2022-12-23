@@ -24,6 +24,10 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 
+//Insert route for recipes below (create recipes.router 
+//in routes folder)
+
+
 // Serve static files
 app.use(express.static('build'));
 
