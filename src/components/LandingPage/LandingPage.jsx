@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './LandingPage.css';
+// import './LandingPage.css';
+import { Grid} from '@mui/material'
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -14,54 +21,126 @@ function LandingPage() {
   };
 
   return (
-    <div className="container">
-      <h2>{heading}</h2>
-
-      <div className="grid">
-        <div className="grid-col grid-col_8">
+<div>
+      <Grid 
+            container spacing={2}
+            direction="row"
+            justifyContent="center"
+            alignItems="center">
+        <Grid container item spacing={3}
+            justifyContent="center"
+            item xs={12}>
+          <h2>{heading}</h2>
+        </Grid>
+        
+        <Grid item xs={3}>
+          <h2> How it works:</h2>
+          <br/>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
+          1.view sample 
+          recipes below
+          </p>
+          <p>
+          2.register to   
+          create recipes
+          and view all recipes
+          </p>
+          <p>
+            3. More details will be added here
           </p>
 
-          <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
-          </p>
+        </Grid>
 
-          <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
-          </p>
-        </div>
-        <div className="grid-col grid-col_4">
+        <Grid 
+            item xs={3}>
           <RegisterForm />
-
-          <center>
-            <h4>Already a Member?</h4>
+        </Grid>
+          <Grid item xs={3}
+                justify-content="right">
+            <h4 >Already a Member?</h4>
+          <Grid 
+                justify-content="right"
+                item xs={2}>
             <button className="btn btn_sizeSm" onClick={onLogin}>
               Login
             </button>
-          </center>
-        </div>
-      </div>
+          </Grid>
+            
+          </Grid>
+        <Grid item xs={12}></Grid>
+        <Grid 
+            item xs={3}>
+        <Card sx={{ maxWidth: 345 }}>
+          <CardMedia
+            component="img"
+            height="140"
+            image="./images/chemex.jpg"
+            alt="something cool"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              Cool Coffee Recipe
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            {/* <Button size="small">Share</Button> */}
+            <Button size="small">Login or Register to Learn More</Button>
+          </CardActions>
+        </Card>
+
+        </Grid>
+        <Grid item xs={3}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image="./images/370.jpg"
+              alt="Latte"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+              Cool Coffee Recipe
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </Typography>
+            </CardContent>
+            <CardActions>
+              {/* <Button size="small">Share</Button> */}
+              <Button size="small">Login or Register to Learn More</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid item xs={3}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image="./images/14981.jpg"
+              alt="coffee"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+              Cool Coffee Recipe
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </Typography>
+            </CardContent>
+            <CardActions>
+              {/* <Button size="small">Share</Button> */}
+              <Button size="small">Login or Register to Learn More</Button>
+            </CardActions>
+          </Card>
+
+        </Grid>
+      </Grid>
     </div>
   );
 }
