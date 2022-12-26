@@ -1,17 +1,28 @@
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
+import { Button } from '@mui/material'; 
+import { useState } from 'react';
 
 function RecipeForm() {
+    //need to add useStates for all the input fields 
+    const [title, setTitle] = useState('');
+    const [coffee, setCoffee] = useState('');
+    const [roast, setRoast] = useState('');
+    const [input, setInput] = useState('');
+    const [output, setOutput] = useState('');
+    const [comments, setComments] = useState('');
 
     return (
         <Box
         component="form"
+        alignItems="center"
         sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
         }}
         noValidate
         autoComplete="off"
+        margin="auto"
+        justifyContent="center"
         >   
         <div>
             <TextField
@@ -20,6 +31,8 @@ function RecipeForm() {
                 label="Recipe Title"
                 variant="filled"
                 type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
             />
             <br/>
             <TextField
@@ -28,6 +41,8 @@ function RecipeForm() {
                 label="Coffee Used"
                 variant="filled"
                 type="text"
+                value={coffee}
+                onChange={(e) => setCoffee(e.target.value)}
             />
             <br/>
             <TextField
@@ -36,6 +51,8 @@ function RecipeForm() {
                 label="Light/Medium/Dark Roast?"
                 type="text"
                 variant="filled"
+                value={roast}
+                onChange={(e) => setRoast(e.target.value)}
             />
             <br/>
             <TextField
@@ -44,6 +61,8 @@ function RecipeForm() {
                 label="Input in Grams"
                 variant="filled"
                 type="number"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
             />
             <br/>
             <TextField
@@ -52,6 +71,8 @@ function RecipeForm() {
                 label="Output in Grams"
                 type="number"
                 variant="filled"
+                value={output}
+                onChange={(e) => setOutput(e.target.value)}
             />
             <br/>
             <TextField
@@ -61,6 +82,8 @@ function RecipeForm() {
                 variant="standard"
                 multiline
                 maxRows={4}
+                value={comments}
+                onChange={(e) => setComments(e.target.value)}
             />
             <br/>
             <br/>
