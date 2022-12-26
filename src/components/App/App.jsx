@@ -19,8 +19,16 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+// import RegisterForm from '../RegisterForm/RegisterForm';
+import UserItem from '../UserItem/UserItem';
+import UserRecipes from '../UserRecipes/UserRecipes';
+import AllRecipes from '../AllRecipes/AllRecipes';
+import EditRecipe from '../EditRecipe/EditRecipe';
+import RecipeForm from '../RecipeForm/RecipeForm';
+
 
 import './App.css';
+// import background from "./images/370.jpg";
 
 function App() {
   const dispatch = useDispatch();
@@ -67,6 +75,48 @@ function App() {
           >
             <InfoPage />
           </ProtectedRoute>
+
+          <ProtectedRoute
+            
+            exact 
+            path="/recipes"
+          >
+            <UserRecipes />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          
+            exact
+            path="/allrecipes"
+          >
+            <AllRecipes />
+
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="editrecipe"
+          >
+            <EditRecipe />
+
+          </ProtectedRoute>
+          
+          <ProtectedRoute
+            exact
+            path="/useritem"  
+          >
+            <UserItem />
+
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/recipeform"
+          >
+            <RecipeForm />
+            
+          </ProtectedRoute>
+
 
           <Route
             exact
