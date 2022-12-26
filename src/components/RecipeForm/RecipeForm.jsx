@@ -47,6 +47,14 @@ function RecipeForm() {
                 id="brew-method"
                 value={method}
                 label="Brew Method"
+                style={{
+                    width: 200,
+                }}
+                onChange={(e) => {
+                    console.log("Brew Method", e.target.value)
+                    setMethod(e.target.value)
+                }}
+                
             >
             <MenuItem value={10}>Drip Brewer</MenuItem>
             <MenuItem value={20}>Espresso Machine</MenuItem>
