@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material'; 
 import { useState } from 'react';
+import { InputLabel, Select, MenuItem, FormControl } from '@mui/material';
 
 function RecipeForm() {
     //need to add useStates for all the input fields 
@@ -11,6 +12,7 @@ function RecipeForm() {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [comments, setComments] = useState('');
+    const [method, setMethod] = useState('');
 
     return (
         <Box
@@ -25,6 +27,9 @@ function RecipeForm() {
         justifyContent="center"
         >   
         <div>
+            <FormControl style={{minWidth: 120}}>
+
+            
             <TextField
                 required
                 id="recipe-title-input"
@@ -34,6 +39,20 @@ function RecipeForm() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
+            <br/>
+            {/* <InputLabel id="Brew Method">Brew Method</InputLabel> */}
+            <Select
+                required
+                labelId="brew-method"
+                id="brew-method"
+                value={method}
+                label="Brew Method"
+            >
+            <MenuItem value={10}>Drip Brewer</MenuItem>
+            <MenuItem value={20}>Espresso Machine</MenuItem>
+            <MenuItem value={30}>Chemex</MenuItem>
+            <MenuItem value={40}>French Press</MenuItem>
+            </Select>
             <br/>
             <TextField
                 required
@@ -85,6 +104,7 @@ function RecipeForm() {
                 value={comments}
                 onChange={(e) => setComments(e.target.value)}
             />
+            </FormControl>
             <br/>
             <br/>
             <Button
