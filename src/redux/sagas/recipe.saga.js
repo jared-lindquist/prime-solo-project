@@ -3,8 +3,9 @@ import axios from 'axios';
 
 //this is where our fetchRecipes* saga will live
 function* fetchRecipes(action) {
+    console.log('in fetchRecipes');
     try {
-        const recipes = yield axios.get('/api/recipe');
+        const recipes = yield axios.get('/api/recipes');
         console.log('[recipeSaga] recipes are: ', recipes);
         yield put({type: 'SET_RECIPES', payload: recipes.data});
     }
