@@ -7,7 +7,7 @@ const recipeRouter = express.Router();
  */
 recipeRouter.get('/', (req, res) => {
   // GET route code here
-    const queryText = `SELECT * FROM "recipes";`;
+    const queryText = `SELECT * FROM "recipes" ORDER BY "id" DESC;`;
 
     pool.query(queryText).then((results) => {
         res.send(results.rows);
