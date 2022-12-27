@@ -56,10 +56,10 @@ function RecipeForm() {
                 }}
                 
             >
-            <MenuItem value={10}>Drip Brewer</MenuItem>
-            <MenuItem value={20}>Espresso Machine</MenuItem>
-            <MenuItem value={30}>Chemex</MenuItem>
-            <MenuItem value={40}>French Press</MenuItem>
+            <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
+            <MenuItem value="espresso">Espresso Machine</MenuItem>
+            <MenuItem value="chemex">Chemex</MenuItem>
+            <MenuItem value="french-press">French Press</MenuItem>
             </Select>
             <br/>
             <TextField

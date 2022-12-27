@@ -2,6 +2,8 @@ import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 //I need to use this component as my user dashboard page 
 //(user home page view in Figma)
@@ -9,9 +11,13 @@ import { useHistory } from 'react-router-dom';
 
 
 function UserPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const history = useHistory();
+
+  useEffect(() => {
+    dispatch({type: 'FETCH_USER_RECIPES'})
+  }, []);
 
   const handleNewBrew = () => {
     history.push('/recipeform');
@@ -35,6 +41,7 @@ function UserPage() {
             <button onClick={handleNewBrew}>Start a new brew</button>
             <button onClick={handleUserBrews}>View All my brews</button>
             <button onClick={handleAllRecipes}>view community brews</button>
+            
     </div>
   );
 }
