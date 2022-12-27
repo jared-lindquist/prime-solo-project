@@ -34,14 +34,14 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      {/* <p>Your ID is: {user.id}</p> */}
       {/* <LogOutButton className="btn" /> */}
       User Dashboard goes here
             display a card view of most recent brew
             <button onClick={handleNewBrew}>Start a new brew</button>
             <button onClick={handleUserBrews}>View All my brews</button>
             <button onClick={handleAllRecipes}>view community brews</button>
-            
+
     </div>
   );
 }
