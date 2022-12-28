@@ -2,7 +2,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 //this is where our fetchRecipes* saga will live
-function* fetchRecipes(action) {
+function* fetchAllRecipes(action) {
     console.log('in fetchRecipes');
     try {
         const recipes = yield axios.get('/api/recipes');
@@ -13,7 +13,18 @@ function* fetchRecipes(action) {
         console.log('Error in fetchRecipes, recipe.saga', error)
     }
 }
-//this can also be where all our other recipe calls can live
+
+function* fetchUserRecipes(action) {
+    console.log('in fetchUserRecipes', action.payload);
+    try {
+        const userRecipes = yield axios.get('/api/recipes');
+        console.log('user recipes are: ', userRecipes);
+        yield put({type: 'SET_USER_RECIPES', payload: userRecipes.data})
+    }
+    catch(error) {
+        console.log('error getting user recipes', error);
+    }
+}
 
 //addRecipe* post
 function* addRecipe(action) {
@@ -32,9 +43,10 @@ function* addRecipe(action) {
 //deleteRecipe* delete
 
 function* recipeSaga(action) {
-    yield takeLatest('FETCH_ALL_RECIPES', fetchRecipes);
+    yield takeLatest('FETCH_ALL_RECIPES', fetchAllRecipes);
     //add takeLatest for add, delete, and edit recipe sagas
-    yield takeLatest('ADD_RECIPE', addRecipe)
+    yield takeLatest('ADD_RECIPE', addRecipe);
+    yield takeLatest('FETCH_USER_RECIPES', fetchUserRecipes);
 }
 
 export default recipeSaga;

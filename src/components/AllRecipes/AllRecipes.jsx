@@ -9,15 +9,28 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid} from '@mui/material'
+import { useHistory } from 'react-router-dom';
+
 
 function AllRecipes() {
 
+    const history = useHistory();
     const store = useReduxStore();
     const dispatch = useDispatch();
 
     useEffect(()=> {
         dispatch({type: 'FETCH_ALL_RECIPES'});
     }, []);
+
+    const recipeDetails = (recipe) => {
+        //console.log to confirm onClick
+        console.log('clicked on a recipe', recipe);
+        //collects recipe info to store locally
+        dispatch({type: 'SET_DETAILS', payload: recipe})
+        //navigates to the item details page
+        history.push(`/recipeitem`)
+    }
+
 
     return (
         <div>
@@ -31,10 +44,9 @@ function AllRecipes() {
             <h2>All Community Brews</h2>
             <Grid item xs={12}></Grid>
 
-            {store.recipe.map(recipe  => (
+            {store.allRecipes.map(recipe  => (
                 <Grid item xs={3}>
-                    <Card  id={recipe.id} sx={{ maxWidth: 225, maxHeight:300 }}>
-                        <CardActionArea>
+                    <Card id={recipe.id} sx={{ maxWidth: 225, maxHeight:350 }}>
                             <CardMedia
                                 component="img"
                                 height="150"
@@ -49,7 +61,13 @@ function AllRecipes() {
                             {recipe.comments}
                             </Typography>
                             </CardContent>
-                        </CardActionArea>
+                        <CardActions>
+                            <Button 
+                                size="medium"
+                                onClick={ () => recipeDetails(recipe)}
+                                >See Full Recipe
+                            </Button>
+                        </CardActions>
                     </Card>
                 </Grid>
                 ))

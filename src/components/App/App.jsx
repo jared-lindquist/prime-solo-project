@@ -25,6 +25,7 @@ import UserRecipes from '../UserRecipes/UserRecipes';
 import AllRecipes from '../AllRecipes/AllRecipes';
 import EditRecipe from '../EditRecipe/EditRecipe';
 import RecipeForm from '../RecipeForm/RecipeForm';
+import RecipeItem from '../RecipeItem/RecipeItem';
 
 
 import './App.css';
@@ -115,6 +116,14 @@ function App() {
           >
             <RecipeForm />
             
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/recipeitem"
+          >
+            <RecipeItem />
+
           </ProtectedRoute>
 
 

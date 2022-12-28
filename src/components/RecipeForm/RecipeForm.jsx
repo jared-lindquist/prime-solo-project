@@ -85,7 +85,7 @@ function RecipeForm() {
             <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
             <MenuItem value="espresso">Espresso Machine</MenuItem>
             <MenuItem value="chemex">Chemex</MenuItem>
-            <MenuItem value="french press">French Press</MenuItem>
+            <MenuItem value="french-press">French Press</MenuItem>
             </Select>
             <br/>
             <TextField
