@@ -59,11 +59,14 @@ function LandingPage() {
                 justify-content="right">
             <h4 >Already a Member?</h4>
           <Grid 
-                justify-content="right"
+                justify-content="center"
                 item xs={2}>
-            <button className="btn btn_sizeSm" onClick={onLogin}>
-              Login
-            </button>
+                  <center>
+                    <button className="btn btn_sizeSm" onClick={onLogin}>
+                      Login
+                    </button>
+                  </center>
+            
           </Grid>
             
           </Grid>

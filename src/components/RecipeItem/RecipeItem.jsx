@@ -12,7 +12,7 @@ function RecipeItem() {
     const history = useHistory();
     const store = useReduxStore();
 
-    console.log('recipe details are: ', store);
+    console.log('recipe details are: ', store.details);
 
     const backToCommunity = () => {
         history.push('/allrecipes');
@@ -21,7 +21,11 @@ function RecipeItem() {
     return (
         <div>
             full recipe details view goes here
-            {/* {JSON.stringify(store)} */}
+            {JSON.stringify(store.details)}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <Button variant="contained" 
                     className='back'
                     onClick={backToCommunity}

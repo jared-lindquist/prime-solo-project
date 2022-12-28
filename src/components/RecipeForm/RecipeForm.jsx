@@ -3,10 +3,12 @@ import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material'; 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
-import { InputLabel, Select, MenuItem, FormControl } from '@mui/material';
+import { InputLabel, Select, MenuItem, FormControl, Grid, Paper } from '@mui/material';
 
 function RecipeForm() {
+    const history = useHistory();
 
     const dispatch = useDispatch();
     //need to add useStates for all the input fields 
@@ -38,24 +40,16 @@ function RecipeForm() {
         setInput('');
         setOutput('');
         setComments('');
+        history.push('./user')
     }
 
-    return (
-        <Box
-        component="form"
-        alignItems="center"
-        sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off"
-        margin="auto"
-        justifyContent="center"
-        >   
+    return ( 
         <div>
-            <FormControl style={{minWidth: 120}}>
+            <FormControl 
+                justify="center"
+                style={{minWidth: 120}}>
 
-            
+            <p>Give this recipe a title:</p>
             <TextField
                 required
                 id="recipe-title-input"
@@ -66,8 +60,9 @@ function RecipeForm() {
                 onChange={(e) => setTitle(e.target.value)}
             />
             <br/>
-            {/* <InputLabel id="Brew Method">Brew Method</InputLabel> */}
+            <p>What brew method did you use?</p>
             <Select
+                
                 required
                 labelId="brew-method"
                 id="brew-method"
@@ -82,12 +77,14 @@ function RecipeForm() {
                 }}
                 
             >
+            <InputLabel id="Brew Method">Brew Method</InputLabel>
             <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
             <MenuItem value="espresso">Espresso Machine</MenuItem>
             <MenuItem value="chemex">Chemex</MenuItem>
             <MenuItem value="french-press">French Press</MenuItem>
             </Select>
             <br/>
+            <p>What coffee did you use? (Roaster and country of origin)</p>
             <TextField
                 required
                 id="coffee-input"
@@ -98,6 +95,7 @@ function RecipeForm() {
                 onChange={(e) => setCoffee(e.target.value)}
             />
             <br/>
+            <p>Was this a Light, Medium, or Dark roast?</p>
             <TextField
                 required
                 id="roast-level"
@@ -108,6 +106,7 @@ function RecipeForm() {
                 onChange={(e) => setRoast(e.target.value)}
             />
             <br/>
+            <p>How many grams of coffee did you start the brew with?</p>
             <TextField
                 required
                 id="input"
@@ -118,6 +117,7 @@ function RecipeForm() {
                 onChange={(e) => setInput(e.target.value)}
             />
             <br/>
+            <p>Once the brew was complete, how much coffee did you end up with?</p>
             <TextField
                 required
                 id="output"
@@ -128,6 +128,7 @@ function RecipeForm() {
                 onChange={(e) => setOutput(e.target.value)}
             />
             <br/>
+            <p>Please fill in details for this brew recipe below</p>
             <TextField
                 id="comments"
                 label="Tasting Notes/Comments"
@@ -147,10 +148,9 @@ function RecipeForm() {
             Save this brew
             </Button>
             <br/>
-            clicking save navigates to UserRecipes list 
-            and sends POST request to DB.
+            {/* clicking save navigates to UserRecipes list 
+            and sends POST request to DB. */}
         </div>
-</Box> 
     )
 }
 
