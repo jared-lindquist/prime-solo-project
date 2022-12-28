@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 //import recipes reducer once created
-import recipe from './recipe.reducer';
+import allRecipes from './recipe.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -13,7 +13,7 @@ import recipe from './recipe.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  recipe
+  allRecipes
   //need to include a recipes reducer(create new reducer file)
 });
 

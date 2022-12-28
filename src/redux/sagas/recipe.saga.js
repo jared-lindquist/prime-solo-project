@@ -16,7 +16,17 @@ function* fetchRecipes(action) {
 //this can also be where all our other recipe calls can live
 
 //addRecipe* post
-
+function* addRecipe(action) {
+    console.log('in recipe.saga addRecipe', action.payload)
+    try {
+        yield axios.post('/api/recipes', action.payload);
+        console.log('new recipe is: ', action.payload);
+        yield put({type: 'FETCH_ALL_RECIPES'})
+    }
+    catch (error) {
+        console.log('error adding recipe', error)
+    }
+}
 //editRecipe* put
 
 //deleteRecipe* delete
@@ -24,6 +34,7 @@ function* fetchRecipes(action) {
 function* recipeSaga(action) {
     yield takeLatest('FETCH_ALL_RECIPES', fetchRecipes);
     //add takeLatest for add, delete, and edit recipe sagas
+    yield takeLatest('ADD_RECIPE', addRecipe)
 }
 
 export default recipeSaga;

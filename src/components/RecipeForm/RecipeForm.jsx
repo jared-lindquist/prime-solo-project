@@ -2,9 +2,13 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material'; 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import swal from 'sweetalert';
 import { InputLabel, Select, MenuItem, FormControl } from '@mui/material';
 
 function RecipeForm() {
+
+    const dispatch = useDispatch();
     //need to add useStates for all the input fields 
     const [title, setTitle] = useState('');
     const [coffee, setCoffee] = useState('');
@@ -13,6 +17,28 @@ function RecipeForm() {
     const [output, setOutput] = useState('');
     const [comments, setComments] = useState('');
     const [method, setMethod] = useState('');
+
+    const recipeDetails = {
+        title: title,
+        method: method,
+        coffee: coffee,
+        roast: roast,
+        input: input,
+        output: output,
+        comments: comments
+    }
+
+    const handleSave = () => {
+        console.log('in handle save', recipeDetails);
+        dispatch({type: 'ADD_RECIPE', payload: recipeDetails});
+        swal('You added a brew!');
+        setTitle('');
+        setCoffee('');
+        setRoast('');
+        setInput('');
+        setOutput('');
+        setComments('');
+    }
 
     return (
         <Box
@@ -59,7 +85,7 @@ function RecipeForm() {
             <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
             <MenuItem value="espresso">Espresso Machine</MenuItem>
             <MenuItem value="chemex">Chemex</MenuItem>
-            <MenuItem value="french-press">French Press</MenuItem>
+            <MenuItem value="french press">French Press</MenuItem>
             </Select>
             <br/>
             <TextField
@@ -115,7 +141,7 @@ function RecipeForm() {
             </FormControl>
             <br/>
             <br/>
-            <Button
+            <Button onClick={handleSave}
                 variant="contained"
             >
             Save this brew
