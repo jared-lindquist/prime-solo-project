@@ -33,7 +33,7 @@ function AllRecipes() {
 
             {store.recipe.map(recipe  => (
                 <Grid item xs={3}>
-                    <Card  id={recipe.id} sx={{ maxWidth: 225, maxHeight:325 }}>
+                    <Card  id={recipe.id} sx={{ maxWidth: 225, maxHeight:300 }}>
                         <CardActionArea>
                             <CardMedia
                                 component="img"
