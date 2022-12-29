@@ -33,8 +33,8 @@ function RecipeItem() {
                     <p>They started this brew with {store.details.input} grams of coffee</p>
                     <p>The finished weight of the brew was {store.details.output} grams.</p>
                     <p>Comments left by {store.details.username}:</p>
-                    <p>'{store.details.comments}.' Thanks for checking out my brew!</p>
-
+                    <p>'{store.details.comments}.' </p>
+                    <p>Thanks for checking out my brew!</p>
             <br/>
             <br/>
             <br/>

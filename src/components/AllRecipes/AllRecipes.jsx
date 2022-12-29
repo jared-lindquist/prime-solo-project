@@ -48,7 +48,7 @@ function AllRecipes() {
                 <Grid item xs={3}>
                     <Card id={recipe.id} sx={{ maxWidth: 200, maxHeight:400 }}>
                         <Typography>
-                            Brewer: {recipe.username}
+                            Brewed by: {recipe.username}
                         </Typography>
                             <CardMedia
                                 component="img"

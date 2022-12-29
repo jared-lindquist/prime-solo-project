@@ -22,7 +22,7 @@ function UserRecipes() {
     }, []);
 
     return (
-        <div>
+        <div>{JSON.stringify(store)}
             user's recipe list goes here
             display recipes as clickable cards, clicking a 
             card navigates to UserItem details page

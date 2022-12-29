@@ -10,6 +10,7 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const recipeRouter = require('./routes/recipe.router');
+const userRecipesRouter = require('./routes/userRecipes.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use('/api/user', userRouter);
 //Insert route for recipes below (create recipes.router 
 //in routes folder)
 app.use('/api/recipes', recipeRouter);
+app.use('/api/userRecipes', userRecipesRouter);
 
 // Serve static files
 app.use(express.static('build'));

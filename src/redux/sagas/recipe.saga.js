@@ -15,9 +15,9 @@ function* fetchAllRecipes(action) {
 }
 
 function* fetchUserRecipes(action) {
-    console.log('in fetchUserRecipes', action.payload);
+    // console.log('in fetchUserRecipes', action.payload);
     try {
-        const userRecipes = yield axios.get('/api/recipes');
+        const userRecipes = yield axios.get('/api/userRecipes');
         console.log('user recipes are: ', userRecipes);
         yield put({type: 'SET_USER_RECIPES', payload: userRecipes.data})
     }
