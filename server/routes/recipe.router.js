@@ -10,7 +10,12 @@ const {
  */
 recipeRouter.get('/', (req, res) => {
   // GET route code here
-    const queryText = `SELECT * FROM "recipes" ORDER BY "id" DESC;`;
+    const queryText = `SELECT "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
+                        "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", 
+                        "user"."username" 
+    FROM "recipes" 
+    INNER JOIN "user" 
+    ON "recipes"."user_id" = "user"."id";`;
 
     pool.query(queryText).then((results) => {
         res.send(results.rows);
@@ -19,6 +24,9 @@ recipeRouter.get('/', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+// `SELECT * FROM "recipes" ORDER BY "id" DESC;`
+
 
 /**
  * POST route template

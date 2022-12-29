@@ -46,7 +46,10 @@ function AllRecipes() {
 
             {store.allRecipes.map(recipe  => (
                 <Grid item xs={3}>
-                    <Card id={recipe.id} sx={{ maxWidth: 225, maxHeight:350 }}>
+                    <Card id={recipe.id} sx={{ maxWidth: 200, maxHeight:400 }}>
+                        <Typography>
+                            Brewer: {recipe.username}
+                        </Typography>
                             <CardMedia
                                 component="img"
                                 height="150"
@@ -58,7 +61,7 @@ function AllRecipes() {
                             {recipe.title}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                            {recipe.comments}
+                            {/* {recipe.comments} */}
                             </Typography>
                             </CardContent>
                         <CardActions>

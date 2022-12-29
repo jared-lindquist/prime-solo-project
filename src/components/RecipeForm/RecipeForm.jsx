@@ -32,6 +32,11 @@ function RecipeForm() {
 
     const handleSave = () => {
         console.log('in handle save', recipeDetails);
+        if (recipeDetails.title === '' || recipeDetails.method === '' || 
+        recipeDetails.coffee === '' || recipeDetails.roast === '' ||
+        recipeDetails.input === '' || recipeDetails.output === '') {
+            swal('Please fill in required fields to submit')
+        }
         dispatch({type: 'ADD_RECIPE', payload: recipeDetails});
         swal('You added a brew!');
         setTitle('');

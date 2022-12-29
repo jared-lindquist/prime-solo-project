@@ -20,8 +20,21 @@ function RecipeItem() {
 
     return (
         <div>
-            full recipe details view goes here
-            {JSON.stringify(store.details)}
+            {/* {JSON.stringify(store.details)} */}
+            <h1>
+                This brew is brought to you by {store.details.username}
+            </h1>
+                <h3>
+                    {store.details.title}
+                </h3>
+                    <p> Coffee used for this brew: {store.details.coffee}</p>
+                    <p>Which is a {store.details.roast_level} roasted coffee</p>
+                    <p>{store.details.username} brewed with a {store.details.brew_method}</p>
+                    <p>They started this brew with {store.details.input} grams of coffee</p>
+                    <p>The finished weight of the brew was {store.details.output} grams.</p>
+                    <p>Comments left by {store.details.username}:</p>
+                    <p>'{store.details.comments}.' Thanks for checking out my brew!</p>
+
             <br/>
             <br/>
             <br/>
