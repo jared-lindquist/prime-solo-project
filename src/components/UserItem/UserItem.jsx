@@ -10,8 +10,7 @@ function UserItem() {
 
     const history = useHistory();
     const store = useReduxStore();
-
-
+    const dispatch = useDispatch();
 
     console.log('recipe details are:', store.details);
 
@@ -24,7 +23,9 @@ function UserItem() {
     }
 
     const handleDelete = () => {
-        console.log('handleDelete button clicked');
+        
+        dispatch({type: 'DELETE_RECIPE', payload: store.details});
+        history.push('/recipes');
     }
 
 

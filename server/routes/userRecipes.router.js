@@ -14,7 +14,7 @@ userRecipesRouter.get('/',  (req, res) => {
     console.log('req.user', req.user);
 
     const userId = req.user.id;
-    const queryText = `SELECT "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
+    const queryText = `SELECT "recipes"."id", "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
     "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", "user"."username" 
     FROM "recipes"
     INNER JOIN "user" 
@@ -36,5 +36,15 @@ userRecipesRouter.get('/',  (req, res) => {
 // router.post('/', (req, res) => {
 //   // POST route code here
 // });
+
+userRecipesRouter.delete('/:id', (req, res) => {
+
+    console.log('in userRecipesRouter delete', req.params.id, req.user.id);
+
+    pool.query(`DELETE FROM "recipes" WHERE "id" = $1 AND "user_id" = $2`, [req.params.id, req.user.id])
+    .then ((results) => res.sendStatus(200))
+    .catch((error) => res.sendStatus(500));
+    //endpoint functionality
+})
 
 module.exports = userRecipesRouter;
