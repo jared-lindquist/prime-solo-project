@@ -4,6 +4,7 @@ const userRecipesRouter = express.Router();
 const {
     rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
+const { query } = require('express');
 
 // /**
 //  * GET route template
@@ -30,12 +31,9 @@ userRecipesRouter.get('/',  (req, res) => {
     });
 });
 
-// /**
-//  * POST route template
-//  */
-// router.post('/', (req, res) => {
-//   // POST route code here
-// });
+
+//post route goes here
+
 
 userRecipesRouter.delete('/:id', (req, res) => {
 
@@ -45,6 +43,20 @@ userRecipesRouter.delete('/:id', (req, res) => {
     .then ((results) => res.sendStatus(200))
     .catch((error) => res.sendStatus(500));
     //endpoint functionality
-})
+});
+
+userRecipesRouter.put('/:id', (req, res) => {
+    console.log('in userRecipesRouter PUT', req.body, req.params.id);
+
+    let queryParams = [req.body.title, req.body.coffee, req.body.roast, req.body.input, req.body.output, req.body.comments, req.body.method, req.body.id];
+    let queryText = `
+    UPDATE "recipes"
+    SET "title" = $1, "coffee" = $2, "roast_level" = $3, "input" = $4, "output" = $5, "comments" = $6, "brew_method" = $7
+    WHERE "id" = $8;`;
+
+    pool.query(queryText, queryParams)
+    .then((results) => res.sendStatus(200))
+    .catch((error) => res.sendStatus(500));
+});
 
 module.exports = userRecipesRouter;

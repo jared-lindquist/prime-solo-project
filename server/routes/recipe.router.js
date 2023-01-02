@@ -26,20 +26,20 @@ recipeRouter.get('/', (req, res) => {
     })
 });
 
-recipeRouter.get('/', rejectUnauthenticated, (req, res) => {
-    console.log('in recipeRouter.get for user recipes')
-    console.log('is authenticated?', req.isAuthenticated());
-    console.log('req.user', req.user);
+// recipeRouter.get('/', rejectUnauthenticated, (req, res) => {
+//     console.log('in recipeRouter.get for user recipes')
+//     console.log('is authenticated?', req.isAuthenticated());
+//     console.log('req.user', req.user);
 
-    const userId = req.user.id;
+//     const userId = req.user.id;
 
-    pool.query(`SELECT * FROM "recipes" WHERE "user_id" = $1`, [userId])
-    .then((results) => res.send(results.rows))
-    .catch((error) => {
-        console.log('error selecting user recipes', error);
-        res.sendStatus(500);
-    });
-});
+//     pool.query(`SELECT * FROM "recipes" WHERE "user_id" = $1`, [userId])
+//     .then((results) => res.send(results.rows))
+//     .catch((error) => {
+//         console.log('error selecting user recipes', error);
+//         res.sendStatus(500);
+//     });
+// });
 
 // `SELECT * FROM "recipes" ORDER BY "id" DESC;`
 
@@ -47,6 +47,7 @@ recipeRouter.get('/', rejectUnauthenticated, (req, res) => {
 /**
  * POST route template
  */
+//**this needs to go into the userRecipes.router file */
 recipeRouter.post('/', (req, res) => {
   // POST route code here
     

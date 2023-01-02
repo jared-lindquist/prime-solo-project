@@ -39,7 +39,16 @@ function* addRecipe(action) {
     }
 }
 //editRecipe* put
-
+function* editRecipe(action) {
+    console.log('in recipe.saga editRecipe', action.payload);
+    try {
+        yield axios.put('/api/userRecipes/' + action.payload.id, action.payload);
+        yield put({type: 'FETCH_USER_RECIPES'})
+    }
+    catch(error) {
+        console.log('error in editRecipe saga', error);
+    }
+}
 //deleteRecipe* delete
 function* deleteRecipe(action) {
     console.log(action.payload);
@@ -58,6 +67,7 @@ function* recipeSaga(action) {
     yield takeLatest('ADD_RECIPE', addRecipe);
     yield takeLatest('FETCH_USER_RECIPES', fetchUserRecipes);
     yield takeLatest('DELETE_RECIPE', deleteRecipe);
+    yield takeLatest('EDIT_RECIPE', editRecipe)
 }
 
 export default recipeSaga;

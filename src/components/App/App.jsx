@@ -96,7 +96,7 @@ function App() {
 
           <ProtectedRoute
             exact
-            path="editrecipe"
+            path="/editrecipe"
           >
             <EditRecipe />
 
