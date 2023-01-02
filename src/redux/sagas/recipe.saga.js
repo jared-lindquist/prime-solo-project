@@ -43,7 +43,7 @@ function* editRecipe(action) {
     console.log('in recipe.saga editRecipe', action.payload);
     try {
         yield axios.put('/api/userRecipes/' + action.payload.id, action.payload);
-        yield put({type: 'FETCH_USER_RECIPES'})
+        yield put({type: 'SET_DETAILS', payload: action.payload})
     }
     catch(error) {
         console.log('error in editRecipe saga', error);

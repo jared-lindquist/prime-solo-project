@@ -15,10 +15,15 @@ import swal from 'sweetalert';
 
 
 function UserItem() {
+
     const history = useHistory();
     const store = useReduxStore();
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
+
+    useEffect(()=> {
+        dispatch({type: 'GET_DETAILS', payload: store})
+    }, [store.details]);
 
     const [title, setTitle] = useState(store.details.title);
     const [coffee, setCoffee] = useState(store.details.coffee);
@@ -32,11 +37,11 @@ function UserItem() {
     const recipeDetails = {
         title: title,
         coffee: coffee,
-        roast: roast,
+        roast_level: roast,
         input: input,
         output: output,
         comments: comments,
-        method: method,
+        brew_method: method,
         id: id
     }
 
@@ -61,7 +66,7 @@ function UserItem() {
         dispatch({type: 'EDIT_RECIPE', payload: recipeDetails});
         setOpen(false);
         swal('Recipe Updated!')
-        history.push('/recipes');
+        // history.push('/recipes');
     }
 
     const handleDelete = () => {

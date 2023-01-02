@@ -48,7 +48,7 @@ userRecipesRouter.delete('/:id', (req, res) => {
 userRecipesRouter.put('/:id', (req, res) => {
     console.log('in userRecipesRouter PUT', req.body, req.params.id);
 
-    let queryParams = [req.body.title, req.body.coffee, req.body.roast, req.body.input, req.body.output, req.body.comments, req.body.method, req.body.id];
+    let queryParams = [req.body.title, req.body.coffee, req.body.roast_level, req.body.input, req.body.output, req.body.comments, req.body.brew_method, req.body.id];
     let queryText = `
     UPDATE "recipes"
     SET "title" = $1, "coffee" = $2, "roast_level" = $3, "input" = $4, "output" = $5, "comments" = $6, "brew_method" = $7
