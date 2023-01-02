@@ -14,8 +14,14 @@ userRecipesRouter.get('/',  (req, res) => {
     console.log('req.user', req.user);
 
     const userId = req.user.id;
-
-    pool.query(`SELECT * FROM "recipes" WHERE "user_id" = $1`, [userId])
+    const queryText = `SELECT "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
+    "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", "user"."username" 
+    FROM "recipes"
+    INNER JOIN "user" 
+    ON "recipes"."user_id" = "user"."id" 
+    WHERE "user_id" = $1;`;
+    // SELECT * FROM "recipes" WHERE "user_id" = $1
+    pool.query(queryText, [userId])
     .then((results) => res.send(results.rows))
     .catch((error) => {
         console.log('error selecting user recipes', error);

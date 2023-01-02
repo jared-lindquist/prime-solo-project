@@ -11,8 +11,8 @@ const {
 recipeRouter.get('/', (req, res) => {
   // GET route code here
     const queryText = `SELECT "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
-                        "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", 
-                        "user"."username" 
+    "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", 
+    "user"."username" 
     FROM "recipes" 
     INNER JOIN "user" 
     ON "recipes"."user_id" = "user"."id"
