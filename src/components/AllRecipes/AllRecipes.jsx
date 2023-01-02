@@ -28,7 +28,7 @@ function AllRecipes() {
         //collects recipe info to store locally
         dispatch({type: 'SET_DETAILS', payload: recipe})
         //navigates to the item details page
-        history.push(`/recipeitem`)
+        history.push(`/recipeitem/${recipe.id}`)
     }
 
 

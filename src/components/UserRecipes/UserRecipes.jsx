@@ -23,12 +23,18 @@ function UserRecipes() {
         dispatch({type: 'FETCH_USER_RECIPES'});
     }, []);
 
+    const recipeDetails = (recipe) => {
+        //confirming button click pulls data correctly
+        console.log('clicked on a recipe', recipe);
+        //collects recipe info to store locally
+        dispatch({type: 'SET_DETAILS', payload: recipe});
+        //navigates user to the recipe details page
+        history.push('/useritem')
+    }
+
     return (
         <div>
             {/* {JSON.stringify(store)} */}
-            user's recipe list goes here
-            display recipes as clickable cards, clicking a 
-            card navigates to UserItem details page
             <Grid  
             container spacing={2}
             justifyContent="center"
@@ -36,7 +42,7 @@ function UserRecipes() {
             direction="row"
             >
             
-            <h2>All Community Brews</h2>
+            <h2>All {store.user.username}'s Brews</h2>
             <Grid item xs={12}></Grid>
 
             {store.allRecipes.map(recipe  => (

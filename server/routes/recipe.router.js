@@ -10,7 +10,7 @@ const {
  */
 recipeRouter.get('/', (req, res) => {
   // GET route code here
-    const queryText = `SELECT "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
+    const queryText = `SELECT "recipes"."id", "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
     "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", 
     "user"."username" 
     FROM "recipes" 

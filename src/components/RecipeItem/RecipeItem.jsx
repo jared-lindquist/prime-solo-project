@@ -6,13 +6,18 @@ import { useHistory } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
 
-
-
 function RecipeItem() {
     const history = useHistory();
     const store = useReduxStore();
+    const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     dispatch({type: 'SET_DETAILS'})
+    // }, []);
 
     console.log('recipe details are: ', store.details);
+
+
 
     const backToCommunity = () => {
         history.push('/allrecipes');

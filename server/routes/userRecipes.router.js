@@ -19,7 +19,8 @@ userRecipesRouter.get('/',  (req, res) => {
     FROM "recipes"
     INNER JOIN "user" 
     ON "recipes"."user_id" = "user"."id" 
-    WHERE "user_id" = $1;`;
+    WHERE "user_id" = $1
+    ORDER BY "recipes"."id" DESC;`;
     // SELECT * FROM "recipes" WHERE "user_id" = $1
     pool.query(queryText, [userId])
     .then((results) => res.send(results.rows))
