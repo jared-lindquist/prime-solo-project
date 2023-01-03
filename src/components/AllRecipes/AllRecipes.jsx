@@ -22,6 +22,8 @@ function AllRecipes() {
         dispatch({type: 'FETCH_ALL_RECIPES'});
     }, []);
 
+    console.log(store.allRecipes);
+
     const recipeDetails = (recipe) => {
         //console.log to confirm onClick
         console.log('clicked on a recipe', recipe);
@@ -52,9 +54,9 @@ function AllRecipes() {
                         </Typography>
                             <CardMedia
                                 component="img"
-                                height="150"
-                                image="./images/chemex.jpg"
-                                alt="something cool"
+                                height="200"
+                                image={recipe.image}
+                                alt="brew method image"
                             />
                             <CardContent>
                             <Typography gutterBottom variant="h6" component="div">

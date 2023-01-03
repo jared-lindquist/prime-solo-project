@@ -26,12 +26,32 @@ function* fetchUserRecipes(action) {
     }
 }
 
+const handleImage = (method) => {
+    console.log(method);
+    if (method === 'chemex') {
+    return "./images/chemex.jpg"
+} else if (method === 'espresso') {
+    return "./images/espresso.jpg"
+} else if (method === 'french-press') {
+    return "./images/french-press.jpg"
+} else if (method === 'drip-brewer') {
+    return "./images/drip-brewer.jpg"
+} else {
+    return
+}
+}
 //addRecipe* post
 function* addRecipe(action) {
-    console.log('in recipe.saga addRecipe', action.payload)
+
+    const imageUrl = handleImage(action.payload.method);
+    
+
+    const newPayload = {...action.payload, image: imageUrl}
+    
+    console.log('in recipe.saga addRecipe', newPayload);
     try {
-        yield axios.post('/api/recipes', action.payload);
-        console.log('new recipe is: ', action.payload);
+        yield axios.post('/api/recipes', newPayload);
+        console.log('new recipe is: ', newPayload);
         yield put({type: 'FETCH_USER_RECIPES'})
     }
     catch (error) {

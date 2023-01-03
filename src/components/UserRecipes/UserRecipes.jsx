@@ -23,6 +23,8 @@ function UserRecipes() {
         dispatch({type: 'FETCH_USER_RECIPES'});
     }, []);
 
+    // console.log(store.allRecipes);
+
     const recipeDetails = (recipe) => {
         //confirming button click pulls data correctly
         console.log('clicked on a recipe', recipe);
@@ -55,9 +57,10 @@ function UserRecipes() {
                         </Typography>
                             <CardMedia
                                 component="img"
-                                height="150"
-                                image="./images/chemex.jpg"
-                                alt="something cool"
+                                height="200"
+                                //can try and change this to recipe.image once i figure that out
+                                image={recipe.image}
+                                alt="brew method image"
                             />
                             <CardContent>
                             <Typography gutterBottom variant="h6" component="div">

@@ -73,7 +73,7 @@ function UserItem() {
         
         dispatch({type: 'DELETE_RECIPE', payload: store.details});
         swal('Recipe deleted')
-        history.push('/recipes');
+        history.push('/user');
     }
 
 

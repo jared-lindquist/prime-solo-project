@@ -11,7 +11,7 @@ const {
 recipeRouter.get('/', (req, res) => {
   // GET route code here
     const queryText = `SELECT "recipes"."id", "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
-    "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", 
+    "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", "recipes"."image",  
     "user"."username" 
     FROM "recipes" 
     INNER JOIN "user" 
@@ -52,13 +52,13 @@ recipeRouter.post('/', (req, res) => {
   // POST route code here
     
     const recipeDetails = [req.user.id, req.body.title, req.body.coffee, req.body.roast,
-        req.body.method, req.body.input, req.body.output, req.body.comments];
+        req.body.method, req.body.input, req.body.output, req.body.comments, req.body.image];
     
     console.log('req.user, recipe details:', req.user, recipeDetails);
     
     const queryText = `
-    INSERT INTO "recipes" ("user_id", "title", "coffee", "roast_level", "brew_method", "input", "output", "comments")
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
+    INSERT INTO "recipes" ("user_id", "title", "coffee", "roast_level", "brew_method", "input", "output", "comments","image")
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
     `;
     
     pool.query(queryText, recipeDetails)

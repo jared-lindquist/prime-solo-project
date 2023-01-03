@@ -16,7 +16,7 @@ userRecipesRouter.get('/',  (req, res) => {
 
     const userId = req.user.id;
     const queryText = `SELECT "recipes"."id", "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
-    "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", "user"."username" 
+    "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", "recipes"."image", "user"."username" 
     FROM "recipes"
     INNER JOIN "user" 
     ON "recipes"."user_id" = "user"."id" 

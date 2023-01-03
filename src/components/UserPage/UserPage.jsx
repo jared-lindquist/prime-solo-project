@@ -33,6 +33,7 @@ function UserPage() {
   const [output, setOutput] = useState('');
   const [comments, setComments] = useState('');
   const [method, setMethod] = useState('');
+  const [image, setImage] = useState('');
 
   const recipeDetails = {
     title: title,
@@ -42,6 +43,7 @@ function UserPage() {
     output: output,
     comments: comments,
     method: method,
+    image: image,
 }
 
   //getting all the recipes for the logged in user
@@ -51,11 +53,11 @@ function UserPage() {
 
   const handleNewBrew = () => {
     setOpen(true);
-    // history.push('/recipeform');
   }
+
 //button submits new recipe to DB
   const handleSubmit = () => {
-    console.log('handleSubmit button clicked', recipeDetails);
+
     if (recipeDetails.title === '' || recipeDetails.method === '' || 
     recipeDetails.coffee === '' || recipeDetails.roast === '' ||
     recipeDetails.input === '' || recipeDetails.output === '') {
