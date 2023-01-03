@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid} from '@mui/material'
 import { useHistory } from 'react-router-dom';
+import './AllRecipes.css';
 
 
 function AllRecipes() {
@@ -43,7 +44,7 @@ function AllRecipes() {
             direction="row"
             >
             
-            <h2>All Community Brews</h2>
+            <h2 className='header'>All Community Brews</h2>
             <Grid item xs={12}></Grid>
 
             {store.allRecipes.map(recipe  => (

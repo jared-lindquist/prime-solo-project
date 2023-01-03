@@ -1,3 +1,10 @@
-/* body {
-    background-image: url('../public/images/coffee.jpg');
-} */
+body {
+    background-image: url('../public/images/coffee.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

@@ -14,6 +14,7 @@ import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } fro
 import swal from 'sweetalert';
 import Button from '@mui/material/Button';
 import UserRecipes from '../UserRecipes/UserRecipes';
+import './UserPage.css';
 
 //I need to use this component as my user dashboard page 
 //(user home page view in Figma)
@@ -99,7 +100,7 @@ function UserPage() {
             container item spacing={4}
             item xs={12}
             justifyContent="center">
-              <h2>Welcome {user.username}!</h2>
+              <h2 className='welcome'>Welcome {user.username}!</h2>
           </Grid>
           <Grid item xs={1}></Grid>
           <Grid 
@@ -235,22 +236,15 @@ function UserPage() {
             
             <br/>
             <br/>
-          <Grid 
-                container item spacing={3}
-                item xs={3}>
-            <Button 
-                  variant="contained"
-                  onClick={handleAllRecipes}
-                  >view community brews
-            </Button>
-          </Grid>
+            <br/>
+            <br/>
             <Grid
                 container item spacing={4}
                 item xs={12}
                 justifyContent="center"
                 >
-                <h3>
-                  Here are all your brew recipes:
+                <h3 className='your-recipes'>
+                  Your recipes:
                 </h3>
             </Grid>
             <UserRecipes />
