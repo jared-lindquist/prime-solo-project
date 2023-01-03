@@ -72,23 +72,22 @@ function RecipeForm() {
 
             <Select
                 required
-                labelId="brew-method"
-                id="brew-method"
-                value={method}
-                label="Brew Method"
+                labelId="roast-level"
+                id="roast-level"
+                value={roast}
+                label="Roast Level"
                 style={{
                     width: 200,
                 }}
                 onChange={(e) => {
-                    console.log("Brew Method", e.target.value)
-                    setMethod(e.target.value)
+                    console.log("Roast Level", e.target.value)
+                    setRoast(e.target.value)
                 }}
             >
-                <InputLabel id="Brew Method">Brew Method</InputLabel>
-                <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
-                <MenuItem value="espresso">Espresso Machine</MenuItem>
-                <MenuItem value="chemex">Chemex</MenuItem>
-                <MenuItem value="french-press">French Press</MenuItem>
+                <InputLabel id="Roast Level">Roast Level</InputLabel>
+                <MenuItem value="light">Light</MenuItem>
+                <MenuItem value="medium">Medium</MenuItem>
+                <MenuItem value="dark">Dark</MenuItem>
             </Select>
 
             <br/>

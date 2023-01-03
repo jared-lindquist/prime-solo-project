@@ -46,8 +46,10 @@ function UserRecipes() {
             <Grid item xs={12}></Grid>
 
             {store.allRecipes.map(recipe  => (
-                <Grid item xs={3}>
-                    <Card id={recipe.id} sx={{ maxWidth: 200, maxHeight:400 }}>
+                <Grid 
+                key={recipe.id}
+                    item xs={3}>
+                    <Card key={recipe.id} sx={{ maxWidth: 200, maxHeight:400 }}>
                         <Typography>
                             {/* Brewed by: {recipe.username} */}
                         </Typography>

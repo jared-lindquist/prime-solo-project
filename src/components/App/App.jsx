@@ -93,14 +93,6 @@ function App() {
             <AllRecipes />
 
           </ProtectedRoute>
-
-          <ProtectedRoute
-            exact
-            path="/editrecipe"
-          >
-            <EditRecipe />
-
-          </ProtectedRoute>
           
           <ProtectedRoute
             exact
@@ -110,13 +102,13 @@ function App() {
 
           </ProtectedRoute>
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             exact
             path="/recipeform"
           >
             <RecipeForm />
             
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           <ProtectedRoute
             exact
