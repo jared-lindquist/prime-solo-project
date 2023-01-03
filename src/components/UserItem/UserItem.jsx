@@ -56,8 +56,8 @@ function UserItem() {
     setOpen(false);
     };
 
-    const backToUserBrews = () => {
-        history.push('/recipes');
+    const backToDashboard = () => {
+        history.push('/user');
     }
 
     const handleEdit = () => {
@@ -223,8 +223,8 @@ function UserItem() {
             <br/>
             <Button variant="contained"
                     className='back-to-user-brews'
-                    onClick={backToUserBrews}
-                    >Back to my Brews
+                    onClick={backToDashboard}
+                    >Back to my Dashboard
             </Button>
 
         </div>

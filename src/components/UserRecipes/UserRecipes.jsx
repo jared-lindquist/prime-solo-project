@@ -42,14 +42,14 @@ function UserRecipes() {
             direction="row"
             >
             
-            <h2>All {store.user.username}'s Brews</h2>
+            {/* <h2>All {store.user.username}'s Brews</h2> */}
             <Grid item xs={12}></Grid>
 
             {store.allRecipes.map(recipe  => (
                 <Grid item xs={3}>
                     <Card id={recipe.id} sx={{ maxWidth: 200, maxHeight:400 }}>
                         <Typography>
-                            Brewed by: {recipe.username}
+                            {/* Brewed by: {recipe.username} */}
                         </Typography>
                             <CardMedia
                                 component="img"

@@ -20,6 +20,7 @@ function RecipeForm() {
     const [comments, setComments] = useState('');
     const [method, setMethod] = useState('');
 
+    //storing the input values from the form component to send to saga/reducer/DB
     const recipeDetails = {
         title: title,
         method: method,
@@ -35,7 +36,7 @@ function RecipeForm() {
         if (recipeDetails.title === '' || recipeDetails.method === '' || 
         recipeDetails.coffee === '' || recipeDetails.roast === '' ||
         recipeDetails.input === '' || recipeDetails.output === '') {
-            swal('Please fill in required fields to submit')
+            return swal('Please fill in required fields to submit')
         }
         dispatch({type: 'ADD_RECIPE', payload: recipeDetails});
         swal('You added a brew!');
@@ -55,6 +56,7 @@ function RecipeForm() {
                 style={{minWidth: 120}}>
 
             <p>Give this recipe a title:</p>
+
             <TextField
                 required
                 id="recipe-title-input"
@@ -65,9 +67,10 @@ function RecipeForm() {
                 onChange={(e) => setTitle(e.target.value)}
             />
             <br/>
+
             <p>What brew method did you use?</p>
+
             <Select
-                
                 required
                 labelId="brew-method"
                 id="brew-method"
@@ -80,16 +83,18 @@ function RecipeForm() {
                     console.log("Brew Method", e.target.value)
                     setMethod(e.target.value)
                 }}
-                
             >
-            <InputLabel id="Brew Method">Brew Method</InputLabel>
-            <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
-            <MenuItem value="espresso">Espresso Machine</MenuItem>
-            <MenuItem value="chemex">Chemex</MenuItem>
-            <MenuItem value="french-press">French Press</MenuItem>
+                <InputLabel id="Brew Method">Brew Method</InputLabel>
+                <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
+                <MenuItem value="espresso">Espresso Machine</MenuItem>
+                <MenuItem value="chemex">Chemex</MenuItem>
+                <MenuItem value="french-press">French Press</MenuItem>
             </Select>
+
             <br/>
+
             <p>What coffee did you use? (Roaster and country of origin)</p>
+
             <TextField
                 required
                 id="coffee-input"
@@ -100,7 +105,9 @@ function RecipeForm() {
                 onChange={(e) => setCoffee(e.target.value)}
             />
             <br/>
+
             <p>Was this a Light, Medium, or Dark roast?</p>
+
             <TextField
                 required
                 id="roast-level"
@@ -138,7 +145,7 @@ function RecipeForm() {
                 id="comments"
                 label="Tasting Notes/Comments"
                 type="text"
-                variant="standard"
+                variant="filled"
                 multiline
                 maxRows={4}
                 value={comments}
