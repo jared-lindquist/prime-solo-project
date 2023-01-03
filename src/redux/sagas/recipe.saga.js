@@ -32,7 +32,7 @@ function* addRecipe(action) {
     try {
         yield axios.post('/api/recipes', action.payload);
         console.log('new recipe is: ', action.payload);
-        yield put({type: 'FETCH_ALL_RECIPES'})
+        yield put({type: 'FETCH_USER_RECIPES'})
     }
     catch (error) {
         console.log('error adding recipe', error)
