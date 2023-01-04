@@ -16,9 +16,7 @@ function RecipeItem() {
     // }, []);
 
     console.log('recipe details are: ', store.details);
-
-
-
+    
     const backToCommunity = () => {
         history.push('/allrecipes');
     }
@@ -44,7 +42,9 @@ function RecipeItem() {
             <br/>
             <br/>
             <br/>
-            <Button variant="contained" 
+            <Button style={{color: "#FFFFFF",
+                                backgroundColor: "#9999FF"}}
+                    variant="contained" 
                     className='back'
                     onClick={backToCommunity}
                     >Back to Community Brews

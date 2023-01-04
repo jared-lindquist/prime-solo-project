@@ -106,7 +106,7 @@ function UserPage() {
           <Grid 
             container item spacing={3}
             item xs={3}>
-            <Button 
+            <Button style={{backgroundColor: "#ADADFF"}}
               variant="contained"
               onClick={handleNewBrew}
               >Start a new brew

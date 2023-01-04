@@ -26,6 +26,8 @@ function* fetchUserRecipes(action) {
     }
 }
 
+//this function adds an image URL to each new recipe in addRecipe below 
+//based on brew_method value
 const handleImage = (method) => {
     console.log(method);
     if (method === 'chemex') {
@@ -44,8 +46,6 @@ const handleImage = (method) => {
 function* addRecipe(action) {
 
     const imageUrl = handleImage(action.payload.method);
-    
-
     const newPayload = {...action.payload, image: imageUrl}
     
     console.log('in recipe.saga addRecipe', newPayload);

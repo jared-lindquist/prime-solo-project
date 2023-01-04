@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import { FcHome, FcInfo, FcAbout } from 'react-icons/fc';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -34,7 +35,7 @@ function Nav() {
             </Link>
 
             <Link className="navLink" to="/info">
-              Info Page
+              Info
             </Link>
 
             <LogOutButton className="navLink" to="/" />

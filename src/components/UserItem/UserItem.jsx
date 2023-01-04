@@ -11,6 +11,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } from '@mui/material';
+import { Fab } from '@mui/material';
+import { EditIcon } from '@mui/icons-material';
 import swal from 'sweetalert';
 
 
@@ -21,6 +23,7 @@ function UserItem() {
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
 
+    //getting the store on page load
     useEffect(()=> {
         dispatch({type: 'GET_DETAILS', payload: store})
     }, [store.details]);
@@ -34,6 +37,7 @@ function UserItem() {
     const [method, setMethod] = useState(store.details.brew_method);
     const [id, setId] = useState(store.details.id);
 
+    //storing all the input values to send in the dispatch in the handleEdit function below
     const recipeDetails = {
         title: title,
         coffee: coffee,
@@ -44,22 +48,18 @@ function UserItem() {
         brew_method: method,
         id: id
     }
-
-
-    // console.log('recipe details are:', store.details);
-
+    //this opens the edit dialog form
     const handleClickOpen = () => {
     setOpen(true);
     };
 
+    //this closes the edit dialog form
     const handleClose = () => {
     setOpen(false);
     };
 
-    const backToDashboard = () => {
-        history.push('/user');
-    }
-
+    //This function sends a dispatch to the edit.item.reducer
+    //and closes the edit dialog form
     const handleEdit = () => {
         console.log('handleEdit button clicked', recipeDetails);
         // dispatch({type: 'SET_EDIT_STATE', payload: true});
@@ -69,20 +69,15 @@ function UserItem() {
         // history.push('/recipes');
     }
 
+    //this function sends a dispatch to the recipeSaga
     const handleDelete = () => {
-        
         dispatch({type: 'DELETE_RECIPE', payload: store.details});
         swal('Recipe deleted')
         history.push('/user');
     }
 
-
     return (
         <div>
-            {/* checking to see correct data in store */}
-            {/* {JSON.stringify(store.details)}
-            user recipe item details view goes here
-            can style this similar to movie saga details view */}
             <h1>
                 {store.details.title}
             </h1>
@@ -93,164 +88,145 @@ function UserItem() {
                     <p>'{store.details.comments}.' </p>
             <br/>
             <br/>
-            {/* <Button variant="contained"
-                    className='edit'
-                    onClick={() => handleEdit(store.details)}
-                    >Edit this Brew
-            </Button> */}
             <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Edit this brew
-            </Button>
-            <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Edit Recipe</DialogTitle>
-            <DialogContent>
-            <DialogContentText>
-            Make a typo? Want to update anything? Edit the fields below
-            </DialogContentText>
-            <div>
-            <FormControl 
-                justify="center"
-                style={{minWidth: 120}}>
-
-            <p>Give this recipe a title:</p>
-            <TextField
-                required
-                id="recipe-title-input"
-                label="Recipe Title"
-                variant="filled"
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-            />
-            <br/>
-            <p>What brew method did you use?</p>
-            <FormControl>
-                <Select
+                <Button style={{color: "#FFFFFF",
+                                backgroundColor: "#9999FF"}}
+                    variant="contained" onClick={handleClickOpen}>
+                    Edit this brew
+                </Button>
                 
-                required
-                labelId="brew-method"
-                id="brew-method"
-                value={method}
-                label="Brew Method"
-                style={{
-                    width: 200,
-                }}
-                onChange={(e) => {
-                    console.log("Brew Method", e.target.value)
-                    setMethod(e.target.value)
-                }}
-                
-            >
-            <InputLabel id="Brew Method">Brew Method</InputLabel>
-            <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
-            <MenuItem value="espresso">Espresso Machine</MenuItem>
-            <MenuItem value="chemex">Chemex</MenuItem>
-            <MenuItem value="french-press">French Press</MenuItem>
-            </Select>
-            </FormControl>
-            
-            <br/>
-            <p>What coffee did you use? (Roaster and country of origin)</p>
-            <TextField
-                required
-                id="coffee-input"
-                label="Coffee Used"
-                variant="filled"
-                type="text"
-                value={coffee}
-                onChange={(e) => setCoffee(e.target.value)}
-            />
-            <br/>
-            <p>Was this a Light, Medium, or Dark roast?</p>
-            {/* <TextField
-                required
-                id="roast-level"
-                label="Light/Medium/Dark Roast?"
-                type="text"
-                variant="filled"
-                value={roast}
-                onChange={(e) => setRoast(e.target.value)}
-            /> */}
-            <FormGroup>
-                <Select
-                required
-                labelId="roast-level"
-                id="roast-level"
-                value={roast}
-                label="Roast Level"
-                style={{
-                    width: 200,
-                }}
-                onChange={(e) => {
-                    console.log("Roast Level", e.target.value)
-                    setRoast(e.target.value)
-                }}
-            >
-                <InputLabel id="Roast Level">Roast Level</InputLabel>
-                <MenuItem value="light">Light</MenuItem>
-                <MenuItem value="medium">Medium</MenuItem>
-                <MenuItem value="dark">Dark</MenuItem>
-            </Select>
-        </FormGroup>
-            <br/>
-            <p>How many grams of coffee did you start the brew with?</p>
-            <TextField
-                required
-                id="input"
-                label="Input in Grams"
-                variant="filled"
-                type="number"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-            />
-            <br/>
-            <p>Once the brew was complete, how much coffee did you end up with?</p>
-            <TextField
-                required
-                id="output"
-                label="Output in Grams"
-                type="number"
-                variant="filled"
-                value={output}
-                onChange={(e) => setOutput(e.target.value)}
-            />
-            <br/>
-            <p>Please fill in details for this brew recipe below</p>
-            <TextField
-                id="comments"
-                label="Tasting Notes/Comments"
-                type="text"
-                variant="filled"
-                multiline
-                maxRows={4}
-                value={comments}
-                onChange={(e) => setComments(e.target.value)}
-            />
-            </FormControl>
+                    <Dialog open={open} onClose={handleClose}>
+                    <DialogTitle>Edit Recipe</DialogTitle>
+                    <DialogContent>
+                    <DialogContentText>
+                    Make a typo? Want to update anything? Edit the fields below
+                    </DialogContentText>
+                <div>
+                    <FormControl 
+                        justify="center"
+                        style={{minWidth: 120}}>
+                    <p>Give this recipe a title:</p>
+                    <TextField style={{backgroundColor: '#F6F6FD'}}
+                        required
+                        id="recipe-title-input"
+                        label="Recipe Title"
+                        variant="filled"
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <br/>
+                    <p>What brew method did you use?</p>
+                    <FormControl>
+                        <Select style={{backgroundColor: '#F6F6FD'}}
+                            required
+                            labelId="brew-method"
+                            id="brew-method"
+                            value={method}
+                            label="Brew Method"
+                            style={{
+                                width: 200,
+                            }}
+                            onChange={(e) => {
+                            console.log("Brew Method", e.target.value)
+                            setMethod(e.target.value)
+                            }}
+                        >
+                            <InputLabel id="Brew Method">Brew Method</InputLabel>
+                            <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
+                            <MenuItem value="espresso">Espresso Machine</MenuItem>
+                            <MenuItem value="chemex">Chemex</MenuItem>
+                            <MenuItem value="french-press">French Press</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <br/>
+                    <p>What coffee did you use? (Roaster and country of origin)</p>
+                        <TextField style={{backgroundColor: '#F6F6FD'}}
+                            required
+                            id="coffee-input"
+                            label="Coffee Used"
+                            variant="filled"
+                            type="text"
+                            value={coffee}
+                            onChange={(e) => setCoffee(e.target.value)}
+                        />
+                    <br/>
+                    <p>Was this a Light, Medium, or Dark roast?</p>
+                        <FormGroup>
+                            <Select style={{backgroundColor: '#E7E7FB'}}
+                                required
+                                labelId="roast-level"
+                                id="roast-level"
+                                value={roast}
+                                label="Roast Level"
+                                style={{
+                                width: 200,
+                                }}
+                                onChange={(e) => {
+                                console.log("Roast Level", e.target.value)
+                                setRoast(e.target.value)
+                                }}
+                            >
+                                <InputLabel id="Roast Level">Roast Level</InputLabel>
+                                <MenuItem value="light">Light</MenuItem>
+                                <MenuItem value="medium">Medium</MenuItem>
+                                <MenuItem value="dark">Dark</MenuItem>
+                            </Select>
+                        </FormGroup>
+                        <br/>
+                        <p>How many grams of coffee did you start the brew with?</p>
+                            <TextField style={{backgroundColor: '#F6F6FD'}}
+                                required
+                                id="input"
+                                label="Input in Grams"
+                                variant="filled"
+                                type="number"
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                            />
+                        <br/>
+                        <p>Once the brew was complete, how much coffee did you end up with?</p>
+                            <TextField style={{backgroundColor: '#F6F6FD'}}
+                                required
+                                id="output"
+                                label="Output in Grams"
+                                type="number"
+                                variant="filled"
+                                value={output}
+                                onChange={(e) => setOutput(e.target.value)}
+                            />
+                        <br/>
+                        <p>Please fill in details for this brew recipe below</p>
+                            <TextField style={{backgroundColor: '#F6F6FD'}}
+                                id="comments"
+                                label="Tasting Notes/Comments"
+                                type="text"
+                                variant="filled"
+                                multiline
+                                maxRows={4}
+                                value={comments}
+                                onChange={(e) => setComments(e.target.value)}
+                            />
+                    </FormControl>
+                </div>
+                </DialogContent>
+                <DialogActions>
+                    <Button style={{color: "#5D5F98"}}onClick={handleClose}>Cancel</Button>
+                    <Button style={{color: "#5D5F98"}}onClick={handleEdit}>Update Brew</Button>
+                </DialogActions>
+                </Dialog>
             </div>
-        </DialogContent>
-        <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleEdit}>Update Brew</Button>
-        </DialogActions>
-        </Dialog>
-            </div>
-            <br/>
-            <br/>
-            <Button variant="contained"
-                    className='delete'
-                    onClick={handleDelete}
+                <br/>
+                <br/>
+                    <Button style={{color: "#FFFFFF",
+                                    backgroundColor: "#F44336"}}
+                            variant="contained"
+                            className='delete'
+                            onClick={handleDelete}
                     >Delete this Brew
-            </Button>
-            <br/>
-            <br/>
-            <Button variant="contained"
-                    className='back-to-user-brews'
-                    onClick={backToDashboard}
-                    >Back to my Dashboard
-            </Button>
-
+                    </Button>
+                <br/>
+                <br/>
         </div>
     )
 }
