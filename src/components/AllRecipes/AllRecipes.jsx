@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, Grid} from '@mui/material'
+import { CardActionArea, CardHeader, Grid} from '@mui/material'
 import { useHistory } from 'react-router-dom';
 import './AllRecipes.css';
 
@@ -44,38 +44,35 @@ function AllRecipes() {
             direction="row"
             >
             
-            <h2 className='header'>All Community Brews</h2>
-            <Grid item xs={12}></Grid>
+                <h2 className='header'>All Community Brews</h2>
+                <Grid item xs={12}></Grid>
 
-            {store.allRecipes.map(recipe  => (
-                <Grid item xs={3}>
-                    <Card id={recipe.id} sx={{ maxWidth: 200, maxHeight:400 }}>
-                        <Typography>
-                            Brewed by: {recipe.username}
-                        </Typography>
+                    {store.allRecipes.map(recipe  => (
+                    <Grid item xs={3}>
+                        <Card id={recipe.id} sx={{ maxWidth: 500, maxHeight:500 }}>
+                        <CardHeader title={recipe.title}
+                        >
+                        </CardHeader>
                             <CardMedia
                                 component="img"
-                                height="200"
+                                height="250"
                                 image={recipe.image}
                                 alt="brew method image"
                             />
                             <CardContent>
-                            <Typography gutterBottom variant="h6" component="div">
-                            {recipe.title}
-                            </Typography>
                             <Typography variant="body2" color="text.secondary">
-                            {/* {recipe.comments} */}
+                            Brewed by {recipe.username}. Brew Method {recipe.brew_method}
                             </Typography>
                             </CardContent>
-                        <CardActions>
-                            <Button 
-                                size="medium"
-                                onClick={ () => recipeDetails(recipe)}
-                                >See Full Recipe
-                            </Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
+                                <CardActions>
+                                    <Button 
+                                        size="medium"
+                                        onClick={ () => recipeDetails(recipe)}
+                                        >See Full Recipe
+                                    </Button>
+                                </CardActions>
+                        </Card>
+                    </Grid>
                 ))
             }
             </Grid>

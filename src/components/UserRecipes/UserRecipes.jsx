@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, Grid} from '@mui/material';
+import { CardActionArea, CardHeader, Grid} from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
 
@@ -43,32 +43,26 @@ function UserRecipes() {
             alignItems="center"
             direction="row"
             >
-            
-            {/* <h2>All {store.user.username}'s Brews</h2> */}
             <Grid item xs={12}></Grid>
-
             {store.allRecipes.map(recipe  => (
                 <Grid 
                 key={recipe.id}
-                    item xs={3}>
-                    <Card key={recipe.id} sx={{ maxWidth: 200, maxHeight:400 }}>
-                        <Typography>
-                            {/* Brewed by: {recipe.username} */}
-                        </Typography>
+                    item xs={4}>
+                    <Card key={recipe.id} sx={{ maxWidth: 500, maxHeight:500 }}>
+                        <CardHeader title={recipe.title}
+                                    subheader={recipe.brew_method}
+                        >
+
+                        </CardHeader>
                             <CardMedia
                                 component="img"
-                                height="200"
-                                //can try and change this to recipe.image once i figure that out
+                                height="250"
+                                //this pulls the image url from DB
                                 image={recipe.image}
                                 alt="brew method image"
                             />
                             <CardContent>
-                            <Typography gutterBottom variant="h6" component="div">
-                            {recipe.title}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                            {/* {recipe.comments} */}
-                            </Typography>
+
                             </CardContent>
                         <CardActions>
                             <Button 
