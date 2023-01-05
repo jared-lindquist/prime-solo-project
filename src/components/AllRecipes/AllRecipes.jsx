@@ -38,7 +38,7 @@ function AllRecipes() {
     return (
         <div>
             <Grid  
-            container spacing={2}
+            container rowSpacing={{ xs: 1, sm: 2, md: 3 }} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             justifyContent="center"
             alignItems="center"
             direction="row"
@@ -48,30 +48,29 @@ function AllRecipes() {
                 <Grid item xs={12}></Grid>
 
                     {store.allRecipes.map(recipe  => (
-                    <Grid item xs={3} display="flex">
-                        <Card className="card"id={recipe.id} sx={{ height: 425, width:350 }}>
-                            <CardHeader 
-                                title={recipe.title}>
-                            </CardHeader>
-                            <CardMedia
-                                component="img"
-                                height="250"
-                                image={recipe.image}
-                                alt="brew method image"
-                            />
-                            <CardContent>
-                            <Typography variant="body2" color="text.secondary">
-                            Brewed by {recipe.username}. Brew Method {recipe.brew_method}
-                            </Typography>
-                            </CardContent>
-                                <CardActions>
-                                    <Button 
-                                        style={{color: "#5a5a5a"}}
-                                        size="medium"
-                                        onClick={ () => recipeDetails(recipe)}
-                                        >See Full Recipe
-                                    </Button>
-                                </CardActions>
+                    <Grid   item xs={3} 
+                            display="flex"
+                            justifyContent="center"
+                            justify="center"
+                            alignItems="center"
+                    >
+                        <Card className="card"id={recipe.id} sx={{ height: 375, width:350 }}>
+                            <CardActionArea onClick={ () => recipeDetails(recipe)}>
+                                <CardMedia
+                                    component="img"
+                                    height="250"
+                                    image={recipe.image}
+                                    alt="brew method image"
+                                />
+                                <CardContent>
+                                    <h2>
+                                    {recipe.title}
+                                    </h2>
+                                    <Typography variant="body2" color="text.secondary">
+                                    Brewed by {recipe.username}. {recipe.roast_level} roast {recipe.brew_method}
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>    
                         </Card>
                     </Grid>
                 ))

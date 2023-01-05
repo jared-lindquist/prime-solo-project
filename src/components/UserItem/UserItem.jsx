@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import useReduxStore from '../../hooks/useReduxStore';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -12,16 +12,17 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { ButtonGroup } from '@mui/material';
 import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } from '@mui/material';
+
 import swal from 'sweetalert';
 import './UserItem.css';
 
 
 function UserItem() {
-
+    const params = useParams();
     const history = useHistory();
     const store = useReduxStore();
     const dispatch = useDispatch();
-    
+    console.log(store);
 
     //getting the store on page load
     useEffect(()=> {
@@ -133,17 +134,12 @@ function UserItem() {
                     <p>Which is a {store.details.roast_level} roasted coffee brewed on {store.details.brew_method}</p>
                     <p>This brew recipe started with {store.details.input} grams of coffee</p>
                     <p>The finished weight of the brew was {store.details.output} grams.</p>
+                    <p>Full Recipe Details:</p>
                     <p>'{store.details.comments}.' </p>
                 </div>
-                    
             <br/>
             <br/>
             <div>
-                {/* <Button style={{color: "#FFFFFF",
-                                backgroundColor: "#9999FF"}}
-                    variant="contained" onClick={handleOpenEdit}>
-                    Edit this brew
-                </Button> */}
                     <Dialog open={editOpen} onClose={handleCloseEdit}>
                     <DialogTitle>Edit Recipe</DialogTitle>
                     <DialogContent>
@@ -173,9 +169,6 @@ function UserItem() {
                             id="brew-method"
                             value={method}
                             label="Brew Method"
-                            style={{
-                                width: 200,
-                            }}
                             onChange={(e) => {
                             console.log("Brew Method", e.target.value)
                             setMethod(e.target.value)
@@ -202,15 +195,12 @@ function UserItem() {
                     <br/>
                     <p>Was this a Light, Medium, or Dark roast?</p>
                         <FormGroup>
-                            <Select style={{backgroundColor: '#E7E7FB'}}
+                            <Select style={{backgroundColor: '#F6F6FD'}}
                                 required
                                 labelId="roast-level"
                                 id="roast-level"
                                 value={roast}
                                 label="Roast Level"
-                                style={{
-                                width: 200,
-                                }}
                                 onChange={(e) => {
                                 console.log("Roast Level", e.target.value)
                                 setRoast(e.target.value)
@@ -267,14 +257,6 @@ function UserItem() {
             </div>
                 <br/>
                 <br/>
-                    {/* <Button style={{color: "#F44336",
-                                    backgroundColor: "#FFFFFF",
-                                    borderColor: "#F44336"}}
-                            variant="outlined"
-                            className='delete'
-                            onClick={handleOpenDelete}
-                    >Delete this Brew
-                    </Button> */}
                     <Dialog
                         open={deleteOpen}
                         onClose={handleCloseDelete}
@@ -296,16 +278,6 @@ function UserItem() {
                             </Button>
                         </DialogActions>
                     </Dialog>
-                    {/* <br/>
-                    <br/>
-                    <br/> */}
-                    {/* <Button style={{color: "#FFFFFF",
-                                backgroundColor: "#6B6BB2"}}
-                    variant="contained" 
-                    className='back'
-                    onClick={handleBackToUser}
-                    >Back to My Brews
-                    </Button> */}
         </div>
     )
 }

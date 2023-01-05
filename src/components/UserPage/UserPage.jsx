@@ -91,11 +91,14 @@ function UserPage() {
         container spacing={2}
         justifyContent="center"
         alignItems="center"
+        direction="row"
+        justify="center"
       >
           <Grid 
             container item spacing={4}
             // item xs={12}
-            justifyContent="center">
+            justifyContent="center"
+            justify="center">
               <h2 className='welcome'>Welcome {user.username}! Here are your recipes:</h2>
           </Grid>
           <br/>
@@ -104,37 +107,37 @@ function UserPage() {
           <br/>
           <Grid container item spacing={4}
                 justifyContent="center"
-                item xs={12}>
-            <h3>Want to start a new recipe? Click the button below.</h3>
-          </Grid>
-          
-          <Grid justifyContent="center"
-            container item spacing={3}
-            item xs={12}>
-              
+          >
+            <h3>Want to start a new recipe?</h3>
+          </Grid>  
             <Button style={{backgroundColor: "#4CAF50"}}
-              variant="contained"
-              onClick={handleNewBrew}
-              >Start a new brew
+                    variant="contained"
+                    onClick={handleNewBrew}
+              > Click Here
             </Button>
+          <Grid justifyContent="center"
+                container item spacing={3}
+          >
               <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add New Recipe</DialogTitle>
               <DialogContent>
-            <div>
-              <FormControl 
+        <div>
+            <FormControl 
                 justify="center"
                 style={{minWidth: 120}}>
-              <TextField
-                required
-                id="recipe-title-input"
-                label="Give this recipe a title (30 characters or less):"
-                variant="filled"
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-            <br/>
+                <TextField
+                  required
+                  id="recipe-title-input"
+                  label="Give this recipe a title (30 characters or less):"
+                  variant="filled"
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              <br/>
+
               <p>What brew method did you use?</p>
+
               <FormControl>
                 <Select
                 required
@@ -158,23 +161,25 @@ function UserPage() {
                   <MenuItem value="french-press">French Press</MenuItem>
                 </Select>
               </FormControl>
+            <br/>
+            <br/>
 
+            <TextField
+              required
+              id="coffee-input"
+              label="What coffee did you use? (Roaster and country of origin)"
+              variant="filled"
+              type="text"
+              value={coffee}
+              onChange={(e) => setCoffee(e.target.value)}
+            />
             <br/>
             <br/>
-              <TextField
-                required
-                id="coffee-input"
-                label="What coffee did you use? (Roaster and country of origin)"
-                variant="filled"
-                type="text"
-                value={coffee}
-                onChange={(e) => setCoffee(e.target.value)}
-              />
-            <br/>
-            <br/>
-              <p>Is this a Light, Medium or Dark roast?</p>
-              <FormGroup>
-                <Select
+
+            <p>Is this a Light, Medium or Dark roast?</p>
+
+            <FormGroup>
+              <Select
                 required
                 labelId="roast-level"
                 id="roast-level"
@@ -187,65 +192,64 @@ function UserPage() {
                     console.log("Roast Level", e.target.value)
                     setRoast(e.target.value)
                 }}
-            >
+              >
                 <InputLabel id="Roast Level">Roast Level</InputLabel>
                 <MenuItem value="light">Light</MenuItem>
                 <MenuItem value="medium">Medium</MenuItem>
                 <MenuItem value="dark">Dark</MenuItem>
-            </Select>
-              </FormGroup>
-            
+              </Select>
+            </FormGroup>
             <br/>
             <br/>
-                
-              <TextField
-                required
-                id="input"
-                label="How many grams of coffee did you start the brew with?"
-                variant="filled"
-                type="number"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
+
+            <TextField
+              required
+              id="input"
+              label="How many grams of coffee did you start the brew with?"
+              variant="filled"
+              type="number"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
             <br/>
-              <p>Once the brew was complete, how much coffee did you end up with?</p>
-              <TextField
-                required
-                id="output"
-                label="Output in grams"
-                type="number"
-                variant="filled"
-                value={output}
-                onChange={(e) => setOutput(e.target.value)}
-              />
+
+            <p>Once the brew was complete, how much coffee did you end up with?</p>
+
+            <TextField
+              required
+              id="output"
+              label="Output in grams"
+              type="number"
+              variant="filled"
+              value={output}
+              onChange={(e) => setOutput(e.target.value)}
+            />
             <br/>
-              <p>Please fill in details for this brew recipe below</p>
-              <TextField
-                id="comments"
-                label="How long did it take? Any special instructions?"
-                type="text"
-                variant="filled"
-                multiline
-                maxRows={4}
-                value={comments}
-                onChange={(e) => setComments(e.target.value)}
-              />
-              </FormControl>
-            </div>
-        </DialogContent>
-        <DialogActions>
-            <Button style={{color: "#F44336"}} onClick={handleClose}>Cancel</Button>
-            <Button style={{color: "#4CAF50"}} onClick={handleSubmit}>Add Recipe</Button>
-        </DialogActions>
-        </Dialog>
+
+            <p>Please fill in details for this brew recipe below</p>
+
+            <TextField
+              id="comments"
+              label="How long did it take? Any special instructions?"
+              type="text"
+              variant="filled"
+              multiline
+              maxRows={10}
+              value={comments}
+              onChange={(e) => setComments(e.target.value)}
+            />
+          </FormControl>
+        </div>
+          </DialogContent>
+          <DialogActions>
+              <Button style={{color: "#F44336"}} onClick={handleClose}>Cancel</Button>
+              <Button style={{color: "#4CAF50"}} onClick={handleSubmit}>Add Recipe</Button>
+            </DialogActions>
+            </Dialog>
           </Grid>
             <br/>
             <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <UserRecipes />
+            <UserRecipes/>
       </Grid>
     </div>
   );

@@ -20,13 +20,6 @@ function UserRecipes() {
     const store = useReduxStore();
     const dispatch = useDispatch();
 
-    const [expanded, setExpanded] = React.useState(false);
-
-    //toggles the boolean value of expanded on click of the IconButton
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-
     //Grabs all recipes for logged in user, renders on page load only once
     useEffect(()=> {
         dispatch({type: 'FETCH_USER_RECIPES'});
@@ -46,42 +39,43 @@ function UserRecipes() {
     }
 
     return (
-            <Grid   container spacing={{ xs: 2, md: 3 }} 
+            <Grid   container rowSpacing={{ xs: 1, sm: 2, md: 3 }} columnSpacing={{ xs: 1, sm: 2, md: 3 }} 
                     justifyContent="center"
                     justify="center"
-                    // container direction="column"
+                    alignItems="center"
             > 
-            {/* <Grid item xs={12}></Grid> */}
             {/* map over all recipes to display cards */}
             {store.allRecipes.map(recipe  => (
                 <Grid   item xs={3} 
                         display="flex"
+                        justifyContent="center"
+                        justify="center"
+                        alignItems="center"
                 >
                     <Card 
                         className='card' 
                         key={recipe.id} 
                         sx={{ height: 375, width:350 }}
                         >
-                            <CardActionArea onClick={ () => recipeDetails(recipe)}>
-                                {/* <CardHeader title={recipe.title}
-                            >
-                                </CardHeader> */}
-                                    <CardMedia
-                                        component="img"
-                                        height="250"
-                                        //this pulls the image url from DB
-                                        image={recipe.image}
-                                        alt="brew method image"
-                                    />
-                                    <Typography>
-                                        <h2>
-                                            {recipe.title}
-                                        </h2>
-                                        <h3>
-                                            {recipe.roast_level} roast {recipe.brew_method}
-                                        </h3>
-                                    </Typography>
-                            </CardActionArea>
+                        <CardActionArea onClick={ () => recipeDetails(recipe)}>
+                            <CardMedia
+                                component="img"
+                                height="250"
+                                //this pulls the image url from DB
+                                image={recipe.image}
+                                alt="brew method image"
+                            />
+                            <Typography>
+                                <h2>
+                                    {recipe.title}
+                                </h2>
+                                </Typography>
+                                <Typography>
+                                <h3>
+                                    {recipe.roast_level} roast {recipe.brew_method}
+                                </h3>
+                            </Typography>
+                        </CardActionArea>
                     </Card>
                 </Grid>
                 ))
