@@ -83,7 +83,7 @@ function UserItem() {
         console.log('Delete button clicked', recipeDetails);
         dispatch({type: 'DELETE_RECIPE', payload: store.details});
         swal('Recipe deleted')
-        //setDeleteOpen(false);
+        setDeleteOpen(false);
         history.push('/user');
     }
 
@@ -235,7 +235,27 @@ function UserItem() {
                             onClick={handleOpenDelete}
                     >Delete this Brew
                     </Button>
-                    
+                    <Dialog
+                        open={deleteOpen}
+                        onClose={handleCloseDelete}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">
+                            {"Delete this recipe?"}
+                        </DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                Are you sure? This action cannot be undone.
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleCloseDelete}>Cancel</Button>
+                            <Button onClick={handleDelete}>
+                                Delete Recipe
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
                 <br/>
                 <br/>
         </div>
