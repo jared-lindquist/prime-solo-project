@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from '@mui/material';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -53,6 +54,12 @@ function RegisterForm() {
       </div>
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
+        <Button style={{color: "#FFFFFF",
+                        backgroundColor: "#9999FF"}}
+                        className="btn" type="submit" name="submit" value="Log In"
+                >
+          Register
+        </Button>
       </div>
     </form>
   );

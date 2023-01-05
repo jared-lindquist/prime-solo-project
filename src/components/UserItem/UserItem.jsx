@@ -11,8 +11,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } from '@mui/material';
-import { Fab } from '@mui/material';
-import { EditIcon } from '@mui/icons-material';
+
 import swal from 'sweetalert';
 
 
@@ -21,13 +20,16 @@ function UserItem() {
     const history = useHistory();
     const store = useReduxStore();
     const dispatch = useDispatch();
-    const [open, setOpen] = useState(false);
+    
 
     //getting the store on page load
     useEffect(()=> {
         dispatch({type: 'GET_DETAILS', payload: store})
     }, [store.details]);
-
+    
+    const [editOpen, setEditOpen] = useState(false);
+    const [deleteOpen, setDeleteOpen] = useState(false);
+    
     const [title, setTitle] = useState(store.details.title);
     const [coffee, setCoffee] = useState(store.details.coffee);
     const [roast, setRoast] = useState(store.details.roast_level);
@@ -49,14 +51,21 @@ function UserItem() {
         id: id
     }
     //this opens the edit dialog form
-    const handleClickOpen = () => {
-    setOpen(true);
+    const handleOpenEdit = () => {
+    setEditOpen(true);
     };
 
     //this closes the edit dialog form
-    const handleClose = () => {
-    setOpen(false);
+    const handleCloseEdit = () => {
+    setEditOpen(false);
     };
+
+    const handleOpenDelete = () => {
+        setDeleteOpen(true);
+    }
+    const handleCloseDelete = () => {
+        setDeleteOpen(false);
+    }
 
     //This function sends a dispatch to the edit.item.reducer
     //and closes the edit dialog form
@@ -64,15 +73,17 @@ function UserItem() {
         console.log('handleEdit button clicked', recipeDetails);
         // dispatch({type: 'SET_EDIT_STATE', payload: true});
         dispatch({type: 'EDIT_RECIPE', payload: recipeDetails});
-        setOpen(false);
+        setEditOpen(false);
         swal('Recipe Updated!')
         // history.push('/recipes');
     }
 
     //this function sends a dispatch to the recipeSaga
     const handleDelete = () => {
+        console.log('Delete button clicked', recipeDetails);
         dispatch({type: 'DELETE_RECIPE', payload: store.details});
         swal('Recipe deleted')
+        //setDeleteOpen(false);
         history.push('/user');
     }
 
@@ -91,11 +102,10 @@ function UserItem() {
             <div>
                 <Button style={{color: "#FFFFFF",
                                 backgroundColor: "#9999FF"}}
-                    variant="contained" onClick={handleClickOpen}>
+                    variant="contained" onClick={handleOpenEdit}>
                     Edit this brew
                 </Button>
-                
-                    <Dialog open={open} onClose={handleClose}>
+                    <Dialog open={editOpen} onClose={handleCloseEdit}>
                     <DialogTitle>Edit Recipe</DialogTitle>
                     <DialogContent>
                     <DialogContentText>
@@ -211,7 +221,7 @@ function UserItem() {
                 </div>
                 </DialogContent>
                 <DialogActions>
-                    <Button style={{color: "#5D5F98"}}onClick={handleClose}>Cancel</Button>
+                    <Button style={{color: "#5D5F98"}}onClick={handleCloseEdit}>Cancel</Button>
                     <Button style={{color: "#5D5F98"}}onClick={handleEdit}>Update Brew</Button>
                 </DialogActions>
                 </Dialog>
@@ -222,9 +232,10 @@ function UserItem() {
                                     backgroundColor: "#F44336"}}
                             variant="contained"
                             className='delete'
-                            onClick={handleDelete}
+                            onClick={handleOpenDelete}
                     >Delete this Brew
                     </Button>
+                    
                 <br/>
                 <br/>
         </div>

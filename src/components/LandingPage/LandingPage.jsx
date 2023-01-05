@@ -24,7 +24,7 @@ function LandingPage() {
 <div>
       <Grid 
             container spacing={2}
-            direction="row"
+            // direction="row"
             justifyContent="center"
             alignItems="center">
         <Grid container item spacing={3}
@@ -62,9 +62,11 @@ function LandingPage() {
                 justify-content="center"
                 item xs={2}>
                   <center>
-                    <button className="btn btn_sizeSm" onClick={onLogin}>
+                    <Button style={{color: "#FFFFFF",
+                                    backgroundColor: "#9999FF"}}
+                            className="btn btn_sizeSm" onClick={onLogin}>
                       Login
-                    </button>
+                    </Button>
                   </center>
             
           </Grid>
@@ -91,7 +93,7 @@ function LandingPage() {
           </CardContent>
           <CardActions>
             {/* <Button size="small">Share</Button> */}
-            <Button size="small">Login or Register to Learn More</Button>
+            <Button style={{color: "#9999FF"}}size="small">Login or Register to Learn More</Button>
           </CardActions>
         </Card>
 
@@ -115,7 +117,7 @@ function LandingPage() {
             </CardContent>
             <CardActions>
               {/* <Button size="small">Share</Button> */}
-              <Button size="small">Login or Register to Learn More</Button>
+              <Button style={{color: "#9999FF"}}size="small">Login or Register to Learn More</Button>
             </CardActions>
           </Card>
         </Grid>
@@ -138,7 +140,7 @@ function LandingPage() {
             </CardContent>
             <CardActions>
               {/* <Button size="small">Share</Button> */}
-              <Button size="small">Login or Register to Learn More</Button>
+              <Button style={{color: "#9999FF"}}size="small">Login or Register to Learn More</Button>
             </CardActions>
           </Card>
 

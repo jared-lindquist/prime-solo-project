@@ -103,9 +103,9 @@ function UserPage() {
               <h2 className='welcome'>Welcome {user.username}!</h2>
           </Grid>
           <Grid item xs={1}></Grid>
-          <Grid 
+          <Grid justifyContent="center"
             container item spacing={3}
-            item xs={3}>
+            item xs={12}>
             <Button style={{backgroundColor: "#ADADFF"}}
               variant="contained"
               onClick={handleNewBrew}
