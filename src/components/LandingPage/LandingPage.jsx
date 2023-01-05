@@ -63,7 +63,7 @@ function LandingPage() {
                 item xs={2}>
                   <center>
                     <Button style={{color: "#FFFFFF",
-                                    backgroundColor: "#9999FF"}}
+                                    backgroundColor: "#6B6BB2"}}
                             className="btn btn_sizeSm" onClick={onLogin}>
                       Login
                     </Button>

@@ -74,10 +74,6 @@ function UserPage() {
     setComments('');
     setOpen(false);
   }
-//navigates user to AllRecipes list component, showing all recipes from all users
-  const handleAllRecipes = () => {
-    history.push('/allrecipes');
-  }
 
   const handleClose = () => {
     setTitle('');
@@ -98,15 +94,25 @@ function UserPage() {
       >
           <Grid 
             container item spacing={4}
-            item xs={12}
+            // item xs={12}
             justifyContent="center">
-              <h2 className='welcome'>Welcome {user.username}!</h2>
+              <h2 className='welcome'>Welcome {user.username}! Here are your recipes:</h2>
           </Grid>
-          <Grid item xs={1}></Grid>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <Grid container item spacing={4}
+                justifyContent="center"
+                item xs={12}>
+            <h3>Want to start a new recipe? Click the button below.</h3>
+          </Grid>
+          
           <Grid justifyContent="center"
             container item spacing={3}
             item xs={12}>
-            <Button style={{backgroundColor: "#ADADFF"}}
+              
+            <Button style={{backgroundColor: "#4CAF50"}}
               variant="contained"
               onClick={handleNewBrew}
               >Start a new brew
@@ -121,7 +127,7 @@ function UserPage() {
               <TextField
                 required
                 id="recipe-title-input"
-                label="Give this recipe a title:"
+                label="Give this recipe a title (30 characters or less):"
                 variant="filled"
                 type="text"
                 value={title}
@@ -228,25 +234,17 @@ function UserPage() {
             </div>
         </DialogContent>
         <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleSubmit}>Add Recipe</Button>
+            <Button style={{color: "#F44336"}} onClick={handleClose}>Cancel</Button>
+            <Button style={{color: "#4CAF50"}} onClick={handleSubmit}>Add Recipe</Button>
         </DialogActions>
         </Dialog>
           </Grid>
-            
             <br/>
             <br/>
             <br/>
             <br/>
-            <Grid
-                container item spacing={4}
-                item xs={12}
-                justifyContent="center"
-                >
-                <h3 className='your-recipes'>
-                  Your recipes:
-                </h3>
-            </Grid>
+            <br/>
+            <br/>
             <UserRecipes />
       </Grid>
     </div>

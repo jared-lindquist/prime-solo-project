@@ -27,6 +27,7 @@ function RecipeItem() {
             <h1>
                 This brew is brought to you by {store.details.username}
             </h1>
+                {/* <img src={store.details.image}/> */}
                 <h3>
                     {store.details.title}
                 </h3>
@@ -43,7 +44,7 @@ function RecipeItem() {
             <br/>
             <br/>
             <Button style={{color: "#FFFFFF",
-                                backgroundColor: "#9999FF"}}
+                                backgroundColor: "#6B6BB2"}}
                     variant="contained" 
                     className='back'
                     onClick={backToCommunity}

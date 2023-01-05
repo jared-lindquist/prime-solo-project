@@ -10,9 +10,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
+import { ButtonGroup } from '@mui/material';
 import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } from '@mui/material';
-
 import swal from 'sweetalert';
+import './UserItem.css';
 
 
 function UserItem() {
@@ -37,6 +38,7 @@ function UserItem() {
     const [output, setOutput] = useState(store.details.output);
     const [comments, setComments] = useState(store.details.comments);
     const [method, setMethod] = useState(store.details.brew_method);
+    const [image, setImage] = useState(store.details.image);
     const [id, setId] = useState(store.details.id);
 
     //storing all the input values to send in the dispatch in the handleEdit function below
@@ -48,7 +50,8 @@ function UserItem() {
         output: output,
         comments: comments,
         brew_method: method,
-        id: id
+        id: id,
+        image: image
     }
     //this opens the edit dialog form
     const handleOpenEdit = () => {
@@ -59,10 +62,11 @@ function UserItem() {
     const handleCloseEdit = () => {
     setEditOpen(false);
     };
-
+    //this opens the delete confirmation dialog
     const handleOpenDelete = () => {
         setDeleteOpen(true);
     }
+    //this closes the delete confirmation dialog
     const handleCloseDelete = () => {
         setDeleteOpen(false);
     }
@@ -87,24 +91,59 @@ function UserItem() {
         history.push('/user');
     }
 
+    const handleBackToUser = () => {
+        history.push('/user');
+    }
+
     return (
-        <div>
-            <h1>
+        <div className='recipe-details'>
+            <h1 className="title">
                 {store.details.title}
             </h1>
+            <ButtonGroup>
+                <Button style={{color: "#FFFFFF",
+                                backgroundColor: "#9999FF"}}
+                        variant="contained" 
+                        onClick={handleOpenEdit}
+                    >Edit this brew
+                </Button>
+                <Button style={{color: "#F44336",
+                                    backgroundColor: "#FFFFFF",
+                                    borderColor: "#F44336"}}
+                        variant="outlined"
+                        className='delete'
+                        onClick={handleOpenDelete}
+                    >Delete this Brew
+                </Button>
+                <Button style={{color: "#FFFFFF",
+                                backgroundColor: "#6B6BB2"}}
+                    variant="contained" 
+                    className='back'
+                    onClick={handleBackToUser}
+                    >Back to My Brews
+                </Button>
+            </ButtonGroup>
+            <br/>
+            <br/>
+            <br/>
+            <img  className="image" src={store.details.image} alt="brew-method-image"
+                    height="400" width="400"/>
+                <div className="recipe-text">
                     <p> Coffee used for this brew: {store.details.coffee}</p>
                     <p>Which is a {store.details.roast_level} roasted coffee brewed on {store.details.brew_method}</p>
                     <p>This brew recipe started with {store.details.input} grams of coffee</p>
                     <p>The finished weight of the brew was {store.details.output} grams.</p>
                     <p>'{store.details.comments}.' </p>
+                </div>
+                    
             <br/>
             <br/>
             <div>
-                <Button style={{color: "#FFFFFF",
+                {/* <Button style={{color: "#FFFFFF",
                                 backgroundColor: "#9999FF"}}
                     variant="contained" onClick={handleOpenEdit}>
                     Edit this brew
-                </Button>
+                </Button> */}
                     <Dialog open={editOpen} onClose={handleCloseEdit}>
                     <DialogTitle>Edit Recipe</DialogTitle>
                     <DialogContent>
@@ -221,20 +260,21 @@ function UserItem() {
                 </div>
                 </DialogContent>
                 <DialogActions>
-                    <Button style={{color: "#5D5F98"}}onClick={handleCloseEdit}>Cancel</Button>
-                    <Button style={{color: "#5D5F98"}}onClick={handleEdit}>Update Brew</Button>
+                    <Button style={{color: "#F44336"}}onClick={handleCloseEdit}>Cancel</Button>
+                    <Button style={{color: "#4CAF50"}}onClick={handleEdit}>Update Brew</Button>
                 </DialogActions>
                 </Dialog>
             </div>
                 <br/>
                 <br/>
-                    <Button style={{color: "#FFFFFF",
-                                    backgroundColor: "#F44336"}}
-                            variant="contained"
+                    {/* <Button style={{color: "#F44336",
+                                    backgroundColor: "#FFFFFF",
+                                    borderColor: "#F44336"}}
+                            variant="outlined"
                             className='delete'
                             onClick={handleOpenDelete}
                     >Delete this Brew
-                    </Button>
+                    </Button> */}
                     <Dialog
                         open={deleteOpen}
                         onClose={handleCloseDelete}
@@ -256,8 +296,16 @@ function UserItem() {
                             </Button>
                         </DialogActions>
                     </Dialog>
-                <br/>
-                <br/>
+                    {/* <br/>
+                    <br/>
+                    <br/> */}
+                    {/* <Button style={{color: "#FFFFFF",
+                                backgroundColor: "#6B6BB2"}}
+                    variant="contained" 
+                    className='back'
+                    onClick={handleBackToUser}
+                    >Back to My Brews
+                    </Button> */}
         </div>
     )
 }

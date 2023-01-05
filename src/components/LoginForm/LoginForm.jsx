@@ -60,7 +60,7 @@ function LoginForm() {
       <div>
         {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
         <Button style={{color: "#FFFFFF",
-                        backgroundColor: "#9999FF"}}
+                        backgroundColor: "#6B6BB2"}}
                         className="btn" type="submit" name="submit" value="Log In"
                 >
           Log In

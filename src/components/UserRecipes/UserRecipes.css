@@ -1,8 +1,3 @@
-/* .header {
-    color: #f2f2f2;
-    text-shadow: 1px black;
-} */
-
 .card:hover {
     transform: scale(1.1);
     transition: all .2s ease-in-out;

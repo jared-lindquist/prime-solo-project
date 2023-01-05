@@ -27,7 +27,7 @@ function Nav() {
           <>
 
             <Link className="navLink" to="/allrecipes">
-              All Brews
+              Community
             </Link>
 
             <Link className="navLink" to="/user">

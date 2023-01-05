@@ -12,7 +12,7 @@ function LoginPage() {
 
       <center>
         <Button style={{color: "#FFFFFF",
-                                backgroundColor: "#9999FF"}}
+                                backgroundColor: "#6B6BB2"}}
           type="button"
           className="btn btn_asLink"
           onClick={() => {

@@ -48,11 +48,11 @@ function AllRecipes() {
                 <Grid item xs={12}></Grid>
 
                     {store.allRecipes.map(recipe  => (
-                    <Grid item xs={3}>
-                        <Card id={recipe.id} sx={{ maxWidth: 500, maxHeight:500 }}>
-                        <CardHeader title={recipe.title}
-                        >
-                        </CardHeader>
+                    <Grid item xs={3} display="flex">
+                        <Card className="card"id={recipe.id} sx={{ height: 425, width:350 }}>
+                            <CardHeader 
+                                title={recipe.title}>
+                            </CardHeader>
                             <CardMedia
                                 component="img"
                                 height="250"
@@ -66,6 +66,7 @@ function AllRecipes() {
                             </CardContent>
                                 <CardActions>
                                     <Button 
+                                        style={{color: "#5a5a5a"}}
                                         size="medium"
                                         onClick={ () => recipeDetails(recipe)}
                                         >See Full Recipe

@@ -9,29 +9,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardHeader, Grid} from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { styled } from '@mui/material/styles';
 import { useHistory } from 'react-router-dom';
-import { Collapse } from '@mui/material';
-import{ IconButton } from '@mui/material';
 
-
-interface ExpandMoreProps extends IconButtonProps {
-    expand: boolean;
-}
-
-//this function handles the styling of the details expand/collapse in each recipe card
-const ExpandMore = styled((props: ExpandMoreProps) => {
-    const { expand, ...other } = props;
-    return <IconButton {...other} />;
-    })(({ theme, expand }) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-    }),
-}));
+import './UserRecipes.css';
 
 
 function UserRecipes() {
@@ -66,33 +46,42 @@ function UserRecipes() {
     }
 
     return (
-            <Grid   container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}
+            <Grid   container spacing={{ xs: 2, md: 3 }} 
                     justifyContent="center"
-                    
+                    justify="center"
+                    // container direction="column"
             > 
             {/* <Grid item xs={12}></Grid> */}
             {/* map over all recipes to display cards */}
             {store.allRecipes.map(recipe  => (
-                <Grid item xs={3}>
-                    <Card key={recipe.id} sx={{ height: 400, width:350 }}>
-                        <CardHeader title={recipe.title}
-                                    subheader={recipe.brew_method}
+                <Grid   item xs={3} 
+                        display="flex"
+                >
+                    <Card 
+                        className='card' 
+                        key={recipe.id} 
+                        sx={{ height: 375, width:350 }}
                         >
-                        </CardHeader>
-                            <CardMedia
-                                component="img"
-                                height="250"
-                                //this pulls the image url from DB
-                                image={recipe.image}
-                                alt="brew method image"
-                            />
-                            <CardActions>
-                            <Button style={{color: "#6B6BB2"}}
-                                size="medium"
-                                onClick={ () => recipeDetails(recipe)}
-                                >See Full Recipe
-                            </Button>
-                            </CardActions>
+                            <CardActionArea onClick={ () => recipeDetails(recipe)}>
+                                {/* <CardHeader title={recipe.title}
+                            >
+                                </CardHeader> */}
+                                    <CardMedia
+                                        component="img"
+                                        height="250"
+                                        //this pulls the image url from DB
+                                        image={recipe.image}
+                                        alt="brew method image"
+                                    />
+                                    <Typography>
+                                        <h2>
+                                            {recipe.title}
+                                        </h2>
+                                        <h3>
+                                            {recipe.roast_level} roast {recipe.brew_method}
+                                        </h3>
+                                    </Typography>
+                            </CardActionArea>
                     </Card>
                 </Grid>
                 ))
