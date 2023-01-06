@@ -118,21 +118,21 @@ function UserItem() {
             </h1>
             <ButtonGroup>
                 <Button style={{color: "#FFFFFF",
-                                backgroundColor: "#9999FF"}}
+                                backgroundColor: "#6B6BB2"}}
                         variant="contained" 
                         onClick={handleOpenEdit}
                     >Edit this brew
                 </Button>
-                <Button style={{color: "#F44336",
+                <Button style={{color: "#b83d34",
                                     backgroundColor: "#FFFFFF",
-                                    borderColor: "#F44336"}}
+                                    borderColor: "#b83d34"}}
                         variant="outlined"
                         className='delete'
                         onClick={handleOpenDelete}
                     >Delete this Brew
                 </Button>
                 <Button style={{color: "#FFFFFF",
-                                backgroundColor: "#6B6BB2"}}
+                                backgroundColor: "#5A5A5A"}}
                     variant="contained" 
                     className='back'
                     onClick={handleBackToUser}
@@ -265,8 +265,8 @@ function UserItem() {
                 </div>
                 </DialogContent>
                 <DialogActions>
-                    <Button style={{color: "#F44336"}}onClick={handleCloseEdit}>Cancel</Button>
-                    <Button style={{color: "#4CAF50"}}onClick={handleEdit}>Update Brew</Button>
+                    <Button style={{color: "#b83d34"}}onClick={handleCloseEdit}>Cancel</Button>
+                    <Button style={{color: "#b2b26b"}}onClick={handleEdit}>Update Brew</Button>
                 </DialogActions>
                 </Dialog>
             </div>
@@ -288,7 +288,7 @@ function UserItem() {
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleCloseDelete}>Cancel</Button>
-                            <Button onClick={handleDelete}>
+                            <Button style={{color: "#b83d34"}}onClick={handleDelete}>
                                 Delete Recipe
                             </Button>
                         </DialogActions>

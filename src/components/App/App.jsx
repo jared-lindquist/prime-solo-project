@@ -102,14 +102,6 @@ function App() {
 
           </ProtectedRoute>
 
-          {/* <ProtectedRoute
-            exact
-            path="/recipeform"
-          >
-            <RecipeForm />
-            
-          </ProtectedRoute> */}
-
           <ProtectedRoute
             exact
             path="/recipeitem/:ID"
@@ -154,9 +146,10 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/home" />
               :
               // Otherwise, show the Landing page
+              // <Redirect to='/home'/>
               <LandingPage />
             }
           </Route>

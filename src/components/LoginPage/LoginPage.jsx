@@ -11,7 +11,7 @@ function LoginPage() {
       <LoginForm />
 
       <center>
-        <Button style={{color: "#FFFFFF",
+        {/* <Button style={{color: "#FFFFFF",
                                 backgroundColor: "#6B6BB2"}}
           type="button"
           className="btn btn_asLink"
@@ -20,7 +20,7 @@ function LoginPage() {
           }}
         >
           Register
-        </Button>
+        </Button> */}
       </center>
     </div>
   );

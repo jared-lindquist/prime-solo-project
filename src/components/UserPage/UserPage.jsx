@@ -110,7 +110,7 @@ function UserPage() {
           >
             <h3>Want to start a new recipe?</h3>
           </Grid>  
-            <Button style={{backgroundColor: "#4CAF50"}}
+            <Button style={{backgroundColor: "#6bb26b"}}
                     variant="contained"
                     onClick={handleNewBrew}
               > Click Here
@@ -242,7 +242,7 @@ function UserPage() {
         </div>
           </DialogContent>
           <DialogActions>
-              <Button style={{color: "#F44336"}} onClick={handleClose}>Cancel</Button>
+              <Button style={{color: "#5A5A5A"}} onClick={handleClose}>Cancel</Button>
               <Button style={{color: "#4CAF50"}} onClick={handleSubmit}>Add Recipe</Button>
             </DialogActions>
             </Dialog>

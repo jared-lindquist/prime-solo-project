@@ -60,7 +60,7 @@ function RecipeItem() {
                 {store.details[0]?.title}
             </h2>
             <Button style={{color: "#FFFFFF",
-                            backgroundColor: "#6B6BB2"}}
+                            backgroundColor: "#5A5A5A"}}
                     variant="contained" 
                     className='back'
                     onClick={backToCommunity}

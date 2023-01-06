@@ -55,7 +55,7 @@ function RegisterForm() {
       <div>
         {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
         <Button style={{color: "#FFFFFF",
-                        backgroundColor: "#4CAF50"}}
+                        backgroundColor: "#6bb26b"}}
                         className="btn" type="submit" name="submit" value="Register"
                 >
           Register
