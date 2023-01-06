@@ -82,7 +82,7 @@ function* editRecipe(action) {
 }
 //deleteRecipe* delete
 function* deleteRecipe(action) {
-    console.log(action.payload);
+    console.log('in deleteRecipe:', action.payload.id);
     try {
         yield axios.delete('/api/userRecipes/' + action.payload.id);
         yield put ({type: 'FETCH_USER_RECIPES'})

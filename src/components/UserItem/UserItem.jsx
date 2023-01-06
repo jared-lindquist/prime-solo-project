@@ -100,7 +100,7 @@ function UserItem() {
     //this function sends a dispatch to the recipeSaga
     const handleDelete = () => {
         console.log('Delete button clicked', recipeDetails);
-        dispatch({type: 'DELETE_RECIPE', payload: store.details});
+        dispatch({type: 'DELETE_RECIPE', payload: recipeDetails});
         swal('Recipe deleted')
         setDeleteOpen(false);
         history.push('/user');
@@ -149,7 +149,7 @@ function UserItem() {
                     <p>This brew recipe started with {store.details[0]?.input} grams of coffee</p>
                     <p>The finished weight of the brew was {store.details[0]?.output} grams.</p>
                     <p>Full Recipe Details:</p>
-                    <p>'{store[0]?.details.comments}.' </p>
+                    <p>'{store.details[0]?.comments}.' </p>
                 </div>
             <br/>
             <br/>
