@@ -41,7 +41,7 @@ userRecipesRouter.get('/:id', rejectUnauthenticated, (req, res) => {
     pool.query(queryText, [req.params.id])
     .then((results) => res.send(results.rows))
     .catch((error) => {
-        console.log('error getting recipe detials', error);
+        console.log('error getting recipe details', error);
         res.sendStatus(500);
     });
 });

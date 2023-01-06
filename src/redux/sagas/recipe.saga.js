@@ -31,6 +31,7 @@ function* getDetails(action) {
     try {
         const details = yield axios.get('/api/userRecipes/' + action.payload);
         console.log('getDetails: ', action.payload);
+        console.log(details.data);
         yield put({type: 'SET_DETAILS', payload: details.data})
     }
     catch (error) {
