@@ -18,29 +18,42 @@ import './UserItem.css';
 
 
 function UserItem() {
-    const params = useParams();
+    const {ID} = useParams();
     const history = useHistory();
     const store = useReduxStore();
     const dispatch = useDispatch();
     console.log(store);
+    console.log("details item id:", ID);
 
     //getting the store on page load
     useEffect(()=> {
-        dispatch({type: 'GET_DETAILS', payload: store})
-    }, [store.details]);
+        dispatch({type: 'GET_DETAILS', payload: ID})
+    }, []);
+
+    useEffect(() => {
+        setTitle(store.details[0]?.title);
+        setCoffee(store.details[0]?.coffee);
+        setRoast(store.details[0]?.roast_level);
+        setInput(store.details[0]?.input);
+        setOutput(store.details[0]?.output);
+        setComments(store.details[0]?.comments);
+        setMethod(store.details[0]?.brew_method);
+        setImage(store.details[0]?.image);
+        setId(store.details[0]?.id);
+    }, [store.details])
     
     const [editOpen, setEditOpen] = useState(false);
     const [deleteOpen, setDeleteOpen] = useState(false);
     
-    const [title, setTitle] = useState(store.details.title);
-    const [coffee, setCoffee] = useState(store.details.coffee);
-    const [roast, setRoast] = useState(store.details.roast_level);
-    const [input, setInput] = useState(store.details.input);
-    const [output, setOutput] = useState(store.details.output);
-    const [comments, setComments] = useState(store.details.comments);
-    const [method, setMethod] = useState(store.details.brew_method);
-    const [image, setImage] = useState(store.details.image);
-    const [id, setId] = useState(store.details.id);
+    const [title, setTitle] = useState(store.details[0]?.title);
+    const [coffee, setCoffee] = useState(store.details[0]?.coffee);
+    const [roast, setRoast] = useState(store.details[0]?.roast_level);
+    const [input, setInput] = useState(store.details[0]?.input);
+    const [output, setOutput] = useState(store.details[0]?.output);
+    const [comments, setComments] = useState(store.details[0]?.comments);
+    const [method, setMethod] = useState(store.details[0]?.brew_method);
+    const [image, setImage] = useState(store.details[0]?.image);
+    const [id, setId] = useState(store.details[0]?.id);
 
     //storing all the input values to send in the dispatch in the handleEdit function below
     const recipeDetails = {
@@ -56,6 +69,7 @@ function UserItem() {
     }
     //this opens the edit dialog form
     const handleOpenEdit = () => {
+        console.log('handleOpenEdit clicked:', recipeDetails);
     setEditOpen(true);
     };
 
@@ -80,7 +94,7 @@ function UserItem() {
         dispatch({type: 'EDIT_RECIPE', payload: recipeDetails});
         setEditOpen(false);
         swal('Recipe Updated!')
-        // history.push('/recipes');
+        history.push('/userItem/' + ID);
     }
 
     //this function sends a dispatch to the recipeSaga
@@ -99,7 +113,7 @@ function UserItem() {
     return (
         <div className='recipe-details'>
             <h1 className="title">
-                {store.details.title}
+                {store.details[0]?.title}
             </h1>
             <ButtonGroup>
                 <Button style={{color: "#FFFFFF",
@@ -127,15 +141,15 @@ function UserItem() {
             <br/>
             <br/>
             <br/>
-            <img  className="image" src={store.details.image} alt="brew-method-image"
+            <img  className="image" src={store.details[0]?.image} alt="brew-method-image"
                     height="400" width="400"/>
                 <div className="recipe-text">
-                    <p> Coffee used for this brew: {store.details.coffee}</p>
-                    <p>Which is a {store.details.roast_level} roasted coffee brewed on {store.details.brew_method}</p>
-                    <p>This brew recipe started with {store.details.input} grams of coffee</p>
-                    <p>The finished weight of the brew was {store.details.output} grams.</p>
+                    <p> Coffee used for this brew: {store.details[0]?.coffee}</p>
+                    <p>Which is a {store.details[0]?.roast_level} roasted coffee brewed on {store.details[0]?.brew_method}</p>
+                    <p>This brew recipe started with {store.details[0]?.input} grams of coffee</p>
+                    <p>The finished weight of the brew was {store.details[0]?.output} grams.</p>
                     <p>Full Recipe Details:</p>
-                    <p>'{store.details.comments}.' </p>
+                    <p>'{store[0]?.details.comments}.' </p>
                 </div>
             <br/>
             <br/>

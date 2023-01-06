@@ -80,7 +80,7 @@ function App() {
           <ProtectedRoute
             
             exact 
-            path="/recipes"
+            path="/recipes/"
           >
             <UserRecipes />
           </ProtectedRoute>
@@ -96,7 +96,7 @@ function App() {
           
           <ProtectedRoute
             exact
-            path="/useritem"  
+            path="/useritem/:ID"  
           >
             <UserItem />
 

@@ -9,7 +9,7 @@ const { query } = require('express');
 // /**
 //  * GET route template
 //  */
-userRecipesRouter.get('/',  (req, res) => {
+userRecipesRouter.get('/', rejectUnauthenticated, (req, res) => {
     console.log('in recipeRouter.get for user recipes')
     console.log('is authenticated?', req.isAuthenticated());
     console.log('req.user', req.user);
@@ -31,11 +31,26 @@ userRecipesRouter.get('/',  (req, res) => {
     });
 });
 
+userRecipesRouter.get('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in userRecipesRouter.get for details:');
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('req.user', req.user);
+
+    const queryText = 'SELECT * FROM "recipes" WHERE "recipes"."id" = $1;';
+
+    pool.query(queryText, [req.params.id])
+    .then((results) => res.send(results.rows))
+    .catch((error) => {
+        console.log('error getting recipe detials', error);
+        res.sendStatus(500);
+    });
+});
+
 
 //post route goes here
 
 
-userRecipesRouter.delete('/:id', (req, res) => {
+userRecipesRouter.delete('/:id', rejectUnauthenticated, (req, res) => {
 
     console.log('in userRecipesRouter delete', req.params.id, req.user.id);
 
@@ -45,7 +60,7 @@ userRecipesRouter.delete('/:id', (req, res) => {
     //endpoint functionality
 });
 
-userRecipesRouter.put('/:id', (req, res) => {
+userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in userRecipesRouter PUT', req.body, req.params.id);
 
     let queryParams = [req.body.title, req.body.coffee, req.body.roast_level, req.body.input, req.body.output, req.body.comments, req.body.brew_method, req.body.id];

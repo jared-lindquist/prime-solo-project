@@ -26,6 +26,17 @@ function* fetchUserRecipes(action) {
     }
 }
 
+//create new generator function for getDetails to get details page view UserItem
+function* getDetails(action) {
+    try {
+        const details = yield axios.get('/api/userRecipes/' + action.payload);
+        console.log('getDetails: ', action.payload);
+        yield put({type: 'SET_DETAILS', payload: details.data})
+    }
+    catch (error) {
+        console.log('error getting details', error);
+    }
+}
 //this function adds an image URL to each new recipe in addRecipe below 
 //based on brew_method value
 const handleImage = (method) => {
@@ -87,7 +98,8 @@ function* recipeSaga(action) {
     yield takeLatest('ADD_RECIPE', addRecipe);
     yield takeLatest('FETCH_USER_RECIPES', fetchUserRecipes);
     yield takeLatest('DELETE_RECIPE', deleteRecipe);
-    yield takeLatest('EDIT_RECIPE', editRecipe)
+    yield takeLatest('EDIT_RECIPE', editRecipe);
+    yield takeLatest('GET_DETAILS', getDetails);
 }
 
 export default recipeSaga;

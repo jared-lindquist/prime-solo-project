@@ -31,11 +31,12 @@ function UserRecipes() {
     //to the details.reducer and navigates user to UserItem component
     const recipeDetails = (recipe) => {
         //confirming button click pulls data correctly
-        console.log('clicked on a recipe', recipe);
+        console.log('clicked on a recipe', recipe.id);
         //collects recipe info to store locally
         dispatch({type: 'SET_DETAILS', payload: recipe});
         //navigates user to the recipe details page
-        history.push('/useritem')
+        //add /:id
+        history.push('/useritem/' + recipe.id)
     }
 
     return (
@@ -65,12 +66,12 @@ function UserRecipes() {
                                 image={recipe.image}
                                 alt="brew method image"
                             />
-                            <Typography>
+                            <Typography >
                                 <h2>
                                     {recipe.title}
                                 </h2>
-                                </Typography>
-                                <Typography>
+                            </Typography>
+                            <Typography>
                                 <h3>
                                     {recipe.roast_level} roast {recipe.brew_method}
                                 </h3>
