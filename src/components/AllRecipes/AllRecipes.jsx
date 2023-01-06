@@ -20,6 +20,7 @@ function AllRecipes() {
     const dispatch = useDispatch();
 
     useEffect(()=> {
+        window.scrollTo(0,0)
         dispatch({type: 'FETCH_ALL_RECIPES'});
     }, []);
 
@@ -31,7 +32,7 @@ function AllRecipes() {
         //collects recipe info to store locally
         dispatch({type: 'SET_DETAILS', payload: recipe})
         //navigates to the item details page
-        history.push(`/recipeitem`)
+        history.push(`/recipeitem/` + recipe.id)
     }
 
 
@@ -43,7 +44,6 @@ function AllRecipes() {
             alignItems="center"
             direction="row"
             >
-            
                 <h2 className='header'>All Community Brews</h2>
                 <Grid item xs={12}></Grid>
 
@@ -53,8 +53,9 @@ function AllRecipes() {
                             justifyContent="center"
                             justify="center"
                             alignItems="center"
+                            key={recipe.id}
                     >
-                        <Card className="card"id={recipe.id} sx={{ height: 375, width:350 }}>
+                        <Card className="card"key={recipe.id} sx={{ height: 375, width:350 }}>
                             <CardActionArea onClick={ () => recipeDetails(recipe)}>
                                 <CardMedia
                                     component="img"

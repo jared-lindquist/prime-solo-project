@@ -2,17 +2,48 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import useReduxStore from '../../hooks/useReduxStore';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import './RecipeItem.css';
 
 
 function RecipeItem() {
+
+    const {ID} = useParams();
     const history = useHistory();
     const store = useReduxStore();
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        setTitle(store.details[0]?.title);
+        setCoffee(store.details[0]?.coffee);
+        setRoast(store.details[0]?.roast_level);
+        setInput(store.details[0]?.input);
+        setOutput(store.details[0]?.output);
+        setComments(store.details[0]?.comments);
+        setMethod(store.details[0]?.brew_method);
+        setImage(store.details[0]?.image);
+        setId(store.details[0]?.id);
+    }, [store.details]);
+
+    useEffect(() => {
+        window.scrollTo(0,0)
+        dispatch({type: 'GET_DETAILS', payload: ID})
+    }, []);
+
+    const [title, setTitle] = useState(store.details[0]?.title);
+    const [coffee, setCoffee] = useState(store.details[0]?.coffee);
+    const [roast, setRoast] = useState(store.details[0]?.roast_level);
+    const [input, setInput] = useState(store.details[0]?.input);
+    const [output, setOutput] = useState(store.details[0]?.output);
+    const [comments, setComments] = useState(store.details[0]?.comments);
+    const [method, setMethod] = useState(store.details[0]?.brew_method);
+    const [image, setImage] = useState(store.details[0]?.image);
+    const [id, setId] = useState(store.details[0]?.id);
+
     console.log('recipe details are: ', store.details);
+
+
     
     const backToCommunity = () => {
         history.push('/allrecipes');
@@ -22,11 +53,11 @@ function RecipeItem() {
         <div className='recipe-details'>
             {/* {JSON.stringify(store.details)} */}
             <h1 className='title'>
-                This brew is brought to you by {store.details.username}
+                This brew is brought to you by {store.details[0]?.username}
             </h1>
                 {/* <img src={store.details.image}/> */}
             <h2>
-                {store.details.title}
+                {store.details[0]?.title}
             </h2>
             <Button style={{color: "#FFFFFF",
                             backgroundColor: "#6B6BB2"}}
@@ -38,17 +69,17 @@ function RecipeItem() {
             <br/>
             <br/>
             <br/>
-            <img  className="image" src={store.details.image} alt="brew-method-image"
+            <img  className="image" src={store.details[0]?.image} alt="brew-method-image"
                     height="400" width="400"/>
             <br/>
             <br/>
-                <p> Coffee used for this brew: {store.details.coffee}</p>
-                <p>Which is a {store.details.roast_level} roasted coffee</p>
-                <p>{store.details.username} brewed with a {store.details.brew_method}</p>
-                <p>They started this brew with {store.details.input} grams of coffee</p>
-                <p>The finished weight of the brew was {store.details.output} grams.</p>
-                <p>Comments left by {store.details.username}:</p>
-                <p>'{store.details.comments}.' </p>
+                <p> Coffee used for this brew: {store.details[0]?.coffee}</p>
+                <p>Which is a {store.details[0]?.roast_level} roasted coffee</p>
+                <p>{store.details[0]?.username} brewed with a {store.details[0]?.brew_method}</p>
+                <p>They started this brew with {store.details[0]?.input} grams of coffee</p>
+                <p>The finished weight of the brew was {store.details[0]?.output} grams.</p>
+                <p>Comments left by {store.details[0]?.username}:</p>
+                <p>'{store.details[0]?.comments}.' </p>
                 <p>Thanks for checking out my brew!</p>
         </div>
     )

@@ -112,7 +112,7 @@ function App() {
 
           <ProtectedRoute
             exact
-            path="/recipeitem"
+            path="/recipeitem/:ID"
           >
             <RecipeItem />
 

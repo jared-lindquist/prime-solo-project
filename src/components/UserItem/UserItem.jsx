@@ -27,6 +27,7 @@ function UserItem() {
 
     //getting the store on page load
     useEffect(()=> {
+        window.scrollTo(0,0)
         dispatch({type: 'GET_DETAILS', payload: ID})
     }, []);
 

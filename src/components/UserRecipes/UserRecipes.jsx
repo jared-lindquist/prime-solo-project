@@ -9,19 +9,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardHeader, Grid} from '@mui/material';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import './UserRecipes.css';
 
 
 function UserRecipes() {
 
+    const {ID} = useParams();
     const history = useHistory();
     const store = useReduxStore();
     const dispatch = useDispatch();
 
     //Grabs all recipes for logged in user, renders on page load only once
     useEffect(()=> {
+        window.scrollTo(0,0)
         dispatch({type: 'FETCH_USER_RECIPES'});
     }, []);
 
@@ -31,7 +33,6 @@ function UserRecipes() {
         //confirming button click pulls data correctly
         console.log('clicked on a recipe', recipe.id);
         //navigates user to the recipe details page
-        //add /:id
         history.push('/useritem/' + recipe.id)
     }
 
@@ -48,6 +49,7 @@ function UserRecipes() {
                         justifyContent="center"
                         justify="center"
                         alignItems="center"
+                        key={recipe.id}
                 >
                     <Card 
                         className='card' 
@@ -62,16 +64,14 @@ function UserRecipes() {
                                 image={recipe.image}
                                 alt="brew method image"
                             />
-                            <Typography >
-                                <h2>
+                            <CardContent>
+                                    <h2>
                                     {recipe.title}
-                                </h2>
-                            </Typography>
-                            <Typography>
-                                <h3>
+                                    </h2>
+                                    <Typography variant="body2" color="text.secondary">
                                     {recipe.roast_level} roast {recipe.brew_method}
-                                </h3>
-                            </Typography>
+                                    </Typography>
+                                </CardContent>
                         </CardActionArea>
                     </Card>
                 </Grid>
