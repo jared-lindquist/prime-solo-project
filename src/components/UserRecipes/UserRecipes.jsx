@@ -25,15 +25,11 @@ function UserRecipes() {
         dispatch({type: 'FETCH_USER_RECIPES'});
     }, []);
 
-    // console.log(store.allRecipes);
-
     //this function takes the details for the recipe clicked on and sends a dispatch
     //to the details.reducer and navigates user to UserItem component
     const recipeDetails = (recipe) => {
         //confirming button click pulls data correctly
         console.log('clicked on a recipe', recipe.id);
-        //collects recipe info to store locally
-        dispatch({type: 'SET_DETAILS', payload: recipe});
         //navigates user to the recipe details page
         //add /:id
         history.push('/useritem/' + recipe.id)
