@@ -48,26 +48,27 @@ recipeRouter.get('/', (req, res) => {
  * POST route template
  */
 //**this needs to go into the userRecipes.router file */
-recipeRouter.post('/', (req, res) => {
-  // POST route code here
+//moved
+// recipeRouter.post('/', (req, res) => {
+//   // POST route code here
     
-    const recipeDetails = [req.user.id, req.body.title, req.body.coffee, req.body.roast,
-        req.body.method, req.body.input, req.body.output, req.body.comments, req.body.image];
+//     const recipeDetails = [req.user.id, req.body.title, req.body.coffee, req.body.roast,
+//         req.body.method, req.body.input, req.body.output, req.body.comments, req.body.image];
     
-    console.log('req.user, recipe details:', req.user, recipeDetails);
+//     console.log('req.user, recipe details:', req.user, recipeDetails);
     
-    const queryText = `
-    INSERT INTO "recipes" ("user_id", "title", "coffee", "roast_level", "brew_method", "input", "output", "comments","image")
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
-    `;
+//     const queryText = `
+//     INSERT INTO "recipes" ("user_id", "title", "coffee", "roast_level", "brew_method", "input", "output", "comments","image")
+//     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+//     `;
     
-    pool.query(queryText, recipeDetails)
-    .then (() => {
-        res.sendStatus(201);
-    }).catch((error) => {
-        console.log('error adding recipe: ', error);
-        res.sendStatus(500);
-    })
-});
+//     pool.query(queryText, recipeDetails)
+//     .then (() => {
+//         res.sendStatus(201);
+//     }).catch((error) => {
+//         console.log('error adding recipe: ', error);
+//         res.sendStatus(500);
+//     })
+// });
 
 module.exports = recipeRouter;

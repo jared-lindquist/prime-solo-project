@@ -22,7 +22,7 @@ userRecipesRouter.get('/', rejectUnauthenticated, (req, res) => {
     ON "recipes"."user_id" = "user"."id" 
     WHERE "user_id" = $1
     ORDER BY "recipes"."id" DESC;`;
-    // SELECT * FROM "recipes" WHERE "user_id" = $1
+    
     pool.query(queryText, [userId])
     .then((results) => res.send(results.rows))
     .catch((error) => {
@@ -35,8 +35,6 @@ userRecipesRouter.get('/:id', (req, res) => {
     console.log('in userRecipesRouter.get for details:');
     console.log('is authenticated?', req.isAuthenticated());
     console.log('req.user', req.user);
-
-    // const queryText = 'SELECT * FROM "recipes" WHERE "recipes"."id" = $1;';
 
     const  queryText = `SELECT "recipes"."id", "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
     "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", "recipes"."image", "user"."username" 
@@ -55,7 +53,27 @@ userRecipesRouter.get('/:id', (req, res) => {
 
 
 //post route goes here
+userRecipesRouter.post('/', (req, res) => {
+    // POST route code here
+    
+    const recipeDetails = [req.user.id, req.body.title, req.body.coffee, req.body.roast,
+        req.body.method, req.body.input, req.body.output, req.body.comments, req.body.image];
 
+    console.log('req.user, recipe details:', req.user, recipeDetails);
+    
+    const queryText = `
+    INSERT INTO "recipes" ("user_id", "title", "coffee", "roast_level", "brew_method", "input", "output", "comments","image")
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+    `;
+    
+    pool.query(queryText, recipeDetails)
+    .then (() => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('error adding recipe: ', error);
+        res.sendStatus(500);
+    })
+});
 
 userRecipesRouter.delete('/:id', rejectUnauthenticated, (req, res) => {
 

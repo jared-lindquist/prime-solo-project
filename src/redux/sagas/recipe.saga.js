@@ -62,7 +62,7 @@ function* addRecipe(action) {
     
     console.log('in recipe.saga addRecipe', newPayload);
     try {
-        yield axios.post('/api/recipes', newPayload);
+        yield axios.post('/api/userRecipes', newPayload);
         console.log('new recipe is: ', newPayload);
         yield put({type: 'FETCH_USER_RECIPES'})
     }

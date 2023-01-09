@@ -256,7 +256,7 @@ function UserItem() {
                 </DialogContent>
                 <DialogActions>
                     <Button style={{color: "#b83d34"}}onClick={handleCloseEdit}>Cancel</Button>
-                    <Button style={{color: "#b2b26b"}}onClick={handleEdit}>Update Brew</Button>
+                    <Button style={{color: "#6bb26b"}}onClick={handleEdit}>Update Brew</Button>
                 </DialogActions>
                 </Dialog>
             </div>
