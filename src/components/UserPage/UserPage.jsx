@@ -99,7 +99,7 @@ function UserPage() {
             // item xs={12}
             justifyContent="center"
             justify="center">
-              <h2 className='welcome'>Welcome {user.username}! Here are your recipes:</h2>
+              <h2 className='welcome'>Welcome {user.username}! </h2>
           </Grid>
           <br/>
           <br/>

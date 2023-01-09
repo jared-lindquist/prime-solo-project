@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome');
+  const [heading, setHeading] = useState('Welcome to How Do You Brew!');
   const history = useHistory();
 
   const onLogin = (event) => {
@@ -22,11 +22,10 @@ function LandingPage() {
 
   return (
 <div>
-      <Grid 
-            container spacing={2}
-            // direction="row"
-            justifyContent="center"
-            alignItems="center">
+  <Grid 
+      container spacing={2}
+      justifyContent="center"
+      alignItems="center">
         <Grid container item spacing={3}
             justifyContent="center"
             item xs={12}>
@@ -57,8 +56,8 @@ function LandingPage() {
         </Grid>
           <Grid item xs={3}
                 justify-content="right">
-            <h4 >Already a Member?</h4>
-          <Grid 
+            <h4 >Already a Brewer?</h4>
+            <Grid 
                 justify-content="center"
                 item xs={2}>
                   <center>
@@ -68,9 +67,7 @@ function LandingPage() {
                       Login
                     </Button>
                   </center>
-            
-          </Grid>
-            
+            </Grid>
           </Grid>
         <Grid item xs={12}></Grid>
         <Grid 
@@ -83,13 +80,12 @@ function LandingPage() {
             alt="something cool"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Cool Coffee Recipe
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </Typography>
+          <Typography>
+              <h2>Awesome Ethiopian</h2>
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+              Light Roasted Chemex
+              </Typography>
           </CardContent>
           <CardActions>
             {/* <Button size="small">Share</Button> */}
@@ -103,16 +99,15 @@ function LandingPage() {
             <CardMedia
               component="img"
               height="140"
-              image="./images/370.jpg"
+              image="./images/french-press.jpg"
               alt="Latte"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-              Cool Coffee Recipe
+              <Typography>
+              <h2>My First French Press</h2>
               </Typography>
               <Typography variant="body2" color="text.secondary">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Medium Roasted French Press
               </Typography>
             </CardContent>
             <CardActions>
@@ -130,12 +125,11 @@ function LandingPage() {
               alt="coffee"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-              Cool Coffee Recipe
+            <Typography>
+              <h2>More Espresso Please</h2>
               </Typography>
               <Typography variant="body2" color="text.secondary">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Medium Roasted Espresso
               </Typography>
             </CardContent>
             <CardActions>

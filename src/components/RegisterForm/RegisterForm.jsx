@@ -112,22 +112,34 @@ function RegisterForm() {
             <br/>
             Here's what to expect:
             <br/>
+            <br/>
             When you are done reading this form, you will be directed to your 
             home page, where you can start a new recipe! You will also be able 
-            to view recipes created by our other members.
+            to view recipes created by our other members by clicking on the 
+            'Community' tab.
             <br/>
-            Here's what you need:
+            Here's what you need to get started:
+            <br/>
             <br/>
             1. Coffee (duh)<br/>
-            2. A scale the measures in grams. If you don't have a coffee scale<br/>
-               a simple food scale will do the trick.<br/>
+            <img src="./images/coffee.jpg" alt="coffee" />
+            2. A scale the measures in grams. If you don't have a coffee scale,
+            a simple food scale will do the trick.
+            <br/>
+            <br/>
+               <br/>
+            <img src="./images/coffeescale.jpg" alt="coffee scale" />  
             3. A brew method: The app currently supports Espresso, Drip Brew, 
-               Chemex, and French Press. <br/>
+               Chemex, and French Press. 
+               <br/>
+            <img src="./images/chemex.jpg" alt="chemex" />
+            <br/>
+            <br/>
             4. All the details for creating your delicious brew like: brew time, 
                a general idea of grind size (like medium coarse), pouring instructions.
-               Be as detailed as you like!<br/>
-            ** Add more here as needed: image? styling?
-
+               Be as detailed as you like!
+               <br/>
+            
           </DialogContentText>
         </DialogContent>
         <DialogActions>
