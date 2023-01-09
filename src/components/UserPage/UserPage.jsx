@@ -140,19 +140,16 @@ function UserPage() {
 
               <FormControl>
                 <Select
-                required
-                labelId="brew-method"
-                id="brew-method"
-                value={method}
-                label="Brew Method:"
-                style={{
-                    width: 200,
-                }}
-                onChange={(e) => {
+                  style={{backgroundColor: '#fffff'}}
+                  required
+                  labelId="brew-method"
+                  id="brew-method"
+                  value={method}
+                  label="Brew Method:"
+                  onChange={(e) => {
                     console.log("Brew Method", e.target.value)
                     setMethod(e.target.value)
-                }}
-                
+                  }}
                 >
                   <InputLabel id="Brew Method">Brew Method</InputLabel>
                   <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
@@ -185,9 +182,9 @@ function UserPage() {
                 id="roast-level"
                 value={roast}
                 label="Roast Level"
-                style={{
-                    width: 200,
-                }}
+                // style={{
+                //     width: 200,
+                // }}
                 onChange={(e) => {
                     console.log("Roast Level", e.target.value)
                     setRoast(e.target.value)
@@ -242,8 +239,16 @@ function UserPage() {
         </div>
           </DialogContent>
           <DialogActions>
-              <Button style={{color: "#5A5A5A"}} onClick={handleClose}>Cancel</Button>
-              <Button style={{color: "#4CAF50"}} onClick={handleSubmit}>Add Recipe</Button>
+              <Button 
+                  style={{color: "#5A5A5A",
+                  backgroundColor: "#FFFFFF",
+                  borderColor: "#5A5A5A"}}
+                  variant="outlined"
+                  onClick={handleClose}>Cancel</Button>
+              <Button 
+                  variant='contained'
+                  style={{color: "#FFFFFF", backgroundColor: "#6bb26b"}} 
+                  onClick={handleSubmit}>Add Recipe</Button>
             </DialogActions>
             </Dialog>
           </Grid>

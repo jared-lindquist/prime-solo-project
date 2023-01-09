@@ -102,7 +102,13 @@ function UserItem() {
     const handleDelete = () => {
         console.log('Delete button clicked', recipeDetails);
         dispatch({type: 'DELETE_RECIPE', payload: recipeDetails});
-        swal('Recipe deleted')
+        swal({
+            text:'Recipe deleted',
+            button: {
+                color: '#6B6BB2'
+            }
+        })
+        let timerInterval
         setDeleteOpen(false);
         history.push('/user');
     }
@@ -156,7 +162,7 @@ function UserItem() {
                         justify="center"
                         style={{minWidth: 120}}>
                     <p>Give this recipe a title:</p>
-                    <TextField style={{backgroundColor: '#F6F6FD'}}
+                    <TextField style={{backgroundColor: '#fff'}}
                         required
                         id="recipe-title-input"
                         label="Recipe Title"
@@ -168,7 +174,7 @@ function UserItem() {
                     <br/>
                     <p>What brew method did you use?</p>
                     <FormControl>
-                        <Select style={{backgroundColor: '#F6F6FD'}}
+                        <Select style={{backgroundColor: '#fff'}}
                             required
                             labelId="brew-method"
                             id="brew-method"
@@ -188,7 +194,7 @@ function UserItem() {
                     </FormControl>
                     <br/>
                     <p>What coffee did you use? (Roaster and country of origin)</p>
-                        <TextField style={{backgroundColor: '#F6F6FD'}}
+                        <TextField style={{backgroundColor: '#fff'}}
                             required
                             id="coffee-input"
                             label="Coffee Used"
@@ -200,7 +206,7 @@ function UserItem() {
                     <br/>
                     <p>Was this a Light, Medium, or Dark roast?</p>
                         <FormGroup>
-                            <Select style={{backgroundColor: '#F6F6FD'}}
+                            <Select style={{backgroundColor: '#fff'}}
                                 required
                                 labelId="roast-level"
                                 id="roast-level"
@@ -219,7 +225,7 @@ function UserItem() {
                         </FormGroup>
                         <br/>
                         <p>How many grams of coffee did you start the brew with?</p>
-                            <TextField style={{backgroundColor: '#F6F6FD'}}
+                            <TextField style={{backgroundColor: '#fff'}}
                                 required
                                 id="input"
                                 label="Input in Grams"
@@ -230,7 +236,7 @@ function UserItem() {
                             />
                         <br/>
                         <p>Once the brew was complete, how much coffee did you end up with?</p>
-                            <TextField style={{backgroundColor: '#F6F6FD'}}
+                            <TextField style={{backgroundColor: '#fff'}}
                                 required
                                 id="output"
                                 label="Output in Grams"
@@ -241,7 +247,7 @@ function UserItem() {
                             />
                         <br/>
                         <p>Please fill in details for this brew recipe below</p>
-                            <TextField style={{backgroundColor: '#F6F6FD'}}
+                            <TextField style={{backgroundColor: '#fff'}}
                                 id="comments"
                                 label="Tasting Notes/Comments"
                                 type="text"
@@ -255,8 +261,18 @@ function UserItem() {
                 </div>
                 </DialogContent>
                 <DialogActions>
-                    <Button style={{color: "#b83d34"}}onClick={handleCloseEdit}>Cancel</Button>
-                    <Button style={{color: "#6bb26b"}}onClick={handleEdit}>Update Brew</Button>
+                    <Button 
+                        style={{color: "#5A5A5A", backgroundColor: "#FFFFFFF", borderColor: "#5A5A5A"}}
+                        variant="outlined"
+                        onClick={handleCloseEdit}
+                    >Cancel
+                    </Button>
+                    <Button 
+                        variant='contained'
+                        style={{color: "#FFFFFF", backgroundColor: "#6bb26b"}}
+                        onClick={handleEdit}
+                    >Update Brew
+                    </Button>
                 </DialogActions>
                 </Dialog>
             </div>
@@ -276,37 +292,44 @@ function UserItem() {
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleCloseDelete}>Cancel</Button>
-                            <Button style={{color: "#b83d34"}}onClick={handleDelete}>
-                                Delete Recipe
+                            <Button 
+                                style={{color: "#5A5A5A", backgroundColor: "#FFFFFFF", borderColor: "#5A5A5A"}}
+                                variant="outlined"
+                                onClick={handleCloseDelete}
+                            >Cancel
+                            </Button>
+                            <Button 
+                                variant="contained"
+                                style={{color: '#FFFFFF', backgroundColor: "#b83d34"}}
+                                onClick={handleDelete}
+                            >Delete Recipe
                             </Button>
                         </DialogActions>
                     </Dialog>
         </div>
         <div className="button-group">
             <ButtonGroup >
-        <Button style={{color: "#FFFFFF",
-                        backgroundColor: "#6B6BB2"}}
-                variant="contained" 
-                onClick={handleOpenEdit}
-            >Edit this brew
-        </Button>
-        <Button style={{color: "#b83d34",
-                            backgroundColor: "#FFFFFF",
-                            borderColor: "#b83d34"}}
-                variant="outlined"
-                className='delete'
-                onClick={handleOpenDelete}
-            >Delete this Brew
-        </Button>
-        <Button style={{color: "#FFFFFF",
-                        backgroundColor: "#5A5A5A"}}
-            variant="contained" 
-            className='back'
-            onClick={handleBackToUser}
-            >Back to My Brews
-        </Button>
-    </ButtonGroup>
+                <Button 
+                    style={{color: "#FFFFFF", backgroundColor: "#6B6BB2"}}
+                    variant="contained" 
+                    onClick={handleOpenEdit}
+                >Edit this brew
+                </Button>
+                <Button 
+                    variant="contained"
+                    style={{color: '#FFFFFF', backgroundColor: "#b83d34"}}
+                    className='delete'
+                    onClick={handleOpenDelete}
+                >Delete this Brew
+                </Button>
+                <Button 
+                    style={{color: "#FFFFFF", backgroundColor: "#5A5A5A"}}
+                    variant="contained" 
+                    className='back'
+                    onClick={handleBackToUser}
+                >Back to My Brews
+                </Button>
+            </ButtonGroup>
         </div>
         
     </>

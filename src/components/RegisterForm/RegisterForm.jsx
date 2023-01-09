@@ -110,9 +110,10 @@ function RegisterForm() {
           <DialogContentText id="alert-dialog-slide-description">
             Welcome to "How Do You Brew"! 
             <br/>
+            <br/>
             Here's what to expect:
             <br/>
-            <br/>
+            
             When you are done reading this form, you will be directed to your 
             home page, where you can start a new recipe! You will also be able 
             to view recipes created by our other members by clicking on the 
@@ -121,29 +122,44 @@ function RegisterForm() {
             Here's what you need to get started:
             <br/>
             <br/>
-            1. Coffee (duh)<br/>
+            1. Coffee (duh)
+            <br/>
+            <br/>
             <img src="./images/coffee.jpg" alt="coffee" />
+            <br/>
+            <br/>
             2. A scale the measures in grams. If you don't have a coffee scale,
             a simple food scale will do the trick.
             <br/>
             <br/>
-               <br/>
-            <img src="./images/coffeescale.jpg" alt="coffee scale" />  
+            <img src="./images/coffeescale.jpg" alt="coffee scale" /> 
+            <br/>
+            <br/>
             3. A brew method: The app currently supports Espresso, Drip Brew, 
-               Chemex, and French Press. 
-               <br/>
+              Chemex, and French Press. 
+            <br/>
+            <br/>
             <img src="./images/chemex.jpg" alt="chemex" />
             <br/>
             <br/>
             4. All the details for creating your delicious brew like: brew time, 
-               a general idea of grind size (like medium coarse), pouring instructions.
-               Be as detailed as you like!
-               <br/>
-            
+              a general idea of grind size (like medium coarse), pouring instructions.
+              Be as detailed as you like!
+              See this recipe from one of our users as an example:
+            <br/>
+            <br/>
+            <img src="./images/samplerecipe.jpg"/>
+            <br/>
+            <br/>
+            Ready to get brewing?? Click the button below
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button style={{color: "#b2b26b"}} onClick={handleClose}
+          <Button 
+              variant='contained'
+              style={{color: "#FFFFFF",
+              backgroundColor: "#6bb26b"}} 
+              onClick={handleClose}
             >Let's get started!
           </Button>
         </DialogActions>
