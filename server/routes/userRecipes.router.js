@@ -31,12 +31,19 @@ userRecipesRouter.get('/', rejectUnauthenticated, (req, res) => {
     });
 });
 
-userRecipesRouter.get('/:id', rejectUnauthenticated, (req, res) => {
+userRecipesRouter.get('/:id', (req, res) => {
     console.log('in userRecipesRouter.get for details:');
     console.log('is authenticated?', req.isAuthenticated());
     console.log('req.user', req.user);
 
-    const queryText = 'SELECT * FROM "recipes" WHERE "recipes"."id" = $1;';
+    // const queryText = 'SELECT * FROM "recipes" WHERE "recipes"."id" = $1;';
+
+    const  queryText = `SELECT "recipes"."id", "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
+    "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", "recipes"."image", "user"."username" 
+    FROM "recipes"
+    INNER JOIN "user" 
+    ON "recipes"."user_id" = "user"."id"
+    WHERE "recipes"."id" = $1;`;
 
     pool.query(queryText, [req.params.id])
     .then((results) => res.send(results.rows))

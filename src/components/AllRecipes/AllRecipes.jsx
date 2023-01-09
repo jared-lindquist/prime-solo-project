@@ -30,7 +30,7 @@ function AllRecipes() {
         //console.log to confirm onClick
         console.log('clicked on a recipe', recipe);
         //collects recipe info to store locally
-        dispatch({type: 'SET_DETAILS', payload: recipe})
+        // dispatch({type: 'SET_DETAILS', payload: recipe})
         //navigates to the item details page
         history.push(`/recipeitem/` + recipe.id)
     }

@@ -40,6 +40,7 @@ function RecipeItem() {
     const [method, setMethod] = useState(store.details[0]?.brew_method);
     const [image, setImage] = useState(store.details[0]?.image);
     const [id, setId] = useState(store.details[0]?.id);
+    const [username, setUsername] = useState(store.details[0]?.username);
 
     console.log('recipe details are: ', store.details);
 
@@ -59,28 +60,32 @@ function RecipeItem() {
             <h2>
                 {store.details[0]?.title}
             </h2>
-            <Button style={{color: "#FFFFFF",
-                            backgroundColor: "#5A5A5A"}}
-                    variant="contained" 
-                    className='back'
-                    onClick={backToCommunity}
-            >Back to Community Brews
-            </Button>
+            
             <br/>
             <br/>
             <br/>
-            <img  className="image" src={store.details[0]?.image} alt="brew-method-image"
+                <div className='recipe-text'>
+                    <img  className="image" src={store.details[0]?.image} alt="brew-method-image"
                     height="400" width="400"/>
-            <br/>
-            <br/>
-                <p> Coffee used for this brew: {store.details[0]?.coffee}</p>
-                <p>Which is a {store.details[0]?.roast_level} roasted coffee</p>
-                <p>{store.details[0]?.username} brewed with a {store.details[0]?.brew_method}</p>
-                <p>They started this brew with {store.details[0]?.input} grams of coffee</p>
-                <p>The finished weight of the brew was {store.details[0]?.output} grams.</p>
-                <p>Comments left by {store.details[0]?.username}:</p>
-                <p>'{store.details[0]?.comments}.' </p>
-                <p>Thanks for checking out my brew!</p>
+                    <br/>
+                    <br/>
+                    <div className='details-text'>
+                        <p> Coffee used for this brew: {store.details[0]?.coffee}</p>
+                        <p>Which is a {store.details[0]?.roast_level} roasted coffee</p>
+                        <p>{store.details[0]?.username} brewed with a {store.details[0]?.brew_method}</p>
+                        <p>They started this brew with {store.details[0]?.input} grams of coffee</p>
+                        <p>The finished weight of the brew was {store.details[0]?.output} grams.</p>
+                        <p>Comments left by {store.details[0]?.username}:</p>
+                        <p>'{store.details[0]?.comments}.' </p>
+                        <p>Thanks for checking out my brew!</p>
+                    </div>
+                </div>
+                    <Button style={{color: "#FFFFFF", backgroundColor: "#5A5A5A"}}
+                        variant="contained" 
+                        className='back'
+                        onClick={backToCommunity}
+                    >Back to Community Brews
+                    </Button>
         </div>
     )
 }
