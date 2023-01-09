@@ -112,45 +112,35 @@ function UserItem() {
     }
 
     return (
+        <>
         <div className='recipe-details'>
             <h1 className="title">
                 {store.details[0]?.title}
             </h1>
-            <ButtonGroup>
-                <Button style={{color: "#FFFFFF",
-                                backgroundColor: "#6B6BB2"}}
-                        variant="contained" 
-                        onClick={handleOpenEdit}
-                    >Edit this brew
-                </Button>
-                <Button style={{color: "#b83d34",
-                                    backgroundColor: "#FFFFFF",
-                                    borderColor: "#b83d34"}}
-                        variant="outlined"
-                        className='delete'
-                        onClick={handleOpenDelete}
-                    >Delete this Brew
-                </Button>
-                <Button style={{color: "#FFFFFF",
-                                backgroundColor: "#5A5A5A"}}
-                    variant="contained" 
-                    className='back'
-                    onClick={handleBackToUser}
-                    >Back to My Brews
-                </Button>
-            </ButtonGroup>
+            
             <br/>
-            <br/>
-            <br/>
-            <img  className="image" src={store.details[0]?.image} alt="brew-method-image"
+            <div className="recipe-text">
+                <img  className="image" src={store.details[0]?.image} alt="brew-method-image"
                     height="400" width="400"/>
-                <div className="recipe-text">
-                    <p> Coffee used for this brew: {store.details[0]?.coffee}</p>
-                    <p>Which is a {store.details[0]?.roast_level} roasted coffee brewed on {store.details[0]?.brew_method}</p>
-                    <p>This brew recipe started with {store.details[0]?.input} grams of coffee</p>
-                    <p>The finished weight of the brew was {store.details[0]?.output} grams.</p>
-                    <p>Full Recipe Details:</p>
-                    <p>'{store.details[0]?.comments}.' </p>
+                    <div className='details-text'>
+                        <p> Coffee used for this brew: {store.details[0]?.coffee}
+                        <br/>
+                        <br/>
+                        Which is a {store.details[0]?.roast_level} roasted coffee brewed on {store.details[0]?.brew_method}
+                        <br/>
+                        <br/>
+                        This brew recipe started with {store.details[0]?.input} grams of coffee
+                        <br/>
+                        <br/>
+                        The finished weight of the brew was {store.details[0]?.output} grams.
+                        <br/>
+                        <br/>
+                        Full Recipe Details:
+                        <br/>
+                        <br/>
+                        '{store.details[0]?.comments}' </p>
+                        </div>
+                    
                 </div>
             <br/>
             <br/>
@@ -270,8 +260,7 @@ function UserItem() {
                 </DialogActions>
                 </Dialog>
             </div>
-                <br/>
-                <br/>
+                
                     <Dialog
                         open={deleteOpen}
                         onClose={handleCloseDelete}
@@ -294,6 +283,33 @@ function UserItem() {
                         </DialogActions>
                     </Dialog>
         </div>
+        <div className="button-group">
+            <ButtonGroup >
+        <Button style={{color: "#FFFFFF",
+                        backgroundColor: "#6B6BB2"}}
+                variant="contained" 
+                onClick={handleOpenEdit}
+            >Edit this brew
+        </Button>
+        <Button style={{color: "#b83d34",
+                            backgroundColor: "#FFFFFF",
+                            borderColor: "#b83d34"}}
+                variant="outlined"
+                className='delete'
+                onClick={handleOpenDelete}
+            >Delete this Brew
+        </Button>
+        <Button style={{color: "#FFFFFF",
+                        backgroundColor: "#5A5A5A"}}
+            variant="contained" 
+            className='back'
+            onClick={handleBackToUser}
+            >Back to My Brews
+        </Button>
+    </ButtonGroup>
+        </div>
+        
+    </>
     )
 }
 
