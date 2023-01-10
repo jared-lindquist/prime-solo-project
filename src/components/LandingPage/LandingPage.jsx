@@ -43,7 +43,7 @@ function LandingPage() {
         </Grid>
           <Grid item xs={3}
                 align="center">
-            <h4 align="center">Already a Brewer?</h4>
+            <h3 align="center">Already a Brewer?</h3>
                   <Button style={{color: "#FFFFFF", backgroundColor: "#6B6BB2",
                                   }}
                           className="btn_btn_sizeSm" 

@@ -8,6 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
+import { Grid} from '@mui/material'
 import { useHistory } from 'react-router-dom';
 
 const Transition = React.forwardRef(function Transition(
@@ -55,16 +56,18 @@ function RegisterForm() {
 
   return (
     <form className="formPanel">
-      <h2>Register User</h2>
+      {/* <h2>Register User</h2> */}
+      <h3 align="center">New To Brew? <br/> Register here:</h3>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
         </h3>
       )}
-      <div>
+      <div align="center">
         <label htmlFor="username">
           Username:
           <input
+            size="15"
             type="text"
             name="username"
             value={username}
@@ -73,10 +76,11 @@ function RegisterForm() {
           />
         </label>
       </div>
-      <div>
+      <div align="center">
         <label htmlFor="password">
           Password:
           <input
+            size="15"
             type="password"
             name="password"
             value={password}
@@ -87,16 +91,21 @@ function RegisterForm() {
       </div>
       <div>
         {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
-        <Button style={{color: "#FFFFFF",
+        <Grid align="center">
+          <Button style={{color: "#FFFFFF",
                         backgroundColor: "#6bb26b"}}
                 className="btn" 
                 type="submit" 
                 name="submit" 
                 value="Register"
                 onClick={registerUser}
+                align="center"
+                justifyContent="center"
                 >
           Register
         </Button>
+        </Grid>
+        
 
         <Dialog
         open={open}
