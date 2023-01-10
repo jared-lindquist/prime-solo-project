@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import useReduxStore from '../../hooks/useReduxStore';
 import { useHistory, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import './RecipeItem.css';
 
 
@@ -60,7 +62,9 @@ function RecipeItem() {
             <h2>
                 {store.details[0]?.title}
             </h2>
-            
+            <Button style={{color: "#AB003C"}}>
+                <FavoriteBorderIcon  />
+            </Button>
             <br/>
             <br/>
             <br/>

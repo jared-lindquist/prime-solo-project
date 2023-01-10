@@ -33,20 +33,7 @@ function LandingPage() {
         </Grid>
         
         <Grid item xs={3}>
-          <h2> How it works:</h2>
-          <br/>
-          <p>
-          1.view sample 
-          recipes below
-          </p>
-          <p>
-          2.register to   
-          create recipes
-          and view all recipes
-          </p>
-          <p>
-            3. More details will be added here
-          </p>
+          <img src="./images/coffee-animated.webp" />
 
         </Grid>
 
@@ -55,19 +42,18 @@ function LandingPage() {
           <RegisterForm />
         </Grid>
           <Grid item xs={3}
-                justify-content="right">
-            <h4 >Already a Brewer?</h4>
-            <Grid 
-                justify-content="center"
-                item xs={2}>
-                  <center>
-                    <Button style={{color: "#FFFFFF",
-                                    backgroundColor: "#6B6BB2"}}
-                            className="btn btn_sizeSm" onClick={onLogin}>
-                      Login
-                    </Button>
-                  </center>
-            </Grid>
+                align="center">
+            <h4 align="center">Already a Brewer?</h4>
+                  <Button style={{color: "#FFFFFF", backgroundColor: "#6B6BB2",
+                                  }}
+                          className="btn_btn_sizeSm" 
+                          align="center"
+                          onClick={onLogin}
+                          justifyContent="center"
+                          // fullWidth="true"
+                  >
+                    Login
+                  </Button>
           </Grid>
         <Grid item xs={12}></Grid>
         <Grid 
@@ -81,18 +67,16 @@ function LandingPage() {
           />
           <CardContent>
           <Typography>
-              <h2>Awesome Ethiopian</h2>
+            <h2>Awesome Ethiopian</h2>
               </Typography>
               <Typography variant="body2" color="text.secondary">
               Light Roasted Chemex
               </Typography>
           </CardContent>
           <CardActions>
-            {/* <Button size="small">Share</Button> */}
             <Button style={{color: "#9999FF"}}size="small">Login or Register to Learn More</Button>
           </CardActions>
         </Card>
-
         </Grid>
         <Grid item xs={3}>
           <Card sx={{ maxWidth: 345 }}>
