@@ -99,4 +99,14 @@ userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
     .catch((error) => res.sendStatus(500));
 });
 
+userRecipesRouter.post('/method', rejectUnauthenticated, (req, res) => {
+    console.log('in userRecipesRouter/method GET', req.body.brew_method);
+
+    let queryText = 'SELECT * FROM "recipes" WHERE "recipes"."brew_method" = $1'
+
+    pool.query(queryText, [req.body.brew_method])
+    .then((results) => res.send(results.rows))
+    .catch((error) => res.sendStatus(500));
+})
+
 module.exports = userRecipesRouter;

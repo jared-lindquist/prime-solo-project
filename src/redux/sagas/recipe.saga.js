@@ -76,7 +76,7 @@ function* editRecipe(action) {
     const imageUrl = handleImage(action.payload.brew_method);
 
     const newPayload = {...action.payload, image: imageUrl}
-     console.log('in recipe.saga editRecipe', action.payload, imageUrl);
+    console.log('in recipe.saga editRecipe', action.payload, imageUrl);
     try {
         yield axios.put('/api/userRecipes/' + action.payload.id, newPayload);
         yield put({type: 'SET_DETAILS', payload: action.payload})
@@ -97,6 +97,19 @@ function* deleteRecipe(action) {
     }
 }
 
+function* getMethod(action) {
+    console.log('in getMethod', action.payload);
+    try {
+        const method = yield axios.post('/api/userRecipes/method', {brew_method: action.payload})
+        console.log('method:', method);
+        yield put ({type: 'SET_RECIPES', payload: method.data})
+
+    }
+    catch(error) {
+        console.log('error getting method', error);
+    }
+}
+
 function* recipeSaga(action) {
     yield takeLatest('FETCH_ALL_RECIPES', fetchAllRecipes);
     //add takeLatest for add, delete, and edit recipe sagas
@@ -105,6 +118,7 @@ function* recipeSaga(action) {
     yield takeLatest('DELETE_RECIPE', deleteRecipe);
     yield takeLatest('EDIT_RECIPE', editRecipe);
     yield takeLatest('GET_DETAILS', getDetails);
+    yield takeLatest('GET_METHOD', getMethod);
 }
 
 export default recipeSaga;

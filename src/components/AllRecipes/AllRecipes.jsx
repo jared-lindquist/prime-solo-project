@@ -9,7 +9,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardHeader, Grid} from '@mui/material'
-import { useHistory } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
+import { InputLabel, Select, MenuItem, FormControl, Paper, FormGroup } from '@mui/material';
+import { useState } from 'react';
 import './AllRecipes.css';
 
 
@@ -18,6 +20,9 @@ function AllRecipes() {
     const history = useHistory();
     const store = useReduxStore();
     const dispatch = useDispatch();
+
+    const [method, setMethod] = useState('');
+    const [recipes, setRecipes] = useState(store.allRecipes);
 
     useEffect(()=> {
         window.scrollTo(0,0)
@@ -29,15 +34,13 @@ function AllRecipes() {
     const recipeDetails = (recipe) => {
         //console.log to confirm onClick
         console.log('clicked on a recipe', recipe);
-        //collects recipe info to store locally
-        // dispatch({type: 'SET_DETAILS', payload: recipe})
         //navigates to the item details page
         history.push(`/recipeitem/` + recipe.id)
     }
 
 
     return (
-        <div>
+        <div key={method}>
             <Grid  
             container rowSpacing={{ xs: 1, sm: 2, md: 3 }} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             justifyContent="center"
@@ -46,6 +49,39 @@ function AllRecipes() {
             >
                 <h2 className='header'>All Community Brews</h2>
                 <Grid item xs={12}></Grid>
+                <Grid>
+                    <h3>
+                        Filter by Brew Method:
+                    </h3>
+                </Grid>
+                <Grid 
+                item xs={12}
+                display="flex"
+                justifyContent="center"
+                justify="center"
+                alignItems="center"
+            >
+                <Select
+                    style={{backgroundColor: '#fffff', width: 400}}
+                    required
+                    labelId="brew-method"
+                    id="brew-method"
+                    value={method}
+                    label="Brew Method:"
+                    onChange={(e) => {
+                    console.log("Brew Method", e.target.value)
+                    setMethod(e.target.value)
+                    dispatch({type: 'GET_METHOD', payload: e.target.value})
+                    
+                    }}
+                >
+                    <InputLabel id="Brew Method">Brew Method</InputLabel>
+                    <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
+                    <MenuItem value="espresso">Espresso Machine</MenuItem>
+                    <MenuItem value="chemex">Chemex</MenuItem>
+                    <MenuItem value="french-press">French Press</MenuItem>
+                </Select>
+            </Grid>
 
                     {store.allRecipes.map(recipe  => (
                     <Grid   item xs={3} 
