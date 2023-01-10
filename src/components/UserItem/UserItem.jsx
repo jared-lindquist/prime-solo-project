@@ -12,8 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { ButtonGroup } from '@mui/material';
 import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } from '@mui/material';
-
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import './UserItem.css';
 
 
@@ -94,7 +93,12 @@ function UserItem() {
         // dispatch({type: 'SET_EDIT_STATE', payload: true});
         dispatch({type: 'EDIT_RECIPE', payload: recipeDetails});
         setEditOpen(false);
-        swal('Recipe Updated!')
+        
+        Swal.fire({
+            text: 'Brew Recipe Updated!',
+            confirmButtonColor: '#6B6BB2',
+            confirmButtonText: 'Got It'
+        })
         history.push('/userItem/' + ID);
     }
 
@@ -102,13 +106,13 @@ function UserItem() {
     const handleDelete = () => {
         console.log('Delete button clicked', recipeDetails);
         dispatch({type: 'DELETE_RECIPE', payload: recipeDetails});
-        swal({
-            text:'Recipe deleted',
-            button: {
-                color: '#6B6BB2'
-            }
+        
+        Swal.fire({
+            text: 'Recipe Deleted',
+            // color: '#6B6BB2',
+            confirmButtonColor: '#6B6BB2',
+            confirmButtonText: 'Got It'
         })
-        let timerInterval
         setDeleteOpen(false);
         history.push('/user');
     }

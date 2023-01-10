@@ -88,11 +88,11 @@ userRecipesRouter.delete('/:id', rejectUnauthenticated, (req, res) => {
 userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in userRecipesRouter PUT', req.body, req.params.id);
 
-    let queryParams = [req.body.title, req.body.coffee, req.body.roast_level, req.body.input, req.body.output, req.body.comments, req.body.brew_method, req.body.id];
+    let queryParams = [req.body.title, req.body.coffee, req.body.roast_level, req.body.input, req.body.output, req.body.comments, req.body.brew_method, req.body.image, req.body.id];
     let queryText = `
     UPDATE "recipes"
-    SET "title" = $1, "coffee" = $2, "roast_level" = $3, "input" = $4, "output" = $5, "comments" = $6, "brew_method" = $7
-    WHERE "id" = $8;`;
+    SET "title" = $1, "coffee" = $2, "roast_level" = $3, "input" = $4, "output" = $5, "comments" = $6, "brew_method" = $7, "image" = $8
+    WHERE "id" = $9;`;
 
     pool.query(queryText, queryParams)
     .then((results) => res.sendStatus(200))

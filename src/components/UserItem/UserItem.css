@@ -4,7 +4,7 @@
 }
 
 .image {
-    border-radius: 30%;
+    /* border-radius: 30%; */
     padding-right: 30px;
 }
 
@@ -25,4 +25,8 @@
 
 .details-text {
     width: 400px;
+}
+
+.swal-button swal-button--confirm {
+    background-color: #6B6BB2;
 }

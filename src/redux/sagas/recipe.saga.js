@@ -72,9 +72,13 @@ function* addRecipe(action) {
 }
 //editRecipe* put
 function* editRecipe(action) {
-    console.log('in recipe.saga editRecipe', action.payload);
+   
+    const imageUrl = handleImage(action.payload.brew_method);
+
+    const newPayload = {...action.payload, image: imageUrl}
+     console.log('in recipe.saga editRecipe', action.payload, imageUrl);
     try {
-        yield axios.put('/api/userRecipes/' + action.payload.id, action.payload);
+        yield axios.put('/api/userRecipes/' + action.payload.id, newPayload);
         yield put({type: 'SET_DETAILS', payload: action.payload})
     }
     catch(error) {

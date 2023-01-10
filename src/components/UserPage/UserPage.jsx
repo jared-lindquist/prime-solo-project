@@ -11,7 +11,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } from '@mui/material';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import Button from '@mui/material/Button';
 import UserRecipes from '../UserRecipes/UserRecipes';
 import './UserPage.css';
@@ -65,7 +65,13 @@ function UserPage() {
         return swal('Please fill in all required fields to add recipe')
     }
     dispatch({type: 'ADD_RECIPE', payload: recipeDetails});
-    swal('You added a brew!');
+    // swal('You added a brew!');
+    Swal.fire({
+      text: 'You Added A New Brew!',
+      // color: '#6B6BB2',
+      confirmButtonColor: '#6B6BB2',
+      confirmButtonText: 'Nice!'
+  })
     setTitle('');
     setCoffee('');
     setRoast('');
