@@ -29,7 +29,7 @@ function LandingPage() {
         <Grid container item spacing={3}
             justifyContent="center"
             item xs={12}>
-          <h2>{heading}</h2>
+          <h2 className='heading'>{heading}</h2>
         </Grid>
         
         <Grid item xs={3}>
@@ -66,12 +66,7 @@ function LandingPage() {
             alt="something cool"
           />
           <CardContent>
-          <Typography>
-            <>
             <h2>Awesome Ethiopian</h2>
-            </>
-            
-              </Typography>
               <Typography variant="body2" color="text.secondary">
               Light Roasted Chemex
               </Typography>
@@ -90,12 +85,7 @@ function LandingPage() {
               alt="Latte"
             />
             <CardContent>
-              <Typography>
-                <>
                 <h2>My First French Press</h2>
-                </>
-              
-              </Typography>
               <Typography variant="body2" color="text.secondary">
               Medium Roasted French Press
               </Typography>
@@ -115,12 +105,10 @@ function LandingPage() {
               alt="coffee"
             />
             <CardContent>
-            <Typography>
-              <>
+            
+            
               <h2>More Espresso Please</h2>
-              </>
               
-              </Typography>
               <Typography variant="body2" color="text.secondary">
               Medium Roasted Espresso
               </Typography>

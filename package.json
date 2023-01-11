@@ -1,5 +1,12 @@
 {
   "name": "prime-solo-project",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "size": "16x16",
+      "type": "image/x-icon"
+    }
+  ],
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",

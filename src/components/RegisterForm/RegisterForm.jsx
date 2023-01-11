@@ -13,9 +13,7 @@ import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
-  },
+  props: TransitionProps & {children: React.ReactElement<any, any>;},
   ref: React.Ref<unknown>,
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -47,6 +45,7 @@ function RegisterForm() {
     setOpen(false);
     history.push('/user')
   };
+  
   const registerUser = (event) => {
   event.preventDefault();
     if (username === '' || password === '') {
@@ -61,8 +60,6 @@ function RegisterForm() {
     handleClickOpen();
 
   }; // end registerUser
-
-
 
   return (
     <form className="formPanel">

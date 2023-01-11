@@ -72,7 +72,7 @@ function* addRecipe(action) {
 }
 //editRecipe* put
 function* editRecipe(action) {
-   
+
     const imageUrl = handleImage(action.payload.brew_method);
 
     const newPayload = {...action.payload, image: imageUrl}

@@ -106,7 +106,7 @@ function AllRecipes() {
                             alignItems="center"
                             key={recipe.id}
                     >
-                        <Card className="card"key={recipe.id} sx={{ height: 375, width:350 }}>
+                        <Card className="card" key={recipe.id} sx={{ height: 375, width:350 }}>
                             <CardActionArea onClick={ () => recipeDetails(recipe)}>
                                 <CardMedia
                                     component="img"
