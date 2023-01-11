@@ -74,7 +74,7 @@ function LandingPage() {
               </Typography>
           </CardContent>
           <CardActions>
-            <Button style={{color: "#9999FF"}}size="small">Login or Register to Learn More</Button>
+            <Button style={{color: "#6B6BB2"}}size="small">Login or Register to Learn More</Button>
           </CardActions>
         </Card>
         </Grid>
@@ -96,7 +96,7 @@ function LandingPage() {
             </CardContent>
             <CardActions>
               {/* <Button size="small">Share</Button> */}
-              <Button style={{color: "#9999FF"}}size="small">Login or Register to Learn More</Button>
+              <Button style={{color: "#6B6BB2"}}size="small">Login or Register to Learn More</Button>
             </CardActions>
           </Card>
         </Grid>
@@ -118,7 +118,7 @@ function LandingPage() {
             </CardContent>
             <CardActions>
               {/* <Button size="small">Share</Button> */}
-              <Button style={{color: "#9999FF"}}size="small">Login or Register to Learn More</Button>
+              <Button style={{color: "#6B6BB2"}}size="small">Login or Register to Learn More</Button>
             </CardActions>
           </Card>
 

@@ -102,8 +102,15 @@ userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
 userRecipesRouter.post('/method', rejectUnauthenticated, (req, res) => {
     console.log('in userRecipesRouter/method GET', req.body.brew_method);
 
-    let queryText = 'SELECT * FROM "recipes" WHERE "recipes"."brew_method" = $1'
+    //let queryText = 'SELECT * FROM "recipes" WHERE "recipes"."brew_method" = $1'
 
+    let queryText = `SELECT "recipes"."id", "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
+    "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", "recipes"."image", "user"."username" 
+    FROM "recipes"
+    INNER JOIN "user" 
+    ON "recipes"."user_id" = "user"."id"
+    WHERE "recipes"."brew_method" = $1
+    ORDER BY "recipes"."id" DESC;`;
     pool.query(queryText, [req.body.brew_method])
     .then((results) => res.send(results.rows))
     .catch((error) => res.sendStatus(500));
