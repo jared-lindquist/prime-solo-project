@@ -6,6 +6,8 @@ const recipeReducer = (state = [], action) => {
             return action.payload;
         case 'SET_USER_RECIPES':
             return action.payload;
+        case 'SET_FAVORITES':
+            return action.payload;
         default:
             return state;
     }

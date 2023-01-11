@@ -23,13 +23,10 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import UserItem from '../UserItem/UserItem';
 import UserRecipes from '../UserRecipes/UserRecipes';
 import AllRecipes from '../AllRecipes/AllRecipes';
-import EditRecipe from '../EditRecipe/EditRecipe';
-import RecipeForm from '../RecipeForm/RecipeForm';
+import Favorites from '../Favorites/Favorites';
 import RecipeItem from '../RecipeItem/RecipeItem';
-
-
 import './App.css';
-// import background from "./images/370.jpg";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -109,7 +106,14 @@ function App() {
             <RecipeItem />
 
           </ProtectedRoute>
+          
+          <ProtectedRoute
+            exact
+            path="/favorites"
+          >
+            <Favorites />
 
+          </ProtectedRoute>
 
           <Route
             exact

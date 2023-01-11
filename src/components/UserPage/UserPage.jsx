@@ -11,6 +11,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } from '@mui/material';
 import Swal from 'sweetalert2';
+import swal from 'sweetalert';
 import Button from '@mui/material/Button';
 import UserRecipes from '../UserRecipes/UserRecipes';
 import './UserPage.css';

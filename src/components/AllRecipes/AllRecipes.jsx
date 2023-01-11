@@ -40,6 +40,7 @@ function AllRecipes() {
 
     const seeFavorites = () => {
         console.log('see favorites button clicked');
+        history.push('/favorites')
     }
 
     return (

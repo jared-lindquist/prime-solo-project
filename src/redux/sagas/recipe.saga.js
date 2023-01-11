@@ -26,6 +26,18 @@ function* fetchUserRecipes(action) {
     }
 }
 
+function* getFavorites(action) {
+    console.log('in recipe.saga getFavorites');
+    try {
+        const favorites = yield axios.get('/api/userRecipes/favorites');
+        console.log('user favorites are:', favorites);
+        yield put ({type: 'SET_FAVORITES', payload: favorites.data})
+    }
+    catch(error) {
+        console.log('error in recipe.saga getFavorites', error);
+    }
+}
+
 //create new generator function for getDetails to get details page view UserItem
 function* getDetails(action) {
     try {
@@ -119,6 +131,7 @@ function* recipeSaga(action) {
     yield takeLatest('EDIT_RECIPE', editRecipe);
     yield takeLatest('GET_DETAILS', getDetails);
     yield takeLatest('GET_METHOD', getMethod);
+    yield takeLatest('GET_FAVORITES', getFavorites);
 }
 
 export default recipeSaga;

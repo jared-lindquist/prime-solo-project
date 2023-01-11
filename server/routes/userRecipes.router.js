@@ -6,9 +6,7 @@ const {
 } = require('../modules/authentication-middleware');
 const { query } = require('express');
 
-// /**
-//  * GET route template
-//  */
+//GET user recipes from DB
 userRecipesRouter.get('/', rejectUnauthenticated, (req, res) => {
     console.log('in recipeRouter.get for user recipes')
     console.log('is authenticated?', req.isAuthenticated());
@@ -27,6 +25,29 @@ userRecipesRouter.get('/', rejectUnauthenticated, (req, res) => {
     .then((results) => res.send(results.rows))
     .catch((error) => {
         console.log('error selecting user recipes', error);
+        res.sendStatus(500);
+    });
+});
+
+//Get user favorites from DB
+userRecipesRouter.get('/favorites', rejectUnauthenticated, (req,res) => {
+    console.log('in recipeRouter.get for user favorites')
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('req.user', req.user);
+
+    const userId = req.user.id;
+    const queryText = `
+    SELECT "favorites"."fav_recipe_id", "recipes"."title", "recipes"."coffee", 
+    "recipes"."roast_level", "recipes"."brew_method", "recipes"."input", 
+    "recipes"."output", "recipes"."comments"
+    FROM "favorites"
+    INNER JOIN "recipes" ON "favorites"."fav_recipe_id" = "recipes"."id"
+    WHERE "favorites"."user_id" = $1`;
+
+    pool.query(queryText, [userId])
+    .then((results) => res.send(results.rows))
+    .catch((error) => {
+        console.log('error getting favorites', error);
         res.sendStatus(500);
     });
 });
