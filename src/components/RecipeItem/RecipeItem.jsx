@@ -4,8 +4,11 @@ import { useEffect, useState } from 'react';
 import useReduxStore from '../../hooks/useReduxStore';
 import { useHistory, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import { ToggleButtonGroup, ToggleButton } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 import './RecipeItem.css';
 
 
@@ -44,7 +47,9 @@ function RecipeItem() {
     const [id, setId] = useState(store.details[0]?.id);
     const [username, setUsername] = useState(store.details[0]?.username);
 
-    console.log('recipe details are: ', store.details);
+    const [isActive, setIsActive] = useState(false);
+
+    console.log('recipe details are: ', store.details, isActive);
 
 
     
@@ -52,19 +57,26 @@ function RecipeItem() {
         history.push('/allrecipes');
     }
 
+    const handleFavorite = () => {
+        
+        setIsActive(!isActive);
+        console.log('favorite button clicked', isActive);
+    } 
+
     return (
         <div className='recipe-details'>
-            {/* {JSON.stringify(store.details)} */}
             <h1 className='title'>
                 This brew is brought to you by {store.details[0]?.username}
             </h1>
-                {/* <img src={store.details.image}/> */}
             <h2>
                 {store.details[0]?.title}
             </h2>
-            <Button style={{color: "#AB003C"}}>
-                <FavoriteBorderIcon  />
-            </Button>
+                <FormControlLabel
+                    onClick={handleFavorite}
+                    control={<Checkbox icon={<FavoriteBorderIcon />} 
+                    checkedIcon={<FavoriteIcon />}
+                    name="checkedH" />}
+                />
             <br/>
             <br/>
             <br/>

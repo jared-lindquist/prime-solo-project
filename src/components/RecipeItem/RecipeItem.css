@@ -21,3 +21,13 @@
 .details-text {
     width: 400px;
 }
+
+.add-to-favorites {
+    color: white;
+    background-color: #6bb26b;
+}
+
+.remove-from-favorites {
+    color: white;
+    background-color: red;
+}
