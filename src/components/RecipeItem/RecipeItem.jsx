@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import useReduxStore from '../../hooks/useReduxStore';
 import { useHistory, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import { ToggleButtonGroup, ToggleButton } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -59,8 +58,11 @@ function RecipeItem() {
 
     const handleFavorite = () => {
         
-        setIsActive(!isActive);
+        setIsActive(true);
+
         console.log('favorite button clicked', isActive);
+        dispatch({type: 'ADD_TO_FAVORITES', payload: store.details})
+        
     } 
 
     return (

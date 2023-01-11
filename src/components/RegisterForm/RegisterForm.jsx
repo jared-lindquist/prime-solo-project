@@ -31,6 +31,8 @@ function RegisterForm() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
+    //need to add some logic here to stop registering
+    //if the username is taken
     setOpen(true);
   };
 
@@ -108,7 +110,7 @@ function RegisterForm() {
                 value="Register"
                 onClick={registerUser}
                 align="center"
-                justifyContent="center"
+                // justifyContent="center"
                 >
           Register
         </Button>

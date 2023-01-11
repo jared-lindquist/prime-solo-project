@@ -49,7 +49,7 @@ function LandingPage() {
                           className="btn_btn_sizeSm" 
                           align="center"
                           onClick={onLogin}
-                          justifyContent="center"
+                          // justifyContent="center"
                           // fullWidth="true"
                   >
                     Login
@@ -67,7 +67,10 @@ function LandingPage() {
           />
           <CardContent>
           <Typography>
+            <>
             <h2>Awesome Ethiopian</h2>
+            </>
+            
               </Typography>
               <Typography variant="body2" color="text.secondary">
               Light Roasted Chemex
@@ -88,7 +91,10 @@ function LandingPage() {
             />
             <CardContent>
               <Typography>
-              <h2>My First French Press</h2>
+                <>
+                <h2>My First French Press</h2>
+                </>
+              
               </Typography>
               <Typography variant="body2" color="text.secondary">
               Medium Roasted French Press
@@ -110,7 +116,10 @@ function LandingPage() {
             />
             <CardContent>
             <Typography>
+              <>
               <h2>More Espresso Please</h2>
+              </>
+              
               </Typography>
               <Typography variant="body2" color="text.secondary">
               Medium Roasted Espresso

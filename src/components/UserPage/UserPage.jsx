@@ -1,5 +1,4 @@
 import React from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -72,7 +71,6 @@ function UserPage() {
       return swal('Please fill in all required fields')
     }
     dispatch({type: 'ADD_RECIPE', payload: recipeDetails});
-    // swal('You added a brew!');
     Swal.fire({
       text: 'You Added A New Brew!',
       // color: '#6B6BB2',
@@ -128,6 +126,7 @@ function UserPage() {
                     onClick={handleNewBrew}
               > Click Here
             </Button>
+            
           <Grid justifyContent="center"
                 container item spacing={3}
           >

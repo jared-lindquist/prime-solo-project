@@ -38,6 +38,9 @@ function AllRecipes() {
         history.push(`/recipeitem/` + recipe.id)
     }
 
+    const seeFavorites = () => {
+        console.log('see favorites button clicked');
+    }
 
     return (
         <div key={method}>
@@ -81,6 +84,18 @@ function AllRecipes() {
                     <MenuItem value="chemex">Chemex</MenuItem>
                     <MenuItem value="french-press">French Press</MenuItem>
                 </Select>
+            </Grid>
+            <Grid item xs={12}
+                display="flex"
+                justifyContent="center"
+                justify="center"
+                alignItems="center">
+                <Button style={{backgroundColor: "#6bb26b"}}
+                        variant="contained"
+                        onClick={seeFavorites}
+                    >
+                    See My Favorites
+                </Button>
             </Grid>
 
                     {store.allRecipes.map(recipe  => (
