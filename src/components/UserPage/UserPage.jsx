@@ -62,7 +62,14 @@ function UserPage() {
     if (recipeDetails.title === '' || recipeDetails.method === '' || 
     recipeDetails.coffee === '' || recipeDetails.roast === '' ||
     recipeDetails.input === '' || recipeDetails.output === '') {
-        return swal('Please fill in all required fields to add recipe')
+      //   return Swal.fire({
+      //     text: 'Please fill in all required fields',
+      //     // color: '#6B6BB2',
+      //     confirmButtonColor: '#6B6BB2',
+      //     confirmButtonText: 'Got It'
+      // })
+      
+      return swal('Please fill in all required fields')
     }
     dispatch({type: 'ADD_RECIPE', payload: recipeDetails});
     // swal('You added a brew!');
@@ -131,10 +138,12 @@ function UserPage() {
             <FormControl 
                 justify="center"
                 style={{minWidth: 120}}>
+                  <p>Give this recipe a title:</p>
                 <TextField
                   required
                   id="recipe-title-input"
-                  label="Give this recipe a title (30 characters or less):"
+                  label="Give this recipe a title (30 character limit)"
+                  inputProps={{ maxLength: "30" }}
                   variant="filled"
                   type="text"
                   value={title}
@@ -142,7 +151,7 @@ function UserPage() {
                 />
               <br/>
 
-              <p>What brew method did you use?</p>
+              <p>What brew method did you use? *</p>
 
               <FormControl>
                 <Select
@@ -165,21 +174,22 @@ function UserPage() {
                 </Select>
               </FormControl>
             <br/>
-            <br/>
-
+            
+            <p>What coffee did you use? (Roaster and country of origin)</p>
             <TextField
               required
               id="coffee-input"
-              label="What coffee did you use? (Roaster and country of origin)"
+              label="Coffee Used (50 character limit)"
+              inputProps={{ maxLength: "50" }}
               variant="filled"
               type="text"
               value={coffee}
               onChange={(e) => setCoffee(e.target.value)}
             />
             <br/>
-            <br/>
+            
 
-            <p>Is this a Light, Medium or Dark roast?</p>
+            <p>Is this a Light, Medium or Dark roast? *</p>
 
             <FormGroup>
               <Select
@@ -204,11 +214,11 @@ function UserPage() {
             </FormGroup>
             <br/>
             <br/>
-
+            <p>How many grams of coffee did you start the brew with?</p>
             <TextField
               required
               id="input"
-              label="How many grams of coffee did you start the brew with?"
+              label="Input in grams"
               variant="filled"
               type="number"
               value={input}
@@ -233,7 +243,8 @@ function UserPage() {
 
             <TextField
               id="comments"
-              label="How long did it take? Any special instructions?"
+              label="Tasting Notes/Comments (500 character limit)"
+              inputProps={{ maxLength: "500" }}
               type="text"
               variant="filled"
               multiline

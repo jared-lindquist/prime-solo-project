@@ -133,16 +133,19 @@ function UserItem() {
                 <img  className="image" src={store.details[0]?.image} alt="brew-method-image"
                     height="400" width="400"/>
                     <div className='details-text'>
-                        <p> Coffee used for this brew: {store.details[0]?.coffee}
+                        <p> Coffee used for this brew: <b>{store.details[0]?.coffee}</b>
                         <br/>
                         <br/>
-                        Which is a {store.details[0]?.roast_level} roasted coffee brewed on {store.details[0]?.brew_method}
+                        Roast Level:  <b>{store.details[0]?.roast_level} roast</b>  
                         <br/>
                         <br/>
-                        This brew recipe started with {store.details[0]?.input} grams of coffee
+                        Brew Method: <b>{store.details[0]?.brew_method}</b>
                         <br/>
                         <br/>
-                        The finished weight of the brew was {store.details[0]?.output} grams.
+                        Starting dose:  <b>{store.details[0]?.input} grams</b>
+                        <br/>
+                        <br/>
+                        Final Output: <b>{store.details[0]?.output} grams</b> 
                         <br/>
                         <br/>
                         Full Recipe Details:
@@ -168,8 +171,9 @@ function UserItem() {
                     <p>Give this recipe a title:</p>
                     <TextField style={{backgroundColor: '#fff'}}
                         required
+                        inputProps={{ maxLength: "30" }}
                         id="recipe-title-input"
-                        label="Recipe Title"
+                        label="Recipe Title (30 character limit)"
                         variant="filled"
                         type="text"
                         value={title}
@@ -200,8 +204,9 @@ function UserItem() {
                     <p>What coffee did you use? (Roaster and country of origin)</p>
                         <TextField style={{backgroundColor: '#fff'}}
                             required
+                            inputProps={{ maxLength: "50" }}
                             id="coffee-input"
-                            label="Coffee Used"
+                            label="Coffee Used (50 character limit)"
                             variant="filled"
                             type="text"
                             value={coffee}
@@ -253,7 +258,8 @@ function UserItem() {
                         <p>Please fill in details for this brew recipe below</p>
                             <TextField style={{backgroundColor: '#fff'}}
                                 id="comments"
-                                label="Tasting Notes/Comments"
+                                label="Tasting Notes/Comments (500 character limit)"
+                                inputProps={{ maxLength: "500" }}
                                 type="text"
                                 variant="filled"
                                 multiline
@@ -314,6 +320,13 @@ function UserItem() {
         <div className="button-group">
             <ButtonGroup >
                 <Button 
+                    style={{color: "#FFFFFF", backgroundColor: "#5A5A5A"}}
+                    variant="contained" 
+                    className='back'
+                    onClick={handleBackToUser}
+                >Back to My Brews
+                </Button>
+                <Button 
                     style={{color: "#FFFFFF", backgroundColor: "#6B6BB2"}}
                     variant="contained" 
                     onClick={handleOpenEdit}
@@ -326,13 +339,7 @@ function UserItem() {
                     onClick={handleOpenDelete}
                 >Delete this Brew
                 </Button>
-                <Button 
-                    style={{color: "#FFFFFF", backgroundColor: "#5A5A5A"}}
-                    variant="contained" 
-                    className='back'
-                    onClick={handleBackToUser}
-                >Back to My Brews
-                </Button>
+                
             </ButtonGroup>
         </div>
         

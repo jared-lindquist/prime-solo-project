@@ -74,15 +74,26 @@ function RecipeItem() {
                     <br/>
                     <br/>
                     <div className='details-text'>
-                        <p> Coffee used for this brew: {store.details[0]?.coffee}</p>
-                        <p>Which is a {store.details[0]?.roast_level} roasted coffee</p>
-                        <p>{store.details[0]?.username} brewed with a {store.details[0]?.brew_method}</p>
-                        <p>They started this brew with {store.details[0]?.input} grams of coffee</p>
-                        <p>The finished weight of the brew was {store.details[0]?.output} grams.</p>
-                        <p>Comments left by {store.details[0]?.username}:</p>
-                        <p>'{store.details[0]?.comments}.' </p>
-                        <p>Thanks for checking out my brew!</p>
-                    </div>
+                        <p> Coffee used for this brew: <b>{store.details[0]?.coffee}</b>
+                        <br/>
+                        <br/>
+                        Roast Level:  <b>{store.details[0]?.roast_level} roast</b>  
+                        <br/>
+                        <br/>
+                        Brew Method: <b>{store.details[0]?.brew_method}</b>
+                        <br/>
+                        <br/>
+                        Starting dose:  <b>{store.details[0]?.input} grams</b>
+                        <br/>
+                        <br/>
+                        Final Output: <b>{store.details[0]?.output} grams</b> 
+                        <br/>
+                        <br/>
+                        Full Recipe Details:
+                        <br/>
+                        <br/>
+                        '{store.details[0]?.comments}' </p>
+                        </div>
                 </div>
                     <Button style={{color: "#FFFFFF", backgroundColor: "#5A5A5A"}}
                         variant="contained" 

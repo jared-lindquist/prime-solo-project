@@ -10,6 +10,7 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { Grid} from '@mui/material'
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -46,7 +47,14 @@ function RegisterForm() {
   };
   const registerUser = (event) => {
   event.preventDefault();
-
+    if (username === '' || password === '') {
+      return Swal.fire({
+            text: 'Please fill in a username and password to continue',
+            // color: '#6B6BB2',
+            confirmButtonColor: '#6B6BB2',
+            confirmButtonText: 'Got It'
+        })
+    }
     
     handleClickOpen();
 
