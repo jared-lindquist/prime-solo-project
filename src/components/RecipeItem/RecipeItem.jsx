@@ -87,6 +87,7 @@ function RecipeItem() {
                     height="400" width="400"/>
                     <br/>
                     <br/>
+                    
                     <div className='details-text'>
                         <p> Coffee used for this brew: <b>{store.details[0]?.coffee}</b>
                         <br/>
@@ -107,7 +108,7 @@ function RecipeItem() {
                         <br/>
                         <br/>
                         '{store.details[0]?.comments}' </p>
-                        </div>
+                    </div>
                 </div>
                     <Button style={{color: "#FFFFFF", backgroundColor: "#5A5A5A"}}
                         variant="contained" 

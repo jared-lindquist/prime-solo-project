@@ -198,9 +198,6 @@ function UserPage() {
                 id="roast-level"
                 value={roast}
                 label="Roast Level"
-                // style={{
-                //     width: 200,
-                // }}
                 onChange={(e) => {
                     console.log("Roast Level", e.target.value)
                     setRoast(e.target.value)

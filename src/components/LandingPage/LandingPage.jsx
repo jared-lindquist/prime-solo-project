@@ -34,91 +34,86 @@ function LandingPage() {
         
         <Grid item xs={3}>
           <img src="./images/coffee-animated.webp" />
-
         </Grid>
 
-        <Grid 
-            item xs={3}>
+        <Grid item xs={3}>
           <RegisterForm />
         </Grid>
-          <Grid item xs={3}
-                align="center">
-            <h3 align="center">Already a Brewer?</h3>
-                  <Button style={{color: "#FFFFFF", backgroundColor: "#6B6BB2",
-                                  }}
-                          className="btn_btn_sizeSm" 
-                          align="center"
-                          onClick={onLogin}
-                          // justifyContent="center"
-                          // fullWidth="true"
-                  >
-                    Login
-                  </Button>
-          </Grid>
-        <Grid item xs={12}></Grid>
-        <Grid 
-            item xs={3}>
-        <Card sx={{ maxWidth: 345 }}>
-          <CardMedia
-            component="img"
-            height="140"
-            image="./images/chemex.jpg"
-            alt="something cool"
-          />
-          <CardContent>
-            <h2>Awesome Ethiopian</h2>
-              <Typography variant="body2" color="text.secondary">
-              Light Roasted Chemex
-              </Typography>
-          </CardContent>
-          <CardActions>
-            <Button style={{color: "#6B6BB2"}}size="small">Login or Register to Learn More</Button>
-          </CardActions>
-        </Card>
-        </Grid>
-        <Grid item xs={3}>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardMedia
-              component="img"
-              height="140"
-              image="./images/french-press.jpg"
-              alt="Latte"
-            />
-            <CardContent>
-                <h2>My First French Press</h2>
-              <Typography variant="body2" color="text.secondary">
-              Medium Roasted French Press
-              </Typography>
-            </CardContent>
-            <CardActions>
-              {/* <Button size="small">Share</Button> */}
-              <Button style={{color: "#6B6BB2"}}size="small">Login or Register to Learn More</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item xs={3}>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardMedia
-              component="img"
-              height="140"
-              image="./images/14981.jpg"
-              alt="coffee"
-            />
-            <CardContent>
-            
-            
-              <h2>More Espresso Please</h2>
-              
-              <Typography variant="body2" color="text.secondary">
-              Medium Roasted Espresso
-              </Typography>
-            </CardContent>
-            <CardActions>
-              {/* <Button size="small">Share</Button> */}
-              <Button style={{color: "#6B6BB2"}}size="small">Login or Register to Learn More</Button>
-            </CardActions>
-          </Card>
 
+        <Grid item xs={3}
+              align="center">
+          <h3 align="center">Already a Brewer?</h3>
+          <Button style={{color: "#FFFFFF", backgroundColor: "#6B6BB2",
+                                }}
+                  className="btn_btn_sizeSm" 
+                  align="center"
+                  onClick={onLogin}
+          >
+            Login
+          </Button>
+          </Grid>
+
+          <Grid item xs={12}></Grid>
+
+          <Grid 
+            item xs={3}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardMedia
+                component="img"
+                height="140"
+                image="./images/chemex.jpg"
+                alt="something cool"
+              />
+              <CardContent>
+                <h2>Awesome Ethiopian</h2>
+                <Typography variant="body2" color="text.secondary">
+                  Light Roasted Chemex
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button style={{color: "#6B6BB2"}}size="small">Login or Register to Learn More</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+
+          <Grid item xs={3}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardMedia
+                component="img"
+                height="140"
+                image="./images/french-press.jpg"
+                alt="Latte"
+              />
+              <CardContent>
+                <h2>My First French Press</h2>
+                <Typography variant="body2" color="text.secondary">
+                  Medium Roasted French Press
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button style={{color: "#6B6BB2"}}size="small">Login or Register to Learn More</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+
+          <Grid item xs={3}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardMedia
+                component="img"
+                height="140"
+                image="./images/14981.jpg"
+                alt="coffee"
+              />
+              <CardContent>
+                <h2>More Espresso Please</h2>
+                <Typography variant="body2" color="text.secondary">
+                  Medium Roasted Espresso
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button style={{color: "#6B6BB2"}}size="small">Login or Register to Learn More</Button>
+              </CardActions>
+            </Card>
         </Grid>
       </Grid>
     </div>
