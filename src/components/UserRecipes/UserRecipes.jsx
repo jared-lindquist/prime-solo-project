@@ -37,21 +37,21 @@ function UserRecipes() {
     }
 
     return (
-            <Grid   container rowSpacing={{ xs: 1, sm: 2, md: 3 }} columnSpacing={{ xs: 1, sm: 2, md: 3 }} 
-                    justifyContent="center"
-                    justify="center"
-                    alignItems="center"
-            > 
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 10 }}
+            display="flex"
+            justifyContent="center"
+            justify="center"
+            alignItems="center"> 
             {/* map over all recipes to display cards */}
             {store.allRecipes.map(recipe  => (
-                <Grid   item xs={3} 
+                <Grid   item xs={2} sm={3} md={3} 
                         display="flex"
                         justifyContent="center"
                         justify="center"
                         alignItems="center"
                         key={recipe.id}
                 >
-                    <Card 
+                    <Card sx={{ boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)',}}
                         className='card' 
                         key={recipe.id} 
                         sx={{ height: 375, width:350 }}

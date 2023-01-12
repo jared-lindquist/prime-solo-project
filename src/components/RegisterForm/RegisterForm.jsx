@@ -121,44 +121,39 @@ function RegisterForm() {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Can I get a walk through?"}</DialogTitle>
+        <DialogTitle>{"Welcome to How Do You Brew!"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Welcome to "How Do You Brew"! 
+            <b>Here's what you need to get started: </b>
             <br/>
             <br/>
-            Here's what to expect:
-            <br/>
-            
-            When you are done reading this form, you will be directed to your 
-            home page, where you can start a new recipe! You will also be able 
-            to view recipes created by our other members by clicking on the 
-            'Community' tab.
-            <br/>
-            Here's what you need to get started:
-            <br/>
-            <br/>
-            1. Coffee (duh)
+            <b>1. Coffee (duh)</b>
             <br/>
             <br/>
             <img src="./images/coffee.jpg" alt="coffee" />
             <br/>
             <br/>
-            2. A scale the measures in grams. If you don't have a coffee scale,
+            <b>2. A scale the measures in grams.</b> 
+            <br/>
+            If you don't have a coffee scale,
             a simple food scale will do the trick.
             <br/>
             <br/>
             <img src="./images/coffeescale.jpg" alt="coffee scale" /> 
             <br/>
             <br/>
-            3. A brew method: The app currently supports Espresso, Drip Brew, 
+            <b>3. A brew method</b>
+            <br/>
+            The app currently supports Espresso, Drip Brew, 
               Chemex, and French Press. 
             <br/>
             <br/>
             <img src="./images/chemex.jpg" alt="chemex" />
             <br/>
             <br/>
-            4. All the details for creating your delicious brew like: brew time, 
+            <b>4. All the details for creating your delicious brew</b> 
+              <br/>
+              Think brew time, 
               a general idea of grind size (like medium coarse), pouring instructions.
               Be as detailed as you like!
               See this recipe from one of our users as an example:
@@ -167,7 +162,7 @@ function RegisterForm() {
             <img src="./images/samplerecipe.jpg"/>
             <br/>
             <br/>
-            Ready to get brewing?? Click the button below
+            <b>Ready to get brewing?? Click the button below</b>
           </DialogContentText>
         </DialogContent>
         <DialogActions>

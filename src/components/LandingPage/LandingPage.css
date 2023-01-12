@@ -84,3 +84,7 @@ Grid
 
   font-family: 'Indie Flower', cursive;
 }
+
+.card {
+  box-shadow: 5px 5px 5px 5px lightgrey !important;
+}

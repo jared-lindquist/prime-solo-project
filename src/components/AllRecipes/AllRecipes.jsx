@@ -47,9 +47,9 @@ function AllRecipes() {
         <div key={method}>
             <Grid  
             container rowSpacing={{ xs: 1, sm: 2, md: 3 }} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            justifyContent="center"
+            justifyContent="space-evenly"
             alignItems="center"
-            direction="row"
+            
             >
                 <h2 className='header'>All Community Brews</h2>
                 <Grid item xs={12}></Grid>
@@ -91,18 +91,22 @@ function AllRecipes() {
                 justifyContent="center"
                 justify="center"
                 alignItems="center">
-                <Button style={{backgroundColor: "#6bb26b"}}
+                {/* <Button style={{backgroundColor: "#6bb26b"}}
                         variant="contained"
                         onClick={seeFavorites}
                     >
                     See My Favorites
-                </Button>
+                </Button> */}
             </Grid>
-
+                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 10 }}
+                    display="flex"
+                    justifyContent="center"
+                    justify="center"
+                    alignItems="center">
                     {store.allRecipes.map(recipe  => (
-                    <Grid   item xs={3} 
+                    <Grid   item xs={2} sm={3} md={3} 
                             display="flex"
-                            justifyContent="center"
+                            justifyContent="space-evenly"
                             justify="center"
                             alignItems="center"
                             key={recipe.id}
@@ -126,8 +130,9 @@ function AllRecipes() {
                             </CardActionArea>    
                         </Card>
                     </Grid>
-                ))
-            }
+                    ))
+                    }
+                </Grid>
             </Grid>
         </div>
     )

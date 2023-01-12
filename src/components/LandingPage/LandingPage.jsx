@@ -24,7 +24,7 @@ function LandingPage() {
 <div>
   <Grid 
       container spacing={2}
-      justifyContent="center"
+      justifyContent="space-evenly"
       alignItems="center">
         <Grid container item spacing={3}
             justifyContent="center"
@@ -32,7 +32,7 @@ function LandingPage() {
           <h2 className='heading'>{heading}</h2>
         </Grid>
         
-        <Grid item xs={3}>
+        <Grid item xs={3} >
           <img src="./images/coffee-animated.webp" />
         </Grid>
 
@@ -57,7 +57,7 @@ function LandingPage() {
 
           <Grid 
             item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card  className='card' sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
                 height="140"
@@ -77,7 +77,7 @@ function LandingPage() {
           </Grid>
 
           <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card className='card' sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
                 height="140"
@@ -97,7 +97,7 @@ function LandingPage() {
           </Grid>
 
           <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card className='card' sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
                 height="140"

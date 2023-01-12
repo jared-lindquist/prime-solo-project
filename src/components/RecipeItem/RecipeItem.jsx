@@ -73,12 +73,12 @@ function RecipeItem() {
             <h2>
                 {store.details[0]?.title}
             </h2>
-                <FormControlLabel
+                {/* <FormControlLabel
                     onClick={handleFavorite}
                     control={<Checkbox icon={<FavoriteBorderIcon />} 
                     checkedIcon={<FavoriteIcon />}
                     name="checkedH" />}
-                />
+                /> */}
             <br/>
             <br/>
             <br/>
