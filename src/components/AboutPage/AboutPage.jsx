@@ -9,11 +9,28 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>I spent the last 8 years being a coffee enthusiast and coffee professional, and if there is one thing I hated about my time in coffee 
-          it was how hard it was to keep track of recipes. I can not tell you how many notebooks full of recipes I wanted to reuse I have lost over the years. 
-          Enter How Do You Brew?, an application that lets you save all of your favorite brew recipes in one place to go back to anytime. Your favorite 
-          recipes are at your fingertips forever.
+        <p> How Do You Brew? is an application that lets you save all of your <br/>favorite brew recipes in one place to go back to anytime. 
+          <br/>
+          Your favorite recipes are at your fingertips forever.
         </p>
+        <h3>Technologies used:</h3>
+        <ul>
+          <li>HTML/CSS</li>
+          <li>Javascript</li>
+          <li>React.js</li>
+          <li>Redux/Saga</li>
+          <li>Material UI</li>
+          <li>PostgreSQL</li>
+          <li>Postico 2</li>
+          <li>Postman</li>
+          <li>Node.js</li>
+        </ul>
+        <h4>Special Thanks to:</h4>
+        <ul>
+          <li>Liz Kerber, Dane Smith, and Key Clark</li>
+          <li>Shawl cohort mates</li>
+          <li>Friends and family</li>
+        </ul>
       </div>
     </div>
   );
