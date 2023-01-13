@@ -8,12 +8,12 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import { Grid} from '@mui/material'
+import { Grid } from '@mui/material'
 import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {children: React.ReactElement<any, any>;},
+  props: TransitionProps & { children: React.ReactElement<any, any>; },
   ref: React.Ref<unknown>,
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -45,18 +45,18 @@ function RegisterForm() {
     setOpen(false);
     history.push('/user')
   };
-  
+
   const registerUser = (event) => {
-  event.preventDefault();
+    event.preventDefault();
     if (username === '' || password === '') {
       return Swal.fire({
-            text: 'Please fill in a username and password to continue',
-            // color: '#6B6BB2',
-            confirmButtonColor: '#6B6BB2',
-            confirmButtonText: 'Got It'
-        })
+        text: 'Please fill in a username and password to continue',
+        // color: '#6B6BB2',
+        confirmButtonColor: '#6B6BB2',
+        confirmButtonText: 'Got It'
+      })
     }
-    
+
     handleClickOpen();
 
   }; // end registerUser
@@ -64,7 +64,7 @@ function RegisterForm() {
   return (
     <form className="formPanel">
       {/* <h2>Register User</h2> */}
-      <h3 align="center">New To Brew? <br/> Register here:</h3>
+      <h3 align="center">New To Brew? <br /> Register here:</h3>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
@@ -99,82 +99,86 @@ function RegisterForm() {
       <div>
         {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
         <Grid align="center">
-          <Button style={{color: "#FFFFFF",
-                        backgroundColor: "#6bb26b"}}
-                className="btn" 
-                type="submit" 
-                name="submit" 
-                value="Register"
-                onClick={registerUser}
-                align="center"
-                // justifyContent="center"
-                >
-          Register
-        </Button>
+          <Button style={{
+            color: "#FFFFFF",
+            backgroundColor: "#6bb26b"
+          }}
+            className="btn"
+            type="submit"
+            name="submit"
+            value="Register"
+            onClick={registerUser}
+            align="center"
+          // justifyContent="center"
+          >
+            Register
+          </Button>
         </Grid>
-        
+
 
         <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle>{"Welcome to How Do You Brew!"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            <b>Here's what you need to get started: </b>
-            <br/>
-            <br/>
-            <b>1. Coffee (duh)</b>
-            <br/>
-            <br/>
-            <img src="./images/coffee.jpg" alt="coffee" />
-            <br/>
-            <br/>
-            <b>2. A scale the measures in grams.</b> 
-            <br/>
-            If you don't have a coffee scale,
-            a simple food scale will do the trick.
-            <br/>
-            <br/>
-            <img src="./images/coffeescale.jpg" alt="coffee scale" /> 
-            <br/>
-            <br/>
-            <b>3. A brew method</b>
-            <br/>
-            The app currently supports Espresso, Drip Brew, 
-              Chemex, and French Press. 
-            <br/>
-            <br/>
-            <img src="./images/chemex.jpg" alt="chemex" />
-            <br/>
-            <br/>
-            <b>4. All the details for creating your delicious brew</b> 
-              <br/>
-              Think brew time, 
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle>{"Welcome to How Do You Brew!"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              <b>Here's what you need to get started: </b>
+              <br />
+              <br />
+              <b>1. Coffee (duh)</b>
+              <br />
+              <br />
+              <img src="./images/coffee.jpg" alt="coffee" />
+              <br />
+              <br />
+              <b>2. A scale the measures in grams.</b>
+              <br />
+              If you don't have a coffee scale,
+              a simple food scale will do the trick.
+              <br />
+              <br />
+              <img src="./images/coffeescale.jpg" alt="coffee scale" />
+              <br />
+              <br />
+              <b>3. A brew method</b>
+              <br />
+              The app currently supports Espresso, Drip Brew,
+              Chemex, and French Press.
+              <br />
+              <br />
+              <img src="./images/chemex.jpg" alt="chemex" />
+              <br />
+              <br />
+              <b>4. All the details for creating your delicious brew</b>
+              <br />
+              Think brew time,
               a general idea of grind size (like medium coarse), pouring instructions.
               Be as detailed as you like!
               See this recipe from one of our users as an example:
-            <br/>
-            <br/>
-            <img src="./images/samplerecipe.jpg"/>
-            <br/>
-            <br/>
-            <b>Ready to get brewing?? Click the button below</b>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button 
+              <br />
+              <br />
+              <img src="./images/samplerecipe.jpg" />
+              <br />
+              <br />
+              <b>Ready to get brewing?? Click the button below</b>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
               variant='contained'
-              style={{color: "#FFFFFF",
-              backgroundColor: "#6bb26b"}} 
+              style={{
+                color: "#FFFFFF",
+                backgroundColor: "#6bb26b"
+              }}
               onClick={handleClose}
             >Let's get started!
-          </Button>
-        </DialogActions>
-      </Dialog>
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     </form>
   );

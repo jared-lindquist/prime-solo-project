@@ -7,9 +7,9 @@ function* fetchAllRecipes(action) {
     try {
         const recipes = yield axios.get('/api/recipes');
         console.log('[recipeSaga] recipes are: ', recipes);
-        yield put({type: 'SET_RECIPES', payload: recipes.data});
+        yield put({ type: 'SET_RECIPES', payload: recipes.data });
     }
-    catch(error) {
+    catch (error) {
         console.log('Error in fetchRecipes, recipe.saga', error)
     }
 }
@@ -19,9 +19,9 @@ function* fetchUserRecipes(action) {
     try {
         const userRecipes = yield axios.get('/api/userRecipes');
         console.log('user recipes are: ', userRecipes);
-        yield put({type: 'SET_USER_RECIPES', payload: userRecipes.data})
+        yield put({ type: 'SET_USER_RECIPES', payload: userRecipes.data })
     }
-    catch(error) {
+    catch (error) {
         console.log('error getting user recipes', error);
     }
 }
@@ -31,9 +31,9 @@ function* getFavorites(action) {
     try {
         const favorites = yield axios.get('/api/userRecipes/favorites');
         console.log('user favorites are:', favorites);
-        yield put ({type: 'SET_FAVORITES', payload: favorites.data})
+        yield put({ type: 'SET_FAVORITES', payload: favorites.data })
     }
-    catch(error) {
+    catch (error) {
         console.log('error in recipe.saga getFavorites', error);
     }
 }
@@ -44,7 +44,7 @@ function* getDetails(action) {
         const details = yield axios.get('/api/userRecipes/' + action.payload);
         console.log('getDetails: ', action.payload);
         console.log(details.data);
-        yield put({type: 'SET_DETAILS', payload: details.data})
+        yield put({ type: 'SET_DETAILS', payload: details.data })
     }
     catch (error) {
         console.log('error getting details', error);
@@ -55,28 +55,28 @@ function* getDetails(action) {
 const handleImage = (method) => {
     console.log(method);
     if (method === 'chemex') {
-    return "./images/chemex.jpg"
-} else if (method === 'espresso') {
-    return "./images/espresso.jpg"
-} else if (method === 'french-press') {
-    return "./images/french-press.jpg"
-} else if (method === 'drip-brewer') {
-    return "./images/drip-brewer.jpg"
-} else {
-    return
-}
+        return "./images/chemex.jpg"
+    } else if (method === 'espresso') {
+        return "./images/espresso.jpg"
+    } else if (method === 'french-press') {
+        return "./images/french-press.jpg"
+    } else if (method === 'drip-brewer') {
+        return "./images/drip-brewer.jpg"
+    } else {
+        return
+    }
 }
 //addRecipe* post
 function* addRecipe(action) {
 
     const imageUrl = handleImage(action.payload.method);
-    const newPayload = {...action.payload, image: imageUrl}
-    
+    const newPayload = { ...action.payload, image: imageUrl }
+
     console.log('in recipe.saga addRecipe', newPayload);
     try {
         yield axios.post('/api/userRecipes', newPayload);
         console.log('new recipe is: ', newPayload);
-        yield put({type: 'FETCH_USER_RECIPES'})
+        yield put({ type: 'FETCH_USER_RECIPES' })
     }
     catch (error) {
         console.log('error adding recipe', error)
@@ -87,13 +87,13 @@ function* editRecipe(action) {
 
     const imageUrl = handleImage(action.payload.brew_method);
 
-    const newPayload = {...action.payload, image: imageUrl}
+    const newPayload = { ...action.payload, image: imageUrl }
     console.log('in recipe.saga editRecipe', action.payload, imageUrl);
     try {
         yield axios.put('/api/userRecipes/' + action.payload.id, newPayload);
-        yield put({type: 'SET_DETAILS', payload: action.payload})
+        yield put({ type: 'SET_DETAILS', payload: action.payload })
     }
-    catch(error) {
+    catch (error) {
         console.log('error in editRecipe saga', error);
     }
 }
@@ -102,9 +102,9 @@ function* deleteRecipe(action) {
     console.log('in deleteRecipe:', action.payload.id);
     try {
         yield axios.delete('/api/userRecipes/' + action.payload.id);
-        yield put ({type: 'FETCH_USER_RECIPES'})
+        yield put({ type: 'FETCH_USER_RECIPES' })
     }
-    catch(error) {
+    catch (error) {
         console.log('error deleting recipe', error);
     }
 }
@@ -112,12 +112,12 @@ function* deleteRecipe(action) {
 function* getMethod(action) {
     console.log('in getMethod', action.payload);
     try {
-        const method = yield axios.post('/api/userRecipes/method', {brew_method: action.payload})
+        const method = yield axios.post('/api/userRecipes/method', { brew_method: action.payload })
         console.log('method:', method);
-        yield put ({type: 'SET_RECIPES', payload: method.data})
+        yield put({ type: 'SET_RECIPES', payload: method.data })
 
     }
-    catch(error) {
+    catch (error) {
         console.log('error getting method', error);
     }
 }

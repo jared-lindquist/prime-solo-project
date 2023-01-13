@@ -28,14 +28,10 @@ function Nav() {
             <Link className="navLink" to="/user">
               Dashboard
             </Link>
-            
+
             <Link className="navLink" to="/allrecipes">
               Community
             </Link>
-
-            {/* <Link className="navLink" to="/info">
-              Info
-            </Link> */}
 
             <Link className="navLink" to="/about">
               About
@@ -45,7 +41,7 @@ function Nav() {
           </>
         )}
 
-        
+
       </div>
     </div>
   );

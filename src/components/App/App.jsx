@@ -75,25 +75,25 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            
-            exact 
+
+            exact
             path="/recipes/"
           >
             <UserRecipes />
           </ProtectedRoute>
 
           <ProtectedRoute
-          
+
             exact
             path="/allrecipes"
           >
             <AllRecipes />
 
           </ProtectedRoute>
-          
+
           <ProtectedRoute
             exact
-            path="/useritem/:ID"  
+            path="/useritem/:ID"
           >
             <UserItem />
 
@@ -106,7 +106,7 @@ function App() {
             <RecipeItem />
 
           </ProtectedRoute>
-          
+
           <ProtectedRoute
             exact
             path="/favorites"

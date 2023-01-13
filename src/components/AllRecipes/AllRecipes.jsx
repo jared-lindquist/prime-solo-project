@@ -8,8 +8,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, CardHeader, Grid} from '@mui/material'
-import { useHistory} from 'react-router-dom';
+import { CardActionArea, CardHeader, Grid } from '@mui/material'
+import { useHistory } from 'react-router-dom';
 import { InputLabel, Select, MenuItem, FormControl, Paper, FormGroup } from '@mui/material';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
@@ -26,9 +26,9 @@ function AllRecipes() {
     const [method, setMethod] = useState('');
     const [recipes, setRecipes] = useState(store.allRecipes);
 
-    useEffect(()=> {
-        window.scrollTo(0,0)
-        dispatch({type: 'FETCH_ALL_RECIPES'});
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        dispatch({ type: 'FETCH_ALL_RECIPES' });
     }, []);
 
     console.log(store.allRecipes);
@@ -49,39 +49,39 @@ function AllRecipes() {
     //creating style to handle focus color of input fields
     const useStyles = makeStyles({
         root: {
-        // input label when focused
-        "& label.Mui-focused": {
-        color: focusedColor
-        },
-        "& select.Mui-focused": {
-        color: focusedColor
-        },
-        // focused color for input with variant='standard'
-        "& .MuiInput-underline:after": {
-        borderBottomColor: focusedColor
-        },
-        // focused color for input with variant='filled'
-        "& .MuiFilledInput-underline:after": {
-        borderBottomColor: focusedColor
-        },
-        // focused color for input with variant='outlined'
-        "& .MuiOutlinedInput-root": {
-        "&.Mui-focused fieldset": {
-            borderColor: focusedColor
+            // input label when focused
+            "& label.Mui-focused": {
+                color: focusedColor
+            },
+            "& select.Mui-focused": {
+                color: focusedColor
+            },
+            // focused color for input with variant='standard'
+            "& .MuiInput-underline:after": {
+                borderBottomColor: focusedColor
+            },
+            // focused color for input with variant='filled'
+            "& .MuiFilledInput-underline:after": {
+                borderBottomColor: focusedColor
+            },
+            // focused color for input with variant='outlined'
+            "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                    borderColor: focusedColor
+                }
             }
         }
-    }
     });
 
-const classes = useStyles();
+    const classes = useStyles();
 
     return (
         <div key={method}>
-            <Grid  
-            container rowSpacing={{ xs: 1, sm: 2, md: 3 }} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            justifyContent="space-evenly"
-            alignItems="center"
-            
+            <Grid
+                container rowSpacing={{ xs: 1, sm: 2, md: 3 }} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                justifyContent="space-evenly"
+                alignItems="center"
+
             >
                 <h2 className='header'>All Community Brews</h2>
                 <Grid item xs={12}></Grid>
@@ -90,79 +90,79 @@ const classes = useStyles();
                         Filter by Brew Method:
                     </h3>
                 </Grid>
-                <Grid 
-                item xs={12}
-                display="flex"
-                justifyContent="center"
-                justify="center"
-                alignItems="center"
-            >
-                <TextField className={classes.root}
-                    select
-                    style={{backgroundColor: '#fffff', width: 400}}
-                    required
-                    labelId="brew-method"
-                    id="brew-method"
-                    value={method}
-                    label="Brew Method:"
-                    onChange={(e) => {
-                    console.log("Brew Method", e.target.value)
-                    setMethod(e.target.value)
-                    dispatch({type: 'GET_METHOD', payload: e.target.value})
-                    
-                    }}
+                <Grid
+                    item xs={12}
+                    display="flex"
+                    justifyContent="center"
+                    justify="center"
+                    alignItems="center"
                 >
-                    <InputLabel id="Brew Method">Brew Method</InputLabel>
-                    <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
-                    <MenuItem value="espresso">Espresso Machine</MenuItem>
-                    <MenuItem value="chemex">Chemex</MenuItem>
-                    <MenuItem value="french-press">French Press</MenuItem>
-                </TextField>
-            </Grid>
-            <Grid item xs={12}
-                display="flex"
-                justifyContent="center"
-                justify="center"
-                alignItems="center">
-                {/* <Button style={{backgroundColor: "#6bb26b"}}
+                    <TextField className={classes.root}
+                        select
+                        style={{ backgroundColor: '#fffff', width: 400 }}
+                        required
+                        labelId="brew-method"
+                        id="brew-method"
+                        value={method}
+                        label="Brew Method:"
+                        onChange={(e) => {
+                            console.log("Brew Method", e.target.value)
+                            setMethod(e.target.value)
+                            dispatch({ type: 'GET_METHOD', payload: e.target.value })
+
+                        }}
+                    >
+                        <InputLabel id="Brew Method">Brew Method</InputLabel>
+                        <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
+                        <MenuItem value="espresso">Espresso Machine</MenuItem>
+                        <MenuItem value="chemex">Chemex</MenuItem>
+                        <MenuItem value="french-press">French Press</MenuItem>
+                    </TextField>
+                </Grid>
+                <Grid item xs={12}
+                    display="flex"
+                    justifyContent="center"
+                    justify="center"
+                    alignItems="center">
+                    {/* <Button style={{backgroundColor: "#6bb26b"}}
                         variant="contained"
                         onClick={seeFavorites}
                     >
                     See My Favorites
                 </Button> */}
-            </Grid>
+                </Grid>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 10 }}
                     display="flex"
                     justifyContent="center"
                     justify="center"
                     alignItems="center">
-                    {store.allRecipes.map(recipe  => (
-                    <Grid   item xs={2} sm={3} md={3} 
+                    {store.allRecipes.map(recipe => (
+                        <Grid item xs={2} sm={3} md={3}
                             display="flex"
                             justifyContent="space-evenly"
                             justify="center"
                             alignItems="center"
                             key={recipe.id}
-                    >
-                        <Card className="card" key={recipe.id} sx={{ height: 375, width:350 }}>
-                            <CardActionArea onClick={ () => recipeDetails(recipe)}>
-                                <CardMedia
-                                    component="img"
-                                    height="250"
-                                    image={recipe.image}
-                                    alt="brew method image"
-                                />
-                                <CardContent>
-                                    <h2>
-                                    {recipe.title}
-                                    </h2>
-                                    <Typography variant="body2" color="text.secondary">
-                                    Brewed by {recipe.username}. {recipe.roast_level} roast {recipe.brew_method}
-                                    </Typography>
-                                </CardContent>
-                            </CardActionArea>    
-                        </Card>
-                    </Grid>
+                        >
+                            <Card className="card" key={recipe.id} sx={{ height: 375, width: 350 }}>
+                                <CardActionArea onClick={() => recipeDetails(recipe)}>
+                                    <CardMedia
+                                        component="img"
+                                        height="250"
+                                        image={recipe.image}
+                                        alt="brew method image"
+                                    />
+                                    <CardContent>
+                                        <h2>
+                                            {recipe.title}
+                                        </h2>
+                                        <Typography variant="body2" color="text.secondary">
+                                            Brewed by {recipe.username}. {recipe.roast_level} roast {recipe.brew_method}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
                     ))
                     }
                 </Grid>

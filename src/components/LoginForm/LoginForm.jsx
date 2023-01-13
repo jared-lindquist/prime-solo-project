@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 
 function LoginForm() {
@@ -59,10 +59,12 @@ function LoginForm() {
       </div>
       <div>
         {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
-        <Button style={{color: "#FFFFFF",
-                        backgroundColor: "#6B6BB2"}}
-                        className="btn" type="submit" name="submit" value="Log In"
-                >
+        <Button style={{
+          color: "#FFFFFF",
+          backgroundColor: "#6B6BB2"
+        }}
+          className="btn" type="submit" name="submit" value="Log In"
+        >
           Log In
         </Button>
       </div>

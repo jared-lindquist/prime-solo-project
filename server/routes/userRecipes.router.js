@@ -20,17 +20,17 @@ userRecipesRouter.get('/', rejectUnauthenticated, (req, res) => {
     ON "recipes"."user_id" = "user"."id" 
     WHERE "user_id" = $1
     ORDER BY "recipes"."id" DESC;`;
-    
+
     pool.query(queryText, [userId])
-    .then((results) => res.send(results.rows))
-    .catch((error) => {
-        console.log('error selecting user recipes', error);
-        res.sendStatus(500);
-    });
+        .then((results) => res.send(results.rows))
+        .catch((error) => {
+            console.log('error selecting user recipes', error);
+            res.sendStatus(500);
+        });
 });
 
 //Get user favorites from DB
-userRecipesRouter.get('/favorites', rejectUnauthenticated, (req,res) => {
+userRecipesRouter.get('/favorites', rejectUnauthenticated, (req, res) => {
     console.log('in recipeRouter.get for user favorites')
     console.log('is authenticated?', req.isAuthenticated());
     console.log('req.user', req.user);
@@ -45,11 +45,11 @@ userRecipesRouter.get('/favorites', rejectUnauthenticated, (req,res) => {
     WHERE "favorites"."user_id" = $1`;
 
     pool.query(queryText, [userId])
-    .then((results) => res.send(results.rows))
-    .catch((error) => {
-        console.log('error getting favorites', error);
-        res.sendStatus(500);
-    });
+        .then((results) => res.send(results.rows))
+        .catch((error) => {
+            console.log('error getting favorites', error);
+            res.sendStatus(500);
+        });
 });
 
 userRecipesRouter.get('/:id', (req, res) => {
@@ -57,7 +57,7 @@ userRecipesRouter.get('/:id', (req, res) => {
     console.log('is authenticated?', req.isAuthenticated());
     console.log('req.user', req.user);
 
-    const  queryText = `SELECT "recipes"."id", "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
+    const queryText = `SELECT "recipes"."id", "recipes"."title", "recipes"."coffee", "recipes"."roast_level", 
     "recipes"."brew_method", "recipes"."input", "recipes"."output", "recipes"."comments", "recipes"."image", "user"."username" 
     FROM "recipes"
     INNER JOIN "user" 
@@ -65,35 +65,35 @@ userRecipesRouter.get('/:id', (req, res) => {
     WHERE "recipes"."id" = $1;`;
 
     pool.query(queryText, [req.params.id])
-    .then((results) => res.send(results.rows))
-    .catch((error) => {
-        console.log('error getting recipe details', error);
-        res.sendStatus(500);
-    });
+        .then((results) => res.send(results.rows))
+        .catch((error) => {
+            console.log('error getting recipe details', error);
+            res.sendStatus(500);
+        });
 });
 
 
 //post route goes here
 userRecipesRouter.post('/', (req, res) => {
     // POST route code here
-    
+
     const recipeDetails = [req.user.id, req.body.title, req.body.coffee, req.body.roast,
-        req.body.method, req.body.input, req.body.output, req.body.comments, req.body.image];
+    req.body.method, req.body.input, req.body.output, req.body.comments, req.body.image];
 
     console.log('req.user, recipe details:', req.user, recipeDetails);
-    
+
     const queryText = `
     INSERT INTO "recipes" ("user_id", "title", "coffee", "roast_level", "brew_method", "input", "output", "comments","image")
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
     `;
-    
+
     pool.query(queryText, recipeDetails)
-    .then (() => {
-        res.sendStatus(201);
-    }).catch((error) => {
-        console.log('error adding recipe: ', error);
-        res.sendStatus(500);
-    })
+        .then(() => {
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log('error adding recipe: ', error);
+            res.sendStatus(500);
+        })
 });
 
 userRecipesRouter.delete('/:id', rejectUnauthenticated, (req, res) => {
@@ -101,8 +101,8 @@ userRecipesRouter.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in userRecipesRouter delete', req.params.id, req.user.id);
 
     pool.query(`DELETE FROM "recipes" WHERE "id" = $1 AND "user_id" = $2`, [req.params.id, req.user.id])
-    .then ((results) => res.sendStatus(200))
-    .catch((error) => res.sendStatus(500));
+        .then((results) => res.sendStatus(200))
+        .catch((error) => res.sendStatus(500));
     //endpoint functionality
 });
 
@@ -116,8 +116,8 @@ userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
     WHERE "id" = $9;`;
 
     pool.query(queryText, queryParams)
-    .then((results) => res.sendStatus(200))
-    .catch((error) => res.sendStatus(500));
+        .then((results) => res.sendStatus(200))
+        .catch((error) => res.sendStatus(500));
 });
 
 userRecipesRouter.post('/method', rejectUnauthenticated, (req, res) => {
@@ -133,8 +133,8 @@ userRecipesRouter.post('/method', rejectUnauthenticated, (req, res) => {
     WHERE "recipes"."brew_method" = $1
     ORDER BY "recipes"."id" DESC;`;
     pool.query(queryText, [req.body.brew_method])
-    .then((results) => res.send(results.rows))
-    .catch((error) => res.sendStatus(500));
+        .then((results) => res.send(results.rows))
+        .catch((error) => res.sendStatus(500));
 })
 
 module.exports = userRecipesRouter;

@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, CardHeader, Grid} from '@mui/material';
+import { CardActionArea, CardHeader, Grid } from '@mui/material';
 import { useHistory, useParams } from 'react-router-dom';
 
 import './UserRecipes.css';
@@ -16,15 +16,15 @@ import './UserRecipes.css';
 
 function UserRecipes() {
 
-    const {ID} = useParams();
+    const { ID } = useParams();
     const history = useHistory();
     const store = useReduxStore();
     const dispatch = useDispatch();
 
     //Grabs all recipes for logged in user, renders on page load only once
-    useEffect(()=> {
-        window.scrollTo(0,0)
-        dispatch({type: 'FETCH_USER_RECIPES'});
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        dispatch({ type: 'FETCH_USER_RECIPES' });
     }, []);
 
     //this function takes the details for the recipe clicked on and sends a dispatch
@@ -41,22 +41,22 @@ function UserRecipes() {
             display="flex"
             justifyContent="center"
             justify="center"
-            alignItems="center"> 
+            alignItems="center">
             {/* map over all recipes to display cards */}
-            {store.allRecipes.map(recipe  => (
-                <Grid   item xs={2} sm={3} md={3} 
-                        display="flex"
-                        justifyContent="center"
-                        justify="center"
-                        alignItems="center"
-                        key={recipe.id}
+            {store.allRecipes.map(recipe => (
+                <Grid item xs={2} sm={3} md={3}
+                    display="flex"
+                    justifyContent="center"
+                    justify="center"
+                    alignItems="center"
+                    key={recipe.id}
                 >
-                    <Card sx={{ boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)',}}
-                        className='card' 
-                        key={recipe.id} 
-                        sx={{ height: 375, width:350 }}
-                        >
-                        <CardActionArea onClick={ () => recipeDetails(recipe)}>
+                    <Card sx={{ boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)', }}
+                        className='card'
+                        key={recipe.id}
+                        sx={{ height: 375, width: 350 }}
+                    >
+                        <CardActionArea onClick={() => recipeDetails(recipe)}>
                             <CardMedia
                                 component="img"
                                 height="250"
@@ -65,19 +65,19 @@ function UserRecipes() {
                                 alt="brew method image"
                             />
                             <CardContent>
-                                    <h2>
+                                <h2>
                                     {recipe.title}
-                                    </h2>
-                                    <Typography variant="body2" color="text.secondary">
+                                </h2>
+                                <Typography variant="body2" color="text.secondary">
                                     {recipe.roast_level} roast {recipe.brew_method}
-                                    </Typography>
-                                </CardContent>
+                                </Typography>
+                            </CardContent>
                         </CardActionArea>
                     </Card>
                 </Grid>
-                ))
+            ))
             }
-            </Grid>
+        </Grid>
     )
 }
 
