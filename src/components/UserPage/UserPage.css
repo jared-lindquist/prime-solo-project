@@ -4,3 +4,7 @@
     align-items: center !important;
     padding: 50px
 }
+
+.swal2-container {
+    z-index: 9999;
+}

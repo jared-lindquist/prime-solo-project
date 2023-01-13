@@ -6,17 +6,14 @@ import { useEffect, useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } from '@mui/material';
 import Swal from 'sweetalert2';
-import swal from 'sweetalert';
 import Button from '@mui/material/Button';
 import UserRecipes from '../UserRecipes/UserRecipes';
 import { makeStyles } from '@mui/styles';
 import './UserPage.css';
-import { ClassNames } from '@emotion/react';
 
 //I need to use this component as my user dashboard page 
 //(user home page view in Figma)
@@ -28,7 +25,7 @@ function UserPage() {
   //getting the user data from the redux store
   const user = useSelector((store) => store.user);
   const history = useHistory();
-
+  //setting state for all recipe form input fields
   const [title, setTitle] = useState('');
   const [coffee, setCoffee] = useState('');
   const [roast, setRoast] = useState('');
@@ -38,6 +35,8 @@ function UserPage() {
   const [method, setMethod] = useState('');
   const [image, setImage] = useState('');
 
+  //setting all the values of the recipe form input fields
+  //to send to 
   const recipeDetails = {
     title: title,
     coffee: coffee,
@@ -53,25 +52,24 @@ function UserPage() {
   useEffect(() => {
     dispatch({type: 'FETCH_USER_RECIPES'})
   }, []);
-
+//opens the brew recipe dialog form
   const handleNewBrew = () => {
     setOpen(true);
   }
 
-//button submits new recipe to DB
+//button submits new recipe to DB, handles input validation popups,
+//and resets the value of input fields to empty strings
   const handleSubmit = () => {
 
     if (recipeDetails.title === '' || recipeDetails.method === '' || 
     recipeDetails.coffee === '' || recipeDetails.roast === '' ||
     recipeDetails.input === '' || recipeDetails.output === '') {
-      //   return Swal.fire({
-      //     text: 'Please fill in all required fields',
-      //     // color: '#6B6BB2',
-      //     confirmButtonColor: '#6B6BB2',
-      //     confirmButtonText: 'Got It'
-      // })
-      
-      return swal('Please fill in all required fields')
+        return Swal.fire({
+          text: 'Please fill in all required fields',
+          // color: '#6B6BB2',
+          confirmButtonColor: '#6B6BB2',
+          confirmButtonText: 'Got It'
+      })
     }
     dispatch({type: 'ADD_RECIPE', payload: recipeDetails});
     Swal.fire({
@@ -99,8 +97,10 @@ function UserPage() {
     setOpen(false);
     };
     
-    const focusedColor = "#6B6BB2";
-    const useStyles = makeStyles({
+    //setting a color for onFocus of input fields
+  const focusedColor = "#6B6BB2";
+    //creating style to handle focus color of input fields
+  const useStyles = makeStyles({
       root: {
         // input label when focused
         "& label.Mui-focused": {
@@ -126,7 +126,7 @@ function UserPage() {
       }
     });
 
-const classes = useStyles();
+  const classes = useStyles();
 
   return (
     <div className="container">
@@ -174,7 +174,7 @@ const classes = useStyles();
                 <TextField className={classes.root}
                   required
                   id="recipe-title-input"
-                  label="Give this recipe a title (30 character limit)"
+                  label="30 character limit"
                   inputProps={{ maxLength: "30" }}
                   variant="filled"
                   type="text"
@@ -190,10 +190,9 @@ const classes = useStyles();
                 <TextField className={classes.root}
                   select
                   required
-                  
                   id="brew-method"
                   value={method}
-                  label="Brew Method:"
+                  label="Brew Method"
                   onChange={(e) => {
                     console.log("Brew Method", e.target.value)
                     setMethod(e.target.value)
@@ -212,7 +211,7 @@ const classes = useStyles();
             <TextField className={classes.root}
               required
               id="coffee-input"
-              label="Coffee Used (50 character limit)"
+              label="50 character limit"
               inputProps={{ maxLength: "50" }}
               variant="filled"
               type="text"

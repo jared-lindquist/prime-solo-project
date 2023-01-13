@@ -12,6 +12,8 @@ import { CardActionArea, CardHeader, Grid} from '@mui/material'
 import { useHistory} from 'react-router-dom';
 import { InputLabel, Select, MenuItem, FormControl, Paper, FormGroup } from '@mui/material';
 import { useState } from 'react';
+import TextField from '@mui/material/TextField';
+import { makeStyles } from '@mui/styles';
 import './AllRecipes.css';
 
 
@@ -38,10 +40,40 @@ function AllRecipes() {
         history.push(`/recipeitem/` + recipe.id)
     }
 
-    const seeFavorites = () => {
-        console.log('see favorites button clicked');
-        history.push('/favorites')
+    // const seeFavorites = () => {
+    //     console.log('see favorites button clicked');
+    //     history.push('/favorites')
+    // }
+
+    const focusedColor = "#6B6BB2";
+    //creating style to handle focus color of input fields
+    const useStyles = makeStyles({
+        root: {
+        // input label when focused
+        "& label.Mui-focused": {
+        color: focusedColor
+        },
+        "& select.Mui-focused": {
+        color: focusedColor
+        },
+        // focused color for input with variant='standard'
+        "& .MuiInput-underline:after": {
+        borderBottomColor: focusedColor
+        },
+        // focused color for input with variant='filled'
+        "& .MuiFilledInput-underline:after": {
+        borderBottomColor: focusedColor
+        },
+        // focused color for input with variant='outlined'
+        "& .MuiOutlinedInput-root": {
+        "&.Mui-focused fieldset": {
+            borderColor: focusedColor
+            }
+        }
     }
+    });
+
+const classes = useStyles();
 
     return (
         <div key={method}>
@@ -65,7 +97,8 @@ function AllRecipes() {
                 justify="center"
                 alignItems="center"
             >
-                <Select
+                <TextField className={classes.root}
+                    select
                     style={{backgroundColor: '#fffff', width: 400}}
                     required
                     labelId="brew-method"
@@ -84,7 +117,7 @@ function AllRecipes() {
                     <MenuItem value="espresso">Espresso Machine</MenuItem>
                     <MenuItem value="chemex">Chemex</MenuItem>
                     <MenuItem value="french-press">French Press</MenuItem>
-                </Select>
+                </TextField>
             </Grid>
             <Grid item xs={12}
                 display="flex"
