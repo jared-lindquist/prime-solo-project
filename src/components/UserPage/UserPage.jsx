@@ -14,7 +14,9 @@ import Swal from 'sweetalert2';
 import swal from 'sweetalert';
 import Button from '@mui/material/Button';
 import UserRecipes from '../UserRecipes/UserRecipes';
+import { makeStyles } from '@mui/styles';
 import './UserPage.css';
+import { ClassNames } from '@emotion/react';
 
 //I need to use this component as my user dashboard page 
 //(user home page view in Figma)
@@ -96,29 +98,35 @@ function UserPage() {
     setComments('');
     setOpen(false);
     };
-
-    const CssTextField = styled(TextField, {
-      shouldForwardProp: (props) => props !== "focusColor"
-    })((p) => ({
-      // input label when focused
-      "& label.Mui-focused": {
-        color: p.focusColor
-      },
-      // focused color for input with variant='standard'
-      "& .MuiInput-underline:after": {
-        borderBottomColor: p.focusColor
-      },
-      // focused color for input with variant='filled'
-      "& .MuiFilledInput-underline:after": {
-        borderBottomColor: p.focusColor
-      },
-      // focused color for input with variant='outlined'
-      "& .MuiOutlinedInput-root": {
-        "&.Mui-focused fieldset": {
-          borderColor: p.focusColor
+    
+    const focusedColor = "#6B6BB2";
+    const useStyles = makeStyles({
+      root: {
+        // input label when focused
+        "& label.Mui-focused": {
+          color: focusedColor
+        },
+        "& select.Mui-focused": {
+          color: focusedColor
+        },
+        // focused color for input with variant='standard'
+        "& .MuiInput-underline:after": {
+          borderBottomColor: focusedColor
+        },
+        // focused color for input with variant='filled'
+        "& .MuiFilledInput-underline:after": {
+          borderBottomColor: focusedColor
+        },
+        // focused color for input with variant='outlined'
+        "& .MuiOutlinedInput-root": {
+          "&.Mui-focused fieldset": {
+            borderColor: focusedColor
+          }
         }
       }
-    }));
+    });
+
+const classes = useStyles();
 
   return (
     <div className="container">
@@ -162,8 +170,8 @@ function UserPage() {
                 justify="center"
                 style={{minWidth: 120}}>
                   <p>Give this recipe a title:</p>
-                  <CssTextField focusColor= "#6B6BB2"/>
-                <TextField 
+                  
+                <TextField className={classes.root}
                   required
                   id="recipe-title-input"
                   label="Give this recipe a title (30 character limit)"
@@ -178,11 +186,11 @@ function UserPage() {
               <p>What brew method did you use? *</p>
 
               <FormControl>
-              <InputLabel>Method</InputLabel>
-                <Select
-                  style={{backgroundColor: '#fffff'}}
+              <InputLabel className={classes.root}></InputLabel>
+                <TextField className={classes.root}
+                  select
                   required
-                  labelId="brew-method"
+                  
                   id="brew-method"
                   value={method}
                   label="Brew Method:"
@@ -191,17 +199,17 @@ function UserPage() {
                     setMethod(e.target.value)
                   }}
                 >
-                  <InputLabel id="Brew Method">Brew Method</InputLabel>
+                  {/* <InputLabel id="Brew Method">Brew Method</InputLabel> */}
                   <MenuItem value="drip-brewer">Drip Brewer</MenuItem>
                   <MenuItem value="espresso">Espresso Machine</MenuItem>
                   <MenuItem value="chemex">Chemex</MenuItem>
                   <MenuItem value="french-press">French Press</MenuItem>
-                </Select>
+                </TextField>
               </FormControl>
             <br/>
             
             <p>What coffee did you use? (Roaster and country of origin)</p>
-            <TextField
+            <TextField className={classes.root}
               required
               id="coffee-input"
               label="Coffee Used (50 character limit)"
@@ -217,10 +225,10 @@ function UserPage() {
             <p>Is this a Light, Medium or Dark roast? *</p>
 
             <FormControl>
-            <InputLabel>Roast Level</InputLabel>
-              <Select
+            <InputLabel></InputLabel>
+              <TextField className={classes.root}
+                select
                 required
-                labelId="roast-level"
                 id="roast-level"
                 value={roast}
                 label="Roast Level"
@@ -233,12 +241,12 @@ function UserPage() {
                 <MenuItem value="light">Light</MenuItem>
                 <MenuItem value="medium">Medium</MenuItem>
                 <MenuItem value="dark">Dark</MenuItem>
-              </Select>
+              </TextField>
             </FormControl>
             <br/>
             <br/>
             <p>How many grams of coffee did you start the brew with?</p>
-            <TextField
+            <TextField className={classes.root}
               required
               id="input"
               label="Input in grams"
@@ -251,7 +259,7 @@ function UserPage() {
 
             <p>Once the brew was complete, how much coffee did you end up with?</p>
 
-            <TextField
+            <TextField className={classes.root}
               required
               id="output"
               label="Output in grams"
@@ -264,7 +272,7 @@ function UserPage() {
 
             <p>Please fill in details for this brew recipe below</p>
 
-            <TextField
+            <TextField className={classes.root}
               id="comments"
               label="Tasting Notes/Comments (500 character limit)"
               inputProps={{ maxLength: "500" }}

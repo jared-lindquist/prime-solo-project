@@ -11,8 +11,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { ButtonGroup } from '@mui/material';
-import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } from '@mui/material';
+import { InputLabel, Select, MenuItem, FormControl, FormGroup } from '@mui/material';
 import Swal from 'sweetalert2';
+import { makeStyles } from '@mui/styles';
 import './UserItem.css';
 
 
@@ -121,6 +122,33 @@ function UserItem() {
         history.push('/user');
     }
 
+    const focusedColor = "#6B6BB2";
+
+    const useStyles = makeStyles({
+    root: {
+        // input label when focused
+        "& label.Mui-focused": {
+        color: focusedColor
+        },
+        // focused color for input with variant='standard'
+        "& .MuiInput-underline:after": {
+        borderBottomColor: focusedColor
+        },
+        // focused color for input with variant='filled'
+        "& .MuiFilledInput-underline:after": {
+        borderBottomColor: focusedColor
+        },
+        // focused color for input with variant='outlined'
+        "& .MuiOutlinedInput-root": {
+        "&.Mui-focused fieldset": {
+            borderColor: focusedColor
+        }
+    }
+    }
+});
+
+const classes = useStyles();
+
     return (
         <>
         <div className='recipe-details'>
@@ -169,7 +197,7 @@ function UserItem() {
                         justify="center"
                         style={{minWidth: 120}}>
                     <p>Give this recipe a title:</p>
-                    <TextField style={{backgroundColor: '#fff'}}
+                    <TextField className={classes.root}
                         required
                         inputProps={{ maxLength: "30" }}
                         id="recipe-title-input"
@@ -182,10 +210,10 @@ function UserItem() {
                     <br/>
                     <p>What brew method did you use?</p>
                     <FormControl>
-                        <InputLabel>Brew Method</InputLabel>
-                        <Select style={{backgroundColor: '#fff'}}
+                        <InputLabel></InputLabel>
+                        <TextField className={classes.root}
+                            select
                             required
-                            labelId="brew-method"
                             id="brew-method"
                             value={method}
                             label="Brew Method"
@@ -199,11 +227,11 @@ function UserItem() {
                             <MenuItem value="espresso">Espresso Machine</MenuItem>
                             <MenuItem value="chemex">Chemex</MenuItem>
                             <MenuItem value="french-press">French Press</MenuItem>
-                        </Select>
+                        </TextField>
                     </FormControl>
                     <br/>
                     <p>What coffee did you use? (Roaster and country of origin)</p>
-                        <TextField style={{backgroundColor: '#fff'}}
+                        <TextField className={classes.root}
                             required
                             inputProps={{ maxLength: "50" }}
                             id="coffee-input"
@@ -216,10 +244,10 @@ function UserItem() {
                     <br/>
                     <p>Was this a Light, Medium, or Dark roast?</p>
                         <FormGroup>
-                        <InputLabel>Light/Medium/Dark?</InputLabel>
-                            <Select style={{backgroundColor: '#fff'}}
+                            <TextField className={classes.root}
+                                select
                                 required
-                                labelId="roast-level"
+                                
                                 id="roast-level"
                                 value={roast}
                                 label="Roast Level"
@@ -232,11 +260,11 @@ function UserItem() {
                                 <MenuItem value="light">Light</MenuItem>
                                 <MenuItem value="medium">Medium</MenuItem>
                                 <MenuItem value="dark">Dark</MenuItem>
-                            </Select>
+                            </TextField>
                         </FormGroup>
                         <br/>
                         <p>How many grams of coffee did you start the brew with?</p>
-                            <TextField style={{backgroundColor: '#fff'}}
+                            <TextField className={classes.root}
                                 required
                                 id="input"
                                 label="Input in Grams"
@@ -247,7 +275,7 @@ function UserItem() {
                             />
                         <br/>
                         <p>Once the brew was complete, how much coffee did you end up with?</p>
-                            <TextField style={{backgroundColor: '#fff'}}
+                            <TextField className={classes.root}
                                 required
                                 id="output"
                                 label="Output in Grams"
@@ -258,7 +286,7 @@ function UserItem() {
                             />
                         <br/>
                         <p>Please fill in details for this brew recipe below</p>
-                            <TextField style={{backgroundColor: '#fff'}}
+                            <TextField className={classes.root}
                                 id="comments"
                                 label="Tasting Notes/Comments (500 character limit)"
                                 inputProps={{ maxLength: "500" }}

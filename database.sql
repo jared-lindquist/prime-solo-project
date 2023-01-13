@@ -1,8 +1,5 @@
 Create a new database called `prime_app`
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
+
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
@@ -17,5 +14,6 @@ CREATE TABLE "recipes" (
     "brew_method" VARCHAR(255) NOT NULL,
     "input" INT,
     "output" INT,
-    "comments" VARCHAR (255)
+    "comments" VARCHAR (255),
+    "image" VARHCAR (120)
 );
