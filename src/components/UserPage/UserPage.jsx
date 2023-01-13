@@ -97,6 +97,29 @@ function UserPage() {
     setOpen(false);
     };
 
+    const CssTextField = styled(TextField, {
+      shouldForwardProp: (props) => props !== "focusColor"
+    })((p) => ({
+      // input label when focused
+      "& label.Mui-focused": {
+        color: p.focusColor
+      },
+      // focused color for input with variant='standard'
+      "& .MuiInput-underline:after": {
+        borderBottomColor: p.focusColor
+      },
+      // focused color for input with variant='filled'
+      "& .MuiFilledInput-underline:after": {
+        borderBottomColor: p.focusColor
+      },
+      // focused color for input with variant='outlined'
+      "& .MuiOutlinedInput-root": {
+        "&.Mui-focused fieldset": {
+          borderColor: p.focusColor
+        }
+      }
+    }));
+
   return (
     <div className="container">
       <Grid
@@ -131,15 +154,16 @@ function UserPage() {
           <Grid justifyContent="center"
                 container item spacing={3}
           >
-              <Dialog open={open} onClose={handleClose}>
+              <Dialog open={open} onClose={handleClose} >
                 <DialogTitle>Add New Recipe</DialogTitle>
-              <DialogContent>
+              <DialogContent >
         <div>
             <FormControl 
                 justify="center"
                 style={{minWidth: 120}}>
                   <p>Give this recipe a title:</p>
-                <TextField
+                  <CssTextField focusColor= "#6B6BB2"/>
+                <TextField 
                   required
                   id="recipe-title-input"
                   label="Give this recipe a title (30 character limit)"
@@ -154,6 +178,7 @@ function UserPage() {
               <p>What brew method did you use? *</p>
 
               <FormControl>
+              <InputLabel>Method</InputLabel>
                 <Select
                   style={{backgroundColor: '#fffff'}}
                   required
@@ -191,7 +216,8 @@ function UserPage() {
 
             <p>Is this a Light, Medium or Dark roast? *</p>
 
-            <FormGroup>
+            <FormControl>
+            <InputLabel>Roast Level</InputLabel>
               <Select
                 required
                 labelId="roast-level"
@@ -208,7 +234,7 @@ function UserPage() {
                 <MenuItem value="medium">Medium</MenuItem>
                 <MenuItem value="dark">Dark</MenuItem>
               </Select>
-            </FormGroup>
+            </FormControl>
             <br/>
             <br/>
             <p>How many grams of coffee did you start the brew with?</p>

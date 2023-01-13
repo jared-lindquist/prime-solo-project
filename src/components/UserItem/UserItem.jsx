@@ -151,7 +151,7 @@ function UserItem() {
                         Full Recipe Details:
                         <br/>
                         <br/>
-                        '{store.details[0]?.comments}' </p>
+                        {store.details[0]?.comments} </p>
                         </div>
                     
                 </div>
@@ -182,6 +182,7 @@ function UserItem() {
                     <br/>
                     <p>What brew method did you use?</p>
                     <FormControl>
+                        <InputLabel>Brew Method</InputLabel>
                         <Select style={{backgroundColor: '#fff'}}
                             required
                             labelId="brew-method"
@@ -215,6 +216,7 @@ function UserItem() {
                     <br/>
                     <p>Was this a Light, Medium, or Dark roast?</p>
                         <FormGroup>
+                        <InputLabel>Light/Medium/Dark?</InputLabel>
                             <Select style={{backgroundColor: '#fff'}}
                                 required
                                 labelId="roast-level"

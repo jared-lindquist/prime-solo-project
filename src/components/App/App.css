@@ -6,7 +6,9 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  /* font-family: 'Spline Sans', sans-serif; */
+  font-family: 'Source Sans Pro', sans-serif;
   margin: 0px;
   /* background-image: url("./images/370.jpg") */
 }

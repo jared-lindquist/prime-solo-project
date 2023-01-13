@@ -33,9 +33,9 @@ function Nav() {
               Community
             </Link>
 
-            <Link className="navLink" to="/info">
+            {/* <Link className="navLink" to="/info">
               Info
-            </Link>
+            </Link> */}
 
             <Link className="navLink" to="/about">
               About
