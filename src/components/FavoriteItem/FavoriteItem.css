@@ -1,0 +1,23 @@
+.recipe-details {
+    justify-content: center;
+    text-align: center;
+}
+
+.image {
+    /* border-radius: 30%; */
+    padding-right: 30px;
+}
+
+.recipe-text {
+    padding-top: 20px;
+    padding-left: 20px;
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    padding-bottom: 20px;
+    font-size: 18px;
+}
+
+.details-text {
+    width: 400px;
+}

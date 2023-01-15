@@ -4,15 +4,11 @@ import { useEffect, useState } from 'react';
 import useReduxStore from '../../hooks/useReduxStore';
 import { useHistory, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Swal from 'sweetalert2';
-import './RecipeItem.css';
+import './FavoriteItem.css';
 
 
-function RecipeItem() {
+function FavoriteItem() {
 
     const { ID } = useParams();
     const history = useHistory();
@@ -51,18 +47,8 @@ function RecipeItem() {
 
     console.log('recipe details are: ', store.details, isActive);
 
-    const backToCommunity = () => {
-        history.push('/allrecipes');
-    }
-
-    const addToFavorites = () => {
-        console.log('in ReciptItem addToFavorites', store.details);
-        dispatch({ type: 'ADD_TO_FAVORITES', payload: store.details })
-        Swal.fire({
-            text: 'Added to Favorites!',
-            confirmButtonColor: '#6B6BB2',
-            confirmButtonText: 'Nice!'
-        })
+    const backToFavorites = () => {
+        history.push('/favorites');
     }
 
     return (
@@ -73,12 +59,11 @@ function RecipeItem() {
             <h2>
                 {store.details[0]?.title}
             </h2>
-                <Button 
+                {/* <Button 
                     variant="contained"
                     style={{ color: "#FFFFFF", backgroundColor: "#6B6BB2"}}
-                    onClick={addToFavorites}>Add To My Favorites</Button>
-            <br />
-            <br />
+                    onClick={addToFavorites}>Add To My Favorites</Button> */}
+            
             <br />
             <div className='recipe-text'>
                 <img className="image" src={store.details[0]?.image} alt="brew-method-image"
@@ -105,17 +90,17 @@ function RecipeItem() {
                         Full Recipe Details:
                         <br />
                         <br />
-                        '{store.details[0]?.comments}' </p>
+                        {store.details[0]?.comments} </p>
                 </div>
             </div>
             <Button style={{ color: "#FFFFFF", backgroundColor: "#5A5A5A" }}
                 variant="contained"
                 className='back'
-                onClick={backToCommunity}
-            >Back to Community Brews
+                onClick={backToFavorites}
+            >Back to My Favorite Brews
             </Button>
         </div>
     )
 }
 
-export default RecipeItem;
+export default FavoriteItem;

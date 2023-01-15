@@ -25,6 +25,7 @@ import UserRecipes from '../UserRecipes/UserRecipes';
 import AllRecipes from '../AllRecipes/AllRecipes';
 import Favorites from '../Favorites/Favorites';
 import RecipeItem from '../RecipeItem/RecipeItem';
+import FavoriteItem from '../FavoriteItem/FavoriteItem';
 import './App.css';
 
 
@@ -96,7 +97,6 @@ function App() {
             path="/useritem/:ID"
           >
             <UserItem />
-
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -104,7 +104,13 @@ function App() {
             path="/recipeitem/:ID"
           >
             <RecipeItem />
+          </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/favoriteitem/:ID"
+          >
+            <FavoriteItem />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -112,7 +118,6 @@ function App() {
             path="/favorites"
           >
             <Favorites />
-
           </ProtectedRoute>
 
           <Route

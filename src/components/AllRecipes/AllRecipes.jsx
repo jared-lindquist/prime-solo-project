@@ -40,10 +40,9 @@ function AllRecipes() {
         history.push(`/recipeitem/` + recipe.id)
     }
 
-    // const seeFavorites = (recipe) => {
-    //     console.log('added to favorites,' recipe);
-    //     history.push('/favorites')
-    // }
+    const seeFavorites = () => {
+        history.push('/favorites')
+    }
 
     const focusedColor = "#6B6BB2";
     //creating style to handle focus color of input fields
@@ -124,12 +123,12 @@ function AllRecipes() {
                     justifyContent="center"
                     justify="center"
                     alignItems="center">
-                    {/* <Button style={{backgroundColor: "#6bb26b"}}
+                    <Button style={{backgroundColor: "#6bb26b"}}
                         variant="contained"
-                        onClick={addToFavorites}
+                        onClick={seeFavorites}
                     >
                     See My Favorites
-                </Button> */}
+                </Button>
                 </Grid>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 10 }}
                     display="flex"

@@ -39,7 +39,7 @@ userRecipesRouter.get('/favorites', rejectUnauthenticated, (req, res) => {
     const queryText = `
     SELECT "favorites"."fav_recipe_id", "recipes"."title", "recipes"."coffee", 
     "recipes"."roast_level", "recipes"."brew_method", "recipes"."input", 
-    "recipes"."output", "recipes"."comments"
+    "recipes"."output", "recipes"."comments", "recipes"."image"
     FROM "favorites"
     INNER JOIN "recipes" ON "favorites"."fav_recipe_id" = "recipes"."id"
     WHERE "favorites"."user_id" = $1`;
@@ -59,16 +59,6 @@ userRecipesRouter.post('/addToFavorites', rejectUnauthenticated, (req, res) => {
     console.log('req.user', req.user.id);
     
     const userId = req.user.id;
-
-    // const queryText = `
-    // INSERT INTO "favorites" ("user_id", "fav_recipe_id")
-    // SELECT "recipes"."id"
-    // FROM "recipes"
-    // JOIN "favorites" ON "favorites"."fav_recipe_id" = "recipes"."id"
-    // SELECT "user"."user_id"
-    // FROM "user"
-    // JOIN "favorites" ON "favorites"."user_id" = "user"."user_id"
-    // WHERE "favorites"."fav_recipe_id" = $1 AND "user"."user_id" = $2`;
 
     const queryText = `INSERT INTO "favorites" ("user_id", "fav_recipe_id")
                         VALUES ($1, $2)`;
