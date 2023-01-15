@@ -25,7 +25,7 @@ function Favorites() {
             <h1>Here is where the favorites will be
                 displayed
             </h1>
-            {JSON.stringify(store.details)}
+            {JSON.stringify(store)}
             <br/>
             <Button style={{color: "#FFFFFF", backgroundColor: "#5A5A5A"}}
             variant="contained" 

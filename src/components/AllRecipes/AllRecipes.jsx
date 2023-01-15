@@ -40,8 +40,8 @@ function AllRecipes() {
         history.push(`/recipeitem/` + recipe.id)
     }
 
-    // const seeFavorites = () => {
-    //     console.log('see favorites button clicked');
+    // const seeFavorites = (recipe) => {
+    //     console.log('added to favorites,' recipe);
     //     history.push('/favorites')
     // }
 
@@ -100,11 +100,11 @@ function AllRecipes() {
                     <TextField className={classes.root}
                         select
                         style={{ backgroundColor: '#fffff', width: 400 }}
-                        required
+                        
                         labelId="brew-method"
                         id="brew-method"
                         value={method}
-                        label="Brew Method:"
+                        label="Brew Method"
                         onChange={(e) => {
                             console.log("Brew Method", e.target.value)
                             setMethod(e.target.value)
@@ -126,7 +126,7 @@ function AllRecipes() {
                     alignItems="center">
                     {/* <Button style={{backgroundColor: "#6bb26b"}}
                         variant="contained"
-                        onClick={seeFavorites}
+                        onClick={addToFavorites}
                     >
                     See My Favorites
                 </Button> */}

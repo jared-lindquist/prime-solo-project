@@ -8,6 +8,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Swal from 'sweetalert2';
 import './RecipeItem.css';
 
 
@@ -50,19 +51,19 @@ function RecipeItem() {
 
     console.log('recipe details are: ', store.details, isActive);
 
-
-
     const backToCommunity = () => {
         history.push('/allrecipes');
     }
 
-    const handleFavorite = () => {
 
-        setIsActive(true);
-
-        console.log('favorite button clicked', isActive);
+    const addToFavorites = () => {
+        console.log('in ReciptItem addToFavorites', store.details);
         dispatch({ type: 'ADD_TO_FAVORITES', payload: store.details })
-
+        Swal.fire({
+            text: 'Added to Favorites!',
+            confirmButtonColor: '#6B6BB2',
+            confirmButtonText: 'Nice!'
+        })
     }
 
     return (
@@ -79,6 +80,10 @@ function RecipeItem() {
                     checkedIcon={<FavoriteIcon />}
                     name="checkedH" />}
                 /> */}
+                <Button 
+                    variant="contained"
+                    style={{ color: "#FFFFFF", backgroundColor: "#6B6BB2"}}
+                    onClick={addToFavorites}>Add To My Favorites</Button>
             <br />
             <br />
             <br />

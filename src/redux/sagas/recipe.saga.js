@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, take, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 //this is where our fetchRecipes* saga will live
@@ -82,6 +82,16 @@ function* addRecipe(action) {
         console.log('error adding recipe', error)
     }
 }
+
+function* addToFavorites(action) {
+    console.log('in addToFavorites', action.payload);
+    try {
+        yield axios.post('/api/userRecipes/addToFavorites', action.payload);
+    }
+    catch(error) {
+        console.log('Error adding to favorites', error);
+    }
+}
 //editRecipe* put
 function* editRecipe(action) {
 
@@ -132,6 +142,7 @@ function* recipeSaga(action) {
     yield takeLatest('GET_DETAILS', getDetails);
     yield takeLatest('GET_METHOD', getMethod);
     yield takeLatest('GET_FAVORITES', getFavorites);
+    yield takeLatest('ADD_TO_FAVORITES', addToFavorites);
 }
 
 export default recipeSaga;

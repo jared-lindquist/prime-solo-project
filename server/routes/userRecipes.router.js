@@ -52,6 +52,36 @@ userRecipesRouter.get('/favorites', rejectUnauthenticated, (req, res) => {
         });
 });
 
+//post route for adding a recipe to favorites
+userRecipesRouter.post('/addToFavorites', rejectUnauthenticated, (req, res) => {
+    console.log('in userRecipeRouter.post to add to favorites', req.body[0].id);
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('req.user', req.user.id);
+    
+    const userId = req.user.id;
+
+    // const queryText = `
+    // INSERT INTO "favorites" ("user_id", "fav_recipe_id")
+    // SELECT "recipes"."id"
+    // FROM "recipes"
+    // JOIN "favorites" ON "favorites"."fav_recipe_id" = "recipes"."id"
+    // SELECT "user"."user_id"
+    // FROM "user"
+    // JOIN "favorites" ON "favorites"."user_id" = "user"."user_id"
+    // WHERE "favorites"."fav_recipe_id" = $1 AND "user"."user_id" = $2`;
+
+    const queryText = `INSERT INTO "favorites" ("user_id", "fav_recipe_id")
+                        VALUES ($1, $2)`;
+
+    pool.query(queryText, [userId, req.body[0].id])
+        .then(() => res.sendStatus(201))
+        .catch((error) => {
+            console.log('error adding to favorites', error);
+            res.sendStatus(500);
+        })
+})
+
+//post route for getting the details of the recipe clicked on
 userRecipesRouter.get('/:id', (req, res) => {
     console.log('in userRecipesRouter.get for details:');
     console.log('is authenticated?', req.isAuthenticated());
@@ -73,9 +103,8 @@ userRecipesRouter.get('/:id', (req, res) => {
 });
 
 
-//post route goes here
+//post route for adding a new recipe
 userRecipesRouter.post('/', (req, res) => {
-    // POST route code here
 
     const recipeDetails = [req.user.id, req.body.title, req.body.coffee, req.body.roast,
     req.body.method, req.body.input, req.body.output, req.body.comments, req.body.image];
@@ -96,6 +125,7 @@ userRecipesRouter.post('/', (req, res) => {
         })
 });
 
+//route for deleting a recipe
 userRecipesRouter.delete('/:id', rejectUnauthenticated, (req, res) => {
 
     console.log('in userRecipesRouter delete', req.params.id, req.user.id);
@@ -103,7 +133,6 @@ userRecipesRouter.delete('/:id', rejectUnauthenticated, (req, res) => {
     pool.query(`DELETE FROM "recipes" WHERE "id" = $1 AND "user_id" = $2`, [req.params.id, req.user.id])
         .then((results) => res.sendStatus(200))
         .catch((error) => res.sendStatus(500));
-    //endpoint functionality
 });
 
 userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
