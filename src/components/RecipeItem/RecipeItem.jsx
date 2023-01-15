@@ -57,7 +57,9 @@ function RecipeItem() {
 
     const addToFavorites = () => {
         console.log('in ReciptItem addToFavorites', store.details);
-        dispatch({ type: 'ADD_TO_FAVORITES', payload: store.details })
+        dispatch({ type: 'ADD_TO_FAVORITES', payload: store.details });
+        // this.disabled= true;
+        // this.value="In Favorites";
         Swal.fire({
             text: 'Added to Favorites!',
             confirmButtonColor: '#6B6BB2',
@@ -76,7 +78,8 @@ function RecipeItem() {
                 <Button 
                     variant="contained"
                     style={{ color: "#FFFFFF", backgroundColor: "#6B6BB2"}}
-                    onClick={addToFavorites}>Add To My Favorites</Button>
+                    onClick={addToFavorites}
+                    >Add To My Favorites</Button>
             <br />
             <br />
             <br />

@@ -80,10 +80,10 @@ function AllRecipes() {
                 container rowSpacing={{ xs: 1, sm: 2, md: 3 }} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                 justifyContent="space-evenly"
                 alignItems="center"
-
             >
                 <h2 className='header'>All Community Brews</h2>
                 <Grid item xs={12}></Grid>
+
                 <Grid>
                     <h3>
                         Filter by Brew Method:
@@ -99,7 +99,7 @@ function AllRecipes() {
                     <TextField className={classes.root}
                         select
                         style={{ backgroundColor: '#fffff', width: 400 }}
-                        
+
                         labelId="brew-method"
                         id="brew-method"
                         value={method}
@@ -118,23 +118,28 @@ function AllRecipes() {
                         <MenuItem value="french-press">French Press</MenuItem>
                     </TextField>
                 </Grid>
+                <br />
                 <Grid item xs={12}
                     display="flex"
                     justifyContent="center"
                     justify="center"
                     alignItems="center">
-                    <Button style={{backgroundColor: "#6bb26b"}}
+                    <Button style={{ backgroundColor: "#6bb26b" }}
                         variant="contained"
                         onClick={seeFavorites}
                     >
-                    See My Favorites
-                </Button>
+                        See My Favorites
+                    </Button>
                 </Grid>
+                <Grid item xs={12}></Grid>
+                <br />
+                <br />
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 10 }}
                     display="flex"
                     justifyContent="center"
                     justify="center"
-                    alignItems="center">
+                    alignItems="center"
+                    marginTop={20}>
                     {store.allRecipes.map(recipe => (
                         <Grid item xs={2} sm={3} md={3}
                             display="flex"
