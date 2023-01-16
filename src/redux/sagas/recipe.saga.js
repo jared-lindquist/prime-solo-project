@@ -132,6 +132,17 @@ function* getMethod(action) {
     }
 }
 
+function* removeFavorite(action) {
+    console.log('in recipe.saga removeFavorite', action.payload.id);
+    try {
+        yield axios.delete('api/userRecipes/removeFavorite/' + action.payload.id);
+        yield put({type: 'GET_FAVORITES'});
+    }
+    catch(error) {
+        console.log('error removing favorite in recipe.saga removeFavorite', error);
+    }
+}
+
 function* recipeSaga(action) {
     yield takeLatest('FETCH_ALL_RECIPES', fetchAllRecipes);
     //add takeLatest for add, delete, and edit recipe sagas
@@ -143,6 +154,7 @@ function* recipeSaga(action) {
     yield takeLatest('GET_METHOD', getMethod);
     yield takeLatest('GET_FAVORITES', getFavorites);
     yield takeLatest('ADD_TO_FAVORITES', addToFavorites);
+    yield takeLatest('REMOVE_FAVORITE', removeFavorite);
 }
 
 export default recipeSaga;

@@ -4,10 +4,6 @@ import { useEffect, useState } from 'react';
 import useReduxStore from '../../hooks/useReduxStore';
 import { useHistory, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Swal from 'sweetalert2';
 import './RecipeItem.css';
 
@@ -47,9 +43,9 @@ function RecipeItem() {
     const [id, setId] = useState(store.details[0]?.id);
     const [username, setUsername] = useState(store.details[0]?.username);
 
-    const [isActive, setIsActive] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
 
-    console.log('recipe details are: ', store.details, isActive);
+    console.log('recipe details are: ', store.details, isFavorite);
 
     const backToCommunity = () => {
         history.push('/allrecipes');
@@ -58,8 +54,7 @@ function RecipeItem() {
     const addToFavorites = () => {
         console.log('in ReciptItem addToFavorites', store.details);
         dispatch({ type: 'ADD_TO_FAVORITES', payload: store.details });
-        // this.disabled= true;
-        // this.value="In Favorites";
+        setIsFavorite(!isFavorite);
         Swal.fire({
             text: 'Added to Favorites!',
             confirmButtonColor: '#6B6BB2',
@@ -67,7 +62,11 @@ function RecipeItem() {
         })
     }
 
+
+const buttonText = isFavorite ? "Already in Your Favorites" : "Add To Favorites";
+
     return (
+        
         <div className='recipe-details'>
             <h1 className='title'>
                 This brew is brought to you by {store.details[0]?.username}
@@ -76,10 +75,11 @@ function RecipeItem() {
                 {store.details[0]?.title}
             </h2>
                 <Button 
+                    disabled={isFavorite === true}
                     variant="contained"
                     style={{ color: "#FFFFFF", backgroundColor: "#6B6BB2"}}
                     onClick={addToFavorites}
-                    >Add To My Favorites</Button>
+                    >{buttonText}</Button>
             <br />
             <br />
             <br />

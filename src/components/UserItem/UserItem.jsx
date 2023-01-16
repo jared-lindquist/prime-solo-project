@@ -270,6 +270,7 @@ function UserItem() {
                                         label="Input in Grams"
                                         variant="filled"
                                         type="number"
+                                        InputProps={{ inputProps: { min: 0 } }}
                                         value={input}
                                         onChange={(e) => setInput(e.target.value)}
                                     />
@@ -280,6 +281,7 @@ function UserItem() {
                                         id="output"
                                         label="Output in Grams"
                                         type="number"
+                                        InputProps={{ inputProps: { min: 0 } }}
                                         variant="filled"
                                         value={output}
                                         onChange={(e) => setOutput(e.target.value)}

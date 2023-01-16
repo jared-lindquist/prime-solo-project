@@ -251,6 +251,7 @@ function UserPage() {
                     label="Input in grams"
                     variant="filled"
                     type="number"
+                    InputProps={{ inputProps: { min: 0 } }}
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                   />
@@ -263,6 +264,7 @@ function UserPage() {
                     id="output"
                     label="Output in grams"
                     type="number"
+                    InputProps={{ inputProps: { min: 0 } }}
                     variant="filled"
                     value={output}
                     onChange={(e) => setOutput(e.target.value)}

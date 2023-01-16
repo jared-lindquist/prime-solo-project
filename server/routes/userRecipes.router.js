@@ -125,6 +125,14 @@ userRecipesRouter.delete('/:id', rejectUnauthenticated, (req, res) => {
         .catch((error) => res.sendStatus(500));
 });
 
+userRecipesRouter.delete('/removeFavorite/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in userRecipesRouter DELETE', req.params.id, req.user.id);
+
+    pool.query(`DELETE from "favorites" WHERE "fav_recipe_id" = $1 AND "user_id" = $2`, [req.params.id, req.user.id])
+    .then((results) => res.sendStatus(200))
+    .catch((error) => res.sendStatus(500));
+})
+
 userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in userRecipesRouter PUT', req.body, req.params.id);
 
