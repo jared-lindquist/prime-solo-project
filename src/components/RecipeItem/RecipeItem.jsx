@@ -25,6 +25,7 @@ function RecipeItem() {
         setMethod(store.details[0]?.brew_method);
         setImage(store.details[0]?.image);
         setId(store.details[0]?.id);
+        setIsFavorite(store.details[0]?.is_favorite)
     }, [store.details]);
 
     useEffect(() => {
@@ -42,10 +43,9 @@ function RecipeItem() {
     const [image, setImage] = useState(store.details[0]?.image);
     const [id, setId] = useState(store.details[0]?.id);
     const [username, setUsername] = useState(store.details[0]?.username);
+    const [isFavorite, setIsFavorite] = useState(store.details[0]?.is_favorite);
 
-    const [isFavorite, setIsFavorite] = useState(false);
-
-    console.log('recipe details are: ', store.details, isFavorite);
+    console.log('recipe details are: ', store.details, store.details[0]?.is_favorite);
 
     const backToCommunity = () => {
         history.push('/allrecipes');
@@ -53,8 +53,10 @@ function RecipeItem() {
 
     const addToFavorites = () => {
         console.log('in ReciptItem addToFavorites', store.details);
+        setIsFavorite(true);
+        console.log(store.details[0]?.is_favorite);
         dispatch({ type: 'ADD_TO_FAVORITES', payload: store.details });
-        setIsFavorite(!isFavorite);
+        
         Swal.fire({
             text: 'Added to Favorites!',
             confirmButtonColor: '#6B6BB2',

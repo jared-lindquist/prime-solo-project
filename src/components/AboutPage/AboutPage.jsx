@@ -13,7 +13,9 @@ function AboutPage() {
         <h2 className='about-title'> How Do You Brew?</h2> 
         <p>An application that lets you save all of your <br/>favorite brew recipes in one place to go back to anytime. 
           <br/>
-          Your favorite recipes are at your fingertips forever.
+          as well as curate favorites from other users. 
+          <br/>
+          Your favorite brews are at your fingertips forever!
         </p>
         <h3 >Technologies used:</h3>
         <ul>
