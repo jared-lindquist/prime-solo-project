@@ -100,18 +100,11 @@ function FavoriteItem() {
     return (
         <div className='recipe-details'>
             <h1 className='title'>
-                This brew is brought to you by {store.details[0]?.username}
+                {store.details[0]?.title}
             </h1>
             <h2>
-                {store.details[0]?.title}
+                Brewed by {store.details[0]?.username}
             </h2>
-            <br />
-            <Button
-                variant="contained"
-                style={{ color: '#FFFFFF', backgroundColor: "#b83d34" }}
-                onClick={handleOpenDelete}
-                    >Remove From Favorites
-            </Button>
             <div className='recipe-text'>
                 <img className="image" src={store.details[0]?.image} alt="brew-method-image"
                     height="400" width="400" />
@@ -173,6 +166,12 @@ function FavoriteItem() {
                 className='back'
                 onClick={backToFavorites}
             >Back to My Favorite Brews
+            </Button>
+            <Button
+                variant="contained"
+                style={{ color: '#FFFFFF', backgroundColor: "#b83d34" }}
+                onClick={handleOpenDelete}
+                    >Remove From Favorites
             </Button>
         </div>
     )

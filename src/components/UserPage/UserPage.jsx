@@ -128,6 +128,10 @@ function UserPage() {
 
   const classes = useStyles();
 
+  const seeFavorites = () => {
+    history.push('/favorites');
+  }
+
   return (
     <div className="container">
       <Grid
@@ -142,23 +146,41 @@ function UserPage() {
           // item xs={12}
           justifyContent="center"
           justify="center">
-          <h2 className='welcome'>Welcome {user.username}! </h2>
+          <h1 className='welcome'>Welcome {user.username}! What would you like to do today?</h1>
         </Grid>
-        <br />
-        <br />
-        <br />
-        <br />
+
         <Grid container item spacing={4}
           justifyContent="center"
+          alignItems="center"
         >
-          <h3>Want to start a new recipe?</h3>
-        </Grid>
-        <Button style={{ backgroundColor: "#6bb26b" }}
-          variant="contained"
-          onClick={handleNewBrew}
-        > Click Here
-        </Button>
+          <Grid item sx={3}
+            align="center"
+          >
+            <h2>See My Favorites</h2>
+            <Button style={{backgroundColor: "#6B6BB2"}}
+              variant="contained"
+              onClick={seeFavorites}
+              >
+                Favorites
+            </Button>
+          </Grid>
+          <Grid item sx={3}
+          justifyContent="center"
+          alignItems="center"
+          align="center"
+          >
+            <h2>Start a New Brew</h2>
 
+            <Button style={{ backgroundColor: "#6bb26b" }}
+              variant="contained"
+              onClick={handleNewBrew}
+              align="center"
+            > New Brew
+            </Button>
+          </Grid>
+          
+        </Grid>
+        <Grid item sx={12}><h3>Your Delicious Brews:</h3></Grid>
         <Grid justifyContent="center"
           container item spacing={3}
         >
@@ -303,8 +325,6 @@ function UserPage() {
             </DialogActions>
           </Dialog>
         </Grid>
-        <br />
-        <br />
         <UserRecipes />
       </Grid>
     </div>

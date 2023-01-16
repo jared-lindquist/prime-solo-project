@@ -29,8 +29,12 @@ function Favorites() {
         history.push('/favoriteitem/' + recipe.fav_recipe_id)
     }
 
-    const backToCommunity = () => {
+    const toCommunity = () => {
         history.push('/allrecipes');
+    }
+
+    const toDashboard = () => {
+        history.push('/user');
     }
 
     return (
@@ -45,8 +49,13 @@ function Favorites() {
                 <Button style={{ color: "#FFFFFF", backgroundColor: "#5A5A5A" }}
                     variant="contained"
                     className='back'
-                    onClick={backToCommunity}
-                >Back to Community Brews
+                    onClick={toCommunity}
+                >Go to Community Brews
+                </Button>
+                <Button style={{ color: "#ffffff", backgroundColor: "#6B6BB2"}}
+                    variant="contained"
+                    onClick={toDashboard}>
+                    Dashboard
                 </Button>
             </div>
             <br />

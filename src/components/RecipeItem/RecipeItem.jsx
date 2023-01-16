@@ -74,15 +74,6 @@ const buttonText = isFavorite ? "Already in Your Favorites" : "Add To Favorites"
             <h2>
                 {store.details[0]?.title}
             </h2>
-                <Button 
-                    disabled={isFavorite === true}
-                    variant="contained"
-                    style={{ color: "#FFFFFF", backgroundColor: "#6B6BB2"}}
-                    onClick={addToFavorites}
-                    >{buttonText}</Button>
-            <br />
-            <br />
-            <br />
             <div className='recipe-text'>
                 <img className="image" src={store.details[0]?.image} alt="brew-method-image"
                     height="400" width="400" />
@@ -117,6 +108,13 @@ const buttonText = isFavorite ? "Already in Your Favorites" : "Add To Favorites"
                 onClick={backToCommunity}
             >Back to Community Brews
             </Button>
+                <Button 
+                    disabled={isFavorite === true}
+                    variant="contained"
+                    style={{ color: "#FFFFFF", backgroundColor: "#6B6BB2"}}
+                    onClick={addToFavorites}
+                    >{buttonText}
+                </Button>
         </div>
     )
 }

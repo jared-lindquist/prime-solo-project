@@ -83,12 +83,6 @@ function AllRecipes() {
             >
                 <h2 className='header'>All Community Brews</h2>
                 <Grid item xs={12}></Grid>
-
-                <Grid>
-                    <h3>
-                        Filter by Brew Method:
-                    </h3>
-                </Grid>
                 <Grid
                     item xs={12}
                     display="flex"
@@ -103,7 +97,7 @@ function AllRecipes() {
                         labelId="brew-method"
                         id="brew-method"
                         value={method}
-                        label="Brew Method"
+                        label="Filter By Brew Method"
                         onChange={(e) => {
                             console.log("Brew Method", e.target.value)
                             setMethod(e.target.value)
