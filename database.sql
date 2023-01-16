@@ -17,3 +17,8 @@ CREATE TABLE "recipes" (
     "comments" VARCHAR (255),
     "image" VARHCAR (120)
 );
+
+CREATE TABLE "favorites" (
+	"user_id" SERIAL REFERENCES "user",
+	"fav_recipe_id" SERIAL REFERENCES "recipes"
+);
