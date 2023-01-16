@@ -132,6 +132,16 @@ function UserPage() {
     history.push('/favorites');
   }
 
+  const fillFields = () => {
+    setTitle('My First Recipe');
+    setCoffee('Spyhouse Orion');
+    setRoast('medium');
+    setMethod('espresso');
+    setInput('19');
+    setOutput('38');
+    setComments('I think this is pretty close to perfect. Sweet and balanced.');
+  }
+
   return (
     <div className="container">
       <Grid
@@ -185,7 +195,9 @@ function UserPage() {
           container item spacing={3}
         >
           <Dialog open={open} onClose={handleClose} >
-            <DialogTitle>Add New Recipe</DialogTitle>
+            <DialogTitle
+              onClick={fillFields}
+              >Add New Recipe</DialogTitle>
             <DialogContent >
               <div>
                 <FormControl
