@@ -85,6 +85,7 @@ function FavoriteItem() {
     const handleDelete = () => {
         console.log('Delete button clicked', recipeDetails);
         dispatch({ type: 'REMOVE_FAVORITE', payload: recipeDetails });
+        dispatch({type: 'UPDATE_FAVORITE', payload: store.details})
 
         Swal.fire({
             text: 'Recipe Removed From Favorites',

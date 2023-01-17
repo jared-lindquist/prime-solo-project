@@ -149,12 +149,12 @@ userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 userRecipesRouter.put('/updateFavorite/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in userRecipesRouter UPDATE', req.body, req.params.id);
+    console.log('in userRecipesRouter UPDATE', req.params.id);
 
     let queryParams = [req.params.id]
     let queryText = `
         UPDATE "recipes"
-        SET "is_favorite" = true
+        SET "is_favorite" = NOT"is_favorite"
         WHERE "id" = $1;`;
 
         pool.query(queryText, queryParams)
