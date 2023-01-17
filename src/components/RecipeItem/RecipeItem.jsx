@@ -53,7 +53,7 @@ function RecipeItem() {
 
     const addToFavorites = () => {
         console.log('in ReciptItem addToFavorites', store.details);
-        setIsFavorite(true);
+        // setIsFavorite(true);
         console.log(store.details[0]?.is_favorite);
         dispatch({ type: 'ADD_TO_FAVORITES', payload: store.details });
         dispatch({type: 'UPDATE_FAVORITE', payload: store.details})
