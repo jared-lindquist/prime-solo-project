@@ -118,7 +118,7 @@ function AllRecipes() {
                     justifyContent="center"
                     justify="center"
                     alignItems="center">
-                    <Button style={{ backgroundColor: "#6bb26b" }}
+                    <Button style={{ backgroundColor: "#6B6BB2" }}
                         variant="contained"
                         onClick={seeFavorites}
                     >

@@ -56,6 +56,7 @@ function RecipeItem() {
         setIsFavorite(true);
         console.log(store.details[0]?.is_favorite);
         dispatch({ type: 'ADD_TO_FAVORITES', payload: store.details });
+        dispatch({type: 'UPDATE_FAVORITE', payload: store.details})
         
         Swal.fire({
             text: 'Added to Favorites!',

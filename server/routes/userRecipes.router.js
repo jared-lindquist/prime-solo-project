@@ -61,9 +61,9 @@ userRecipesRouter.post('/addToFavorites', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
 
     const queryText = `INSERT INTO "favorites" ("user_id", "fav_recipe_id")
-                        VALUES ($1, $2)`;
+                        VALUES ($1, $2);`;
 
-    pool.query(queryText, [userId, req.body[0].id])
+    pool.query(queryText,  [userId, req.body[0].id])
         .then(() => res.sendStatus(201))
         .catch((error) => {
             console.log('error adding to favorites', error);
@@ -135,7 +135,7 @@ userRecipesRouter.delete('/removeFavorite/:id', rejectUnauthenticated, (req, res
 })
 
 userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in userRecipesRouter PUT', req.body, req.params.id);
+    console.log('in userRecipesRouter PUT', req.body.is_favorite, req.params.id);
 
     let queryParams = [req.body.title, req.body.coffee, req.body.roast_level, req.body.input, req.body.output, req.body.comments, req.body.brew_method, req.body.image, req.body.id];
     let queryText = `
@@ -144,6 +144,20 @@ userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
     WHERE "id" = $9;`;
 
     pool.query(queryText, queryParams)
+        .then((results) => res.sendStatus(200))
+        .catch((error) => res.sendStatus(500));
+});
+
+userRecipesRouter.put('/updateFavorite/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in userRecipesRouter UPDATE', req.body, req.params.id);
+
+    let queryParams = [req.params.id]
+    let queryText = `
+        UPDATE "recipes"
+        SET "is_favorite" = true
+        WHERE "id" = $1;`;
+
+        pool.query(queryText, queryParams)
         .then((results) => res.sendStatus(200))
         .catch((error) => res.sendStatus(500));
 });

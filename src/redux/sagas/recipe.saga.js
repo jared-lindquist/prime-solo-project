@@ -143,6 +143,17 @@ function* removeFavorite(action) {
     }
 }
 
+function* updateFavorite(action) {
+    console.log('in recipe.saga updateFavorite', action.payload[0].id);
+    try {
+        yield axios.put('api/userRecipes/updateFavorite/' + action.payload[0].id);
+
+    }
+    catch(error) {
+        console.log('error updating favorite', error);
+    }
+}
+
 function* recipeSaga(action) {
     yield takeLatest('FETCH_ALL_RECIPES', fetchAllRecipes);
     //add takeLatest for add, delete, and edit recipe sagas
@@ -155,6 +166,7 @@ function* recipeSaga(action) {
     yield takeLatest('GET_FAVORITES', getFavorites);
     yield takeLatest('ADD_TO_FAVORITES', addToFavorites);
     yield takeLatest('REMOVE_FAVORITE', removeFavorite);
+    yield takeLatest('UPDATE_FAVORITE', updateFavorite);
 }
 
 export default recipeSaga;
