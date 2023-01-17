@@ -326,7 +326,7 @@ function UserItem() {
                     aria-describedby="alert-dialog-description"
                 >
                     <DialogTitle id="alert-dialog-title">
-                        {"Delete this recipe?"}
+                        {"Delete this recipe"}
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">

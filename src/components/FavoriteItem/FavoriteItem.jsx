@@ -118,7 +118,7 @@ function FavoriteItem() {
                     aria-describedby="alert-dialog-description"
                 >
                     <DialogTitle id="alert-dialog-title">
-                        {"Delete this recipe?"}
+                        {"Remove From Favorites"}
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">

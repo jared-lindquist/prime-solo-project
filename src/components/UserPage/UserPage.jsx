@@ -15,8 +15,6 @@ import UserRecipes from '../UserRecipes/UserRecipes';
 import { makeStyles } from '@mui/styles';
 import './UserPage.css';
 
-//I need to use this component as my user dashboard page 
-//(user home page view in Figma)
 
 function UserPage() {
 
@@ -131,7 +129,7 @@ function UserPage() {
   const seeFavorites = () => {
     history.push('/favorites');
   }
-
+//click listener function to fill input fields for presentation purposes
   const fillFields = () => {
     setTitle('My First Recipe');
     setCoffee('Spyhouse Orion');
