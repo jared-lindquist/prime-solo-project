@@ -136,7 +136,7 @@ function UserPage() {
     setRoast('medium');
     setMethod('espresso');
     setInput('19');
-    setOutput('38');
+    setOutput('380');
     setComments('I think this is pretty close to perfect. Sweet and balanced.');
   }
 

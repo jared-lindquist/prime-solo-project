@@ -84,7 +84,7 @@ function LandingPage() {
               alt="Latte"
             />
             <CardContent>
-              <h2>My First French Press</h2>
+              <h2>First French Press</h2>
               <Typography variant="body2" color="text.secondary">
                 Medium Roasted French Press
               </Typography>
@@ -104,7 +104,7 @@ function LandingPage() {
               alt="coffee"
             />
             <CardContent>
-              <h2>More Espresso Please</h2>
+              <h2>More Espresso!</h2>
               <Typography variant="body2" color="text.secondary">
                 Medium Roasted Espresso
               </Typography>

@@ -125,7 +125,7 @@ userRecipesRouter.delete('/:id', rejectUnauthenticated, (req, res) => {
         .then((results) => res.sendStatus(200))
         .catch((error) => res.sendStatus(500));
 });
-
+//route for removing a recipe from favorites
 userRecipesRouter.delete('/removeFavorite/:id', rejectUnauthenticated, (req, res) => {
     console.log('in userRecipesRouter DELETE', req.params.id, req.user.id);
 
@@ -133,7 +133,7 @@ userRecipesRouter.delete('/removeFavorite/:id', rejectUnauthenticated, (req, res
     .then((results) => res.sendStatus(200))
     .catch((error) => res.sendStatus(500));
 })
-
+//router for editing details of a recipe
 userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in userRecipesRouter PUT', req.body.is_favorite, req.params.id);
 
@@ -147,7 +147,7 @@ userRecipesRouter.put('/:id', rejectUnauthenticated, (req, res) => {
         .then((results) => res.sendStatus(200))
         .catch((error) => res.sendStatus(500));
 });
-
+//router for upating the is_favorite in the recipes table for conditional rendering
 userRecipesRouter.put('/updateFavorite/:id', rejectUnauthenticated, (req, res) => {
     console.log('in userRecipesRouter UPDATE', req.params.id);
 
