@@ -7,6 +7,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import DialogContentText from '@mui/material/DialogContentText';
 import TextField from '@mui/material/TextField';
 import { InputLabel, Select, MenuItem, FormControl, Grid, Paper, FormGroup } from '@mui/material';
 import Swal from 'sweetalert2';
@@ -32,6 +33,7 @@ function UserPage() {
   const [comments, setComments] = useState('');
   const [method, setMethod] = useState('');
   const [image, setImage] = useState('');
+  const [need, setNeed] = React.useState(false);
 
   //setting all the values of the recipe form input fields
   //to send to 
@@ -136,8 +138,16 @@ function UserPage() {
     setRoast('medium');
     setMethod('espresso');
     setInput('19');
-    setOutput('38');
+    setOutput('380');
     setComments('I think this is pretty close to perfect. Sweet and balanced.');
+  }
+
+  const whatINeed = () => {
+    setNeed(true);
+  }
+
+  const closeWhatINeed = () => {
+    setNeed(false);
   }
 
   return (
@@ -164,7 +174,7 @@ function UserPage() {
           <Grid item sx={3}
             align="center"
           >
-            <h2>See My Favorites</h2>
+            <h3>See My Favorites</h3>
             <Button style={{backgroundColor: "#6B6BB2"}}
               variant="contained"
               onClick={seeFavorites}
@@ -177,7 +187,7 @@ function UserPage() {
           alignItems="center"
           align="center"
           >
-            <h2>Start a New Brew</h2>
+            <h3>Start a New Brew</h3>
 
             <Button style={{ backgroundColor: "#6bb26b" }}
               variant="contained"
@@ -186,7 +196,81 @@ function UserPage() {
             > New Brew
             </Button>
           </Grid>
-          
+          <Grid item sx={3}
+          justifyContent="center"
+          alignItems="center"
+          align="center">
+            <h3>What do I need to brew?</h3>
+            <Button
+              style={{backgroundColor: "#6B6BB2"}}
+              variant="contained"
+              align="center"
+              onClick={whatINeed}
+              > What You Need
+            </Button>
+          </Grid>
+          <Dialog
+          open={need}
+          keepMounted
+          onClose={closeWhatINeed}
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle>{"Here's what you need to brew:"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              {/* <b>Here's what you need to get started: </b> */}
+              <br />
+              <br />
+              <b>1. Coffee (duh)</b>
+              <br />
+              <br />
+              <img src="./images/coffee.jpg" alt="coffee" />
+              <br />
+              <br />
+              <b>2. A scale the measures in grams.</b>
+              <br />
+              If you don't have a coffee scale,
+              a simple food scale will do the trick.
+              <br />
+              <br />
+              <img src="./images/coffeescale.jpg" alt="coffee scale" />
+              <br />
+              <br />
+              <b>3. A brew method</b>
+              <br />
+              The app currently supports Espresso, Drip Brew,
+              Chemex, and French Press.
+              <br />
+              <br />
+              <img src="./images/chemex.jpg" alt="chemex" />
+              <br />
+              <br />
+              <b>4. All the details for creating your delicious brew</b>
+              <br />
+              Think brew time,
+              a general idea of grind size (like medium coarse), pouring instructions.
+              Be as detailed as you like!
+              See this recipe from one of our users as an example:
+              <br />
+              <br />
+              <img src="./images/samplerecipe.jpg" />
+              <br />
+              <br />
+              <b>Ready to get brewing?? Click the button below</b>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              variant='contained'
+              style={{
+                color: "#FFFFFF",
+                backgroundColor: "#6bb26b"
+              }}
+              onClick={closeWhatINeed}
+            >Got It!
+            </Button>
+          </DialogActions>
+        </Dialog>
         </Grid>
         <Grid item sx={12}><h3>Your Delicious Brews:</h3></Grid>
         <Grid justifyContent="center"

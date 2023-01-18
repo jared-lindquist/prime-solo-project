@@ -30,7 +30,11 @@ function RecipeItem() {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        dispatch({ type: 'GET_DETAILS', payload: ID })
+        dispatch({ type: 'GET_DETAILS', payload: ID });
+    }, []);
+
+    useEffect(() => {
+        dispatch({ type: 'GET_FAVORITES' });
     }, []);
 
     const [title, setTitle] = useState(store.details[0]?.title);
@@ -45,7 +49,7 @@ function RecipeItem() {
     const [username, setUsername] = useState(store.details[0]?.username);
     const [isFavorite, setIsFavorite] = useState(store.details[0]?.is_favorite);
 
-    console.log('recipe details are: ', store.details, store.details[0]?.is_favorite);
+    // console.log('recipe details are: ', store.details, store.details[0]?.is_favorite);
 
     const backToCommunity = () => {
         history.push('/allrecipes');
@@ -65,7 +69,13 @@ function RecipeItem() {
         })
     }
 
+    const checkFavorite = () => {
+        console.log(store.allRecipes.some( item => item.id === ID))
+        if (store.allRecipes.some()) {
 
+        }
+        return false;
+    }
 const buttonText = isFavorite ? "Already in Your Favorites" : "Add To Favorites";
 
     return (
@@ -112,7 +122,7 @@ const buttonText = isFavorite ? "Already in Your Favorites" : "Add To Favorites"
             >Back to Community Brews
             </Button>
                 <Button 
-                    disabled={isFavorite === true}
+                    disabled={false}
                     variant="contained"
                     style={{ color: "#FFFFFF", backgroundColor: "#6B6BB2"}}
                     onClick={addToFavorites}
